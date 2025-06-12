@@ -1,0 +1,43 @@
+# macOS system files
+.DS_Store
+
+# Node modules (for any node projects, e.g., React app)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output (React/Vite/Next)
+dist/
+build/
+
+# Logs
+*.log
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Vite/CRA/Next/Parcel temp
+.cache/
+.vite/
+.next/
+out/
+.parcel-cache/
+
+# Local environment settings
+.env
+.env.*.local
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+
+# Misc
+coverage/
+*.local
+*.sublime-project
+*.sublime-workspace
