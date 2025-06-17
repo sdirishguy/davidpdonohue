@@ -44,12 +44,13 @@
               { "label": "Scent", "value": "Mediterranean Lavender / Allure by Chanel (tie)" },
               { "label": "Quote", "value": "It is better to remain silent and only thought a fool than to open ones mouth and remove all doubt!" },
               { "label": "Beverage", "value": "Original Coke / Sweet Tea (tie)" },
-              { "label": "Food", "value": "Japanese / Seafood (tie)" }
+              { "label": "Food", "value": "Japanese / Seafood (tie)" },
+              { "label": "Ice Cream", "value": "Hagen Daz  or Ben&Jerry's Banana Split" }
             ],
             "Entertainment": [
               { "label": "Movie", "value": "Stand By Me" },
-              { "label": "TV Show", "value": "Family Ties" },
-              { "label": "Video Game", "value": "Baldur's Gate" },
+              { "label": "TV Shows", "value": "Family Ties, Reacher, MobLand, Halo" },
+              { "label": "Video Games", "value": "Baldur's Gate, Halo" },
               { "label": "Book", "value": "Lord of The Rings - J.R.R. Tolkien" },
               { "label": "Author", "value": "C.S. Lewis / T.S. Eliott (tie)" },
               { "label": "Song", "value": "All Too Well / Mayonaise (tie)" },
@@ -63,7 +64,7 @@
               { "label": "Programming Language", "value": "Python" },
               { "label": "Framework", "value": "Django and Vue.js" },
               { "label": "Code Editor", "value": "Sublime" },
-              { "label": "Line of Code", "value": "" }
+              { "label": "Line of Code", "value": "x = (lambda f: f(f))(lambda f: lambda n: 1 if n < 2 else n * f(f)(n - 1))" }
             ]
           }
         }
@@ -79,14 +80,14 @@
           "hasGradientWave": true
         },
         {
-          "title": "Project Two",
-          "description": "Coming Soon!",
-          "link": null
+          "title": "MCP Sublime Text Plugin",
+          "description": "A powerful Sublime Text plugin that integrates seamlessly with a local MCP (Model Context Protocol) server to enable AI-powered code generation, translation, refactoring, and automation directly within the editor. Designed to boost developer productivity by streamlining common coding tasks through programmable AI tools.",
+          "link": "https://github.com/sdirishguy/MCPHelperSublimePlugin",
         },
         {
-          "title": "Project Three",
-          "description": "Also Coming Soon!",
-          "link": null
+          "title": "MCP Server",
+          "description": "An extensible, Python-based Model Context Protocol (MCP) server designed to expose modular AI-powered tools over HTTP with JSON-RPC. Built for secure, scalable automation and orchestration of developer workflows, it enables integration of local or remote LLMs for code generation, file system operations, shell command execution, and more. Ideal for creating programmable AI agents tailored to development and operational tasks.",
+          "link": "https://github.com/sdirishguy/mcp_server_project"
         },
         {
           "title": "Project Four",
@@ -110,7 +111,7 @@
       "description": "I'd love to hear from you! Whether you're interested in collaborating or just want to say hi, feel free to reach out.",
       "email": "david@opfynder.com",
       "socialLinks": {
-        "github": "https://github.com/donohue76",
+        "github": "https://github.com/sdirishguy",
         "linkedin": "https://linkedin.com/in/davidpdonohue",
         "email": "david@opfynder.com"
       }
