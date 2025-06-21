@@ -73,22 +73,34 @@ async function loadContent() {
     if (projectsTitleElement) projectsTitleElement.textContent = mainContent.projects.title;
     if (projectsGrid) {
       projectsGrid.innerHTML = '';
-      
+
       mainContent.projects.items.forEach(project => {
+        let extraLinksHTML = '';
+        if (project.extraLinks) {
+          extraLinksHTML = '<div class="project-links">';
+          for (const [label, url] of Object.entries(project.extraLinks)) {
+            extraLinksHTML += `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a> `;
+          }
+          extraLinksHTML += '</div>';
+        }
+
         const projectHTML = project.link
           ? `<a href="${project.link}" target="_blank" class="project-item">
               <div class="${project.hasGradientWave ? 'gradient-wave' : ''}">
                 <h3>${project.title}</h3>
                 <p>${project.description}</p>
+                ${extraLinksHTML}
               </div>
             </a>`
           : `<div class="project-item">
               <h3>${project.title}</h3>
               <p>${project.description}</p>
+              ${extraLinksHTML}
             </div>`;
         projectsGrid.insertAdjacentHTML('beforeend', projectHTML);
       });
     }
+
 
     // Update contact section (with error checking)
     const contactTitleElement = document.querySelector('#contact .section-title');
@@ -184,17 +196,12 @@ async function openModal(contentId) {
 
   try {
     const response = await fetch('content.json');
-    if (!response.ok) {
-      throw new Error('Failed to fetch content');
-    }
-    
+    if (!response.ok) throw new Error('Failed to fetch content');
     const data = await response.json();
     
     // Get content from the correct location in your JSON structure
     const content = data.main.about.cards[contentId];
-    if (!content) {
-      throw new Error(`Content not found for: ${contentId}`);
-    }
+    if (!content) throw new Error(`Content not found for: ${contentId}`);
 
     modalTitle.textContent = content.title;
 
@@ -206,28 +213,21 @@ async function openModal(contentId) {
       Object.entries(content.categories).forEach(([categoryName, items]) => {
         const categorySection = document.createElement('div');
         categorySection.className = 'favorites-category';
-        
-        // Add category title
         const categoryTitle = document.createElement('h4');
         categoryTitle.textContent = categoryName;
         categoryTitle.className = 'favorites-category-title';
         categorySection.appendChild(categoryTitle);
-        
-        // Create list for items
+
         const itemsList = document.createElement('ul');
         itemsList.className = 'favorites-list';
-        
-        // Add each item to the list
         items.forEach(item => {
-          if (item.label && item.value) { // Only add items that have both label and value
+          if (item.label && item.value) {
             const listItem = document.createElement('li');
             listItem.className = 'favorites-item';
             listItem.innerHTML = `<strong>${item.label}:</strong> ${item.value}`;
             itemsList.appendChild(listItem);
           }
         });
-        
-        // Only append the category if it has items
         if (itemsList.children.length > 0) {
           categorySection.appendChild(itemsList);
           favoritesContainer.appendChild(categorySection);
@@ -236,6 +236,20 @@ async function openModal(contentId) {
       
       modalBody.innerHTML = '';
       modalBody.appendChild(favoritesContainer);
+
+    } else if (contentId === 'resume') {
+      // New: Embed the React Resume as an iframe
+      modalBody.innerHTML = `
+        <iframe 
+          src="resume/index.html" 
+          style="width:100%;height:600px;min-height:60vh;border:none;border-radius:8px;background:white;"
+          title="Interactive Resume"
+          allowfullscreen
+        ></iframe>
+        <div style="margin-top:1em;">
+          <a href="resume/index.html" target="_blank" class="btn">Open Full Resume in New Tab</a>
+        </div>
+      `;
     } else {
       modalBody.innerHTML = content.content;
     }

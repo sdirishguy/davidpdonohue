@@ -340,6 +340,24 @@ nav ul li a:hover {
     height: 100%;
 }
 
+/* Project Card Extra Links Styles */
+.project-links {
+    margin-top: 0.75em;
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    font-size: 0.98em;
+    justify-content: center;
+}
+.project-links a {
+    color: #ffe69c;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+.project-links a:hover {
+    color: #ff9a0b;
+}
+
 /* Contact Section */
 #contact {
     text-align: center;

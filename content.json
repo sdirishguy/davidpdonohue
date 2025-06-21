@@ -80,19 +80,28 @@
           "hasGradientWave": true
         },
         {
-          "title": "MCP Sublime Text Plugin",
-          "description": "A powerful Sublime Text plugin that integrates seamlessly with a local MCP (Model Context Protocol) server to enable AI-powered code generation, translation, refactoring, and automation directly within the editor. Designed to boost developer productivity by streamlining common coding tasks through programmable AI tools.",
-          "link": "https://github.com/sdirishguy/MCPHelperSublimePlugin",
+          "title": "ShellRosetta",
+          "description": "ShellRosetta is a cross-platform command translator for instantly converting CLI commands between Linux, macOS, and Windows PowerShell.",
+          "link": "https://github.com/yourusername/shellrosetta",
+          "extraLinks": {
+            "PyPI": "https://pypi.org/project/shellrosetta"
+          },
+          "hasGradientWave": true
         },
         {
           "title": "MCP Server",
-          "description": "An extensible, Python-based Model Context Protocol (MCP) server designed to expose modular AI-powered tools over HTTP with JSON-RPC. Built for secure, scalable automation and orchestration of developer workflows, it enables integration of local or remote LLMs for code generation, file system operations, shell command execution, and more. Ideal for creating programmable AI agents tailored to development and operational tasks.",
-          "link": "https://github.com/sdirishguy/mcp_server_project"
+          "description": "MCP Server is a programmable agent server for automating workflows via the Model Context Protocol (MCP).",
+          "link": "https://github.com/sdirishguy/mcp_server_project",
+          "extraLinks": {
+            "Docs": "https://modelcontextprotocol.io/introduction"
+          },
+          "hasGradientWave": true
         },
         {
-          "title": "Project Four",
-          "description": "Coming Later",
-          "link": null
+          "title": "MCPHelper Sublime Plugin",
+          "description": "MCPHelper is a Sublime Text plugin that connects to your MCP Server for on-demand code generation, translation, and refactoring—powered by OpenAI or Gemini.",
+          "link": "https://github.com/sdirishguy/MCPHelperSublimePlugin",
+          "hasGradientWave": true
         },
         {
           "title": "Project Five",
@@ -106,6 +115,7 @@
         }
       ]
     },
+
     "contact": {
       "title": "Contact",
       "description": "I'd love to hear from you! Whether you're interested in collaborating or just want to say hi, feel free to reach out.",
