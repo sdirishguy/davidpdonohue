@@ -1,0 +1,82 @@
+<!-- davidpdonohue/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>David P. Donohue | Portfolio</title>
+    <meta name="description" content="Welcome to the Portfolio of David P. Donohue" />
+    <meta name="keywords" content="David P Donohue, portfolio, web developer, cybersecurity, software engineer, implementation manager" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="splash-page">
+    <div class="container" id="splashContainer">
+      <h1>David P. Donohue</h1>
+      <!-- Stacked subtitle -->
+      <div class="subtitle">
+         <div>Implementation Manager</div>
+         <div>Web Developer</div>
+         <div>Cybersecurity Enthusiast</div>
+      </div>
+      <!-- Tagline with fadeWave animation -->
+      <p class="intro-tagline fadeWave">Welcome!</p>
+      <!-- Button with a 3rem top margin (set in CSS) -->
+      <button onclick="fadeOutAndRedirect()" class="btn">Enter Here</button>
+      <div class="social-links">
+          <a href="https://github.com/Donohue76" target="_blank">GitHub</a>
+          <a href="https://linkedin.com/in/davidpdonohue" target="_blank">LinkedIn</a>
+          <a href="mailto:donohue76@hotmail.com">Email</a>
+      </div>
+    </div>
+
+    <!-- Content Loading Script -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch('content.json')
+        .then(response => response.json())
+        .then(content => {
+          const indexContent = content.index;
+          
+          // Update title
+          document.querySelector('h1').textContent = indexContent.title;
+          
+          // Update subtitles
+          const subtitleContainer = document.querySelector('.subtitle');
+          subtitleContainer.innerHTML = indexContent.subtitle
+            .map(text => `<div>${text}</div>`)
+            .join('');
+          
+          // Update tagline
+          document.querySelector('.intro-tagline').textContent = indexContent.tagline;
+          
+          // Update social links
+          const socialLinks = document.querySelector('.social-links');
+          socialLinks.innerHTML = `
+            <a href="${indexContent.socialLinks.github}" target="_blank">GitHub</a>
+            <a href="${indexContent.socialLinks.linkedin}" target="_blank">LinkedIn</a>
+            <a href="mailto:${indexContent.socialLinks.email}">Email</a>
+          `;
+        })
+        .catch(error => {
+          console.error('Error loading content:', error);
+          // Fallback to static content if JSON fails to load
+        });
+    });
+    </script>
+
+    <!-- Navigation Script -->
+    <script>
+      function fadeOutAndRedirect() {
+        const container = document.getElementById('splashContainer');
+        container.classList.add('fade-out');
+        setTimeout(() => {
+          window.location.href = 'main.html';
+        }, 1000); // 1 second fade-out
+      }
+    </script>
+    
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+name: Deploy to AWS Lightsail
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.LIGHTSAIL_HOST }}
+          username: ${{ secrets.LIGHTSAIL_USER }}
+          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+          port: 22
+          script: |
+            cd /var/www/davidpdonohue.com/html
+            git pull origin main
+            # Reload nginx if necessary. Ensure your user can run sudo without a password.
+            sudo systemctl reload nginx

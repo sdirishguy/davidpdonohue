@@ -1,0 +1,123 @@
+{
+  "index": {
+    "title": "David P. Donohue",
+    "subtitle": [
+      "Implementation Manager",
+      "Web Developer",
+      "Cybersecurity Enthusiast"
+    ],
+    "tagline": "Welcome to My World!",
+    "socialLinks": {
+      "github": "https://github.com/Donohue76",
+      "linkedin": "https://linkedin.com/in/davidpdonohue",
+      "email": "donohue76@hotmail.com"
+    }
+  },
+  "main": {
+    "navigation": {
+      "logo": "David P. Donohue",
+      "links": ["Home", "About", "Projects", "Contact"]
+    },
+    "hero": {
+      "heading": "Welcome",
+      "description": "My minimalist, stormy oceanic-themed outlet for personal and professional creativity, innovation, accomplishments and thoughts..."
+    },
+    "about": {
+      "title": "About Me",
+      "cards": {
+        "myStory": {
+          "title": "My Story",
+          "preview": "Learn more about me!",
+          "content": "<p>Hello! I'm a technologist driven by a passion for transforming ideas into elegant, functional solutions. My portfolio showcases a range of projects that reflect my commitment to innovation and problem-solving. I thrive on the challenge of turning complex concepts into clean, efficient code, and I'm particularly excited about the ever-evolving landscape of cybersecurity. My passion for healthcare innovation is deeply personal. As a cancer survivor and COVID-19 long-hauler, and with parents who were both clinicians, I've experienced firsthand the importance of compassionate and effective care. This lifelong immersion in the world of caregivers and support staff fuels my desire to contribute to technological solutions that improve lives.</p>\n\n<p>When I'm not immersed in lines of code (Python, JavaScript, and Ruby), you might find me chasing the thrill of a good thunderstorm, serving up more than just webpages on the tennis court, enjoying the sun-drenched serenity of a sandy beach, or the quiet wonder of the underwater world. I also enjoy the rush of whitewater rafting and the tranquility of horseback riding. And while the idea of Halloween is endlessly fascinating, I prefer to admire the spooky creativity from a safe distance. Travel is another passion of mine, and I'm always eager to explore new places and perspectives, especially when it involves trying new cuisines. Speaking of which, I'm a true foodie at heart, always eager to explore flavors from around the world (though I admit, some spicy dishes test my limits!).</p>\n\n<p>This website serves as a window into my technological journey, a portfolio of my projects, and an online version of my resume. It may also grow and evolve over time to include more facets of who I am, not just professionally but as a human being in general. If you're looking for a dedicated and enthusiastic technologist with a diverse range of interests to join your team, I'd love to connect! You can view my resume here, check out my LinkedIn profile, or explore my projects in the project section or via GitHub.</p>"
+        },
+        "resume": {
+          "title": "Resume",
+          "preview": "My Professional Summary",
+          "content": "<p>I'm a healthcare IT implementation leader and full-stack developer with 10+ years of experience helping providers, administrators, and health systems adopt and optimize technology that improves care delivery. My career spans EHR implementations, SaaS deployment, cloud infrastructure, and regulatory compliance, with a proven track record of leading complex projects from kickoff to go-live with 100% success.</p>\n\n<p>I've worked across startups and enterprise systems—building secure, scalable platforms, training clinical teams, and bridging the gap between technical teams and frontline healthcare providers. My background in cybersecurity, cloud architecture, and web development complements my deep understanding of healthcare workflows and patient-centered design.</p>\n\n<p>As a cancer survivor and the child of two physicians, I bring a personal passion to the work I do: creating technology that helps people—not hinders them—in their moments of care.</p>\n\n <p>For a more detailed look into my professional career and skills, reach out to me or check out my LinkedIn profile by clicking the button below:</p>\n\n<a href='https://linkedin.com/in/davidpdonohue' target='_blank' rel='noopener noreferrer' class='linkedin-icon-btn'><i class='fab fa-linkedin'></i></a>"
+        },
+        "favorites": {
+          "title": "My Favorites",
+          "preview": "Check out my favorite things!",
+          "categories": {
+            "Personal": [
+              { "label": "Color", "value": "Blue" },
+              { "label": "Scent", "value": "Mediterranean Lavender / Allure by Chanel (tie)" },
+              { "label": "Quote", "value": "It is better to remain silent and only thought a fool than to open ones mouth and remove all doubt!" },
+              { "label": "Beverage", "value": "Original Coke / Sweet Tea (tie)" },
+              { "label": "Food", "value": "Japanese / Seafood (tie)" },
+              { "label": "Ice Cream", "value": "Hagen Daz  or Ben&Jerry's Banana Split" }
+            ],
+            "Entertainment": [
+              { "label": "Movie", "value": "Stand By Me" },
+              { "label": "TV Shows", "value": "Family Ties, Reacher, MobLand, Halo" },
+              { "label": "Video Games", "value": "Baldur's Gate, Halo" },
+              { "label": "Book", "value": "Lord of The Rings - J.R.R. Tolkien" },
+              { "label": "Author", "value": "C.S. Lewis / T.S. Eliott (tie)" },
+              { "label": "Song", "value": "All Too Well / Mayonaise (tie)" },
+              { "label": "Musician/Band", "value": "Taylor Swift / Smashing Pumpkins/U2 (tie)" }
+            ],
+            "Nature": [
+              { "label": "Animal", "value": "Killer Whale" },
+              { "label": "Season", "value": "Spring" }
+            ],
+            "Tech": [
+              { "label": "Programming Language", "value": "Python" },
+              { "label": "Framework", "value": "Django and Vue.js" },
+              { "label": "Code Editor", "value": "Sublime" },
+              { "label": "Line of Code", "value": "x = (lambda f: f(f))(lambda f: lambda n: 1 if n < 2 else n * f(f)(n - 1))" }
+            ]
+          }
+        }
+      }
+    },
+    "projects": {
+      "title": "Projects",
+      "items": [
+        {
+          "title": "Opfynder",
+          "description": "Opfynder is your personal job search and application tracker, simplifying your journey to career success.",
+          "link": "https://opfynder.com",
+          "hasGradientWave": true
+        },
+        {
+          "title": "Project Two",
+          "description": "Coming Soon!",
+          "link": null
+        },
+        {
+          "title": "Project Three",
+          "description": "Also Coming Soon!",
+          "link": null
+        },
+        {
+          "title": "Project Four",
+          "description": "Coming Later",
+          "link": null
+        },
+        {
+          "title": "Project Five",
+          "description": "Coming a Little Later",
+          "link": null
+        },
+        {
+          "title": "Project Six",
+          "description": "Last but not least!",
+          "link": null
+        }
+      ]
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "I'd love to hear from you! Whether you're interested in collaborating or just want to say hi, feel free to reach out.",
+      "email": "david@opfynder.com",
+      "socialLinks": {
+        "github": "https://github.com/sdirishguy",
+        "linkedin": "https://linkedin.com/in/davidpdonohue",
+        "email": "david@opfynder.com"
+      }
+    },
+    "footer": {
+      "copyright": "© 2025 David P. Donohue. All rights reserved."
+    }
+  }
+}

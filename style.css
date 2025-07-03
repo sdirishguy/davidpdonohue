@@ -1,0 +1,754 @@
+/* davidpdonohue/style.css */
+/* Last Updated: 2024-01-09 */
+/* Major Changes: Updated section heading styles for better maintainability */
+
+/*********************************************************
+ * 1. GLOBAL STYLES & RESETS
+ *********************************************************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Offset for fixed navbar */
+    height: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #BBE1FA;
+    line-height: 1.6;
+    background: url('assets/hero-ocean-storm.png') no-repeat center center fixed;
+    background-size: cover;
+    overflow-x: hidden;
+    min-height: 100vh;
+    /* padding-top remains for header */
+    padding-top: 80px;
+    position: relative;
+}
+
+/*********************************************************
+ * 2. ANIMATIONS
+ *********************************************************/
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes wave {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeWave {
+    0%, 100% { opacity: 0.4; transform: translateY(5px); }
+    50% { opacity: 1; transform: translateY(-5px); }
+}
+
+/* Modal Animations */
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalScaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Section Animations */
+@keyframes sectionFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/*********************************************************
+ * 3. INDEX.HTML (SPLASH PAGE) STYLES
+ *********************************************************/
+body.splash-page {
+    background: url('assets/hero-ocean-storm.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+body.splash-page .container {
+    text-align: center;
+    padding: 2rem;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    transition: opacity 1s ease;
+}
+
+body.splash-page h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+body.splash-page .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #BBE1FA;
+    font-weight: 300;
+}
+
+body.splash-page .intro-tagline {
+    font-size: 2rem;
+    font-weight: 600;
+    display: inline-block;
+    animation: fadeWave 3s ease-in-out infinite;
+}
+
+body.splash-page .btn {
+    margin-top: 3rem;
+}
+
+body.splash-page .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 32px;
+}
+
+body.splash-page .social-links a {
+    color: #BBE1FA;
+}
+
+/* Fade-out effect for splash container */
+.splash-page .container.fade-out {
+    opacity: 0;
+}
+
+/*********************************************************
+ * 4. MAIN.HTML STYLES
+ *********************************************************/
+
+/* Main Container Layout */
+#mainContainer {
+    position: relative;
+    padding-bottom: 100px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: calc(100vh - 80px);  /* ensures content fills viewport below header */
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Section Layout */
+#mainContainer section {
+    min-height: 100vh;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scroll-snap-align: start;
+    position: relative;
+}
+/* --- SECTION SCROLL OFFSET FOR FIXED HEADER --- */
+section[id] {
+    scroll-margin-top: 90px; /* keeps section titles visible below the fixed header */
+}
+
+/* UPDATED: Section Headings - Base Styles */
+.section-title {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    color: #BBE1FA;
+    text-align: center;
+}
+
+/* UPDATED: Individual Section Heading Styles */
+/* Home/Hero Section Heading */
+#heroText {
+    font-size: 4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* About Section Heading */
+#about .section-title {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+/* Projects Section Heading */
+#projects .section-title {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+/* Contact Section Heading */
+#contact .section-title {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+/* Header & Navigation */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(27, 38, 44, 0.8);
+    backdrop-filter: blur(5px);
+    padding: 1rem 2rem;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #BBE1FA;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #BBE1FA;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #3282B8;
+    transform: translateY(-3px);
+}
+
+/* Hero Section */
+#hero {
+    justify-content: flex-start; /* Changed from center to flex-start */
+    text-align: center;
+    padding-top: 200px !important; /* Reduced from default section padding */
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    margin: 2rem 0;
+    max-width: 800px;
+}
+
+/* About Section */
+#about {
+    text-align: center;
+    padding-top: 0 !important;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Projects Section */
+#projects {
+    text-align: center;
+    padding-top: 0 !important;
+}
+
+/* Projects Grid Layout */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Project Item Styling */
+.project-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Project Item Link */
+.project-item a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Project Item Hover Effects */
+.project-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Gradient Wave Effects */
+.gradient-wave {
+    background: linear-gradient(
+        -45deg,
+        #2FC0C6,
+        #9C2CD1,
+        #FF9A0B,
+        #FF5A8C,
+        #2FC0C6
+    );
+    background-size: 300% 300%;
+    animation: wave 5s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.project-item .gradient-wave {
+    width: 100%;
+    height: 100%;
+}
+
+/*********************************************************
+ * CONTACT SECTION — Fills viewport below header, footer always at bottom
+ *********************************************************/
+#contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: calc(100vh - 80px); /* Viewport minus header */
+    min-height: 0;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    position: relative;
+    text-align: center;
+    background: transparent;
+    scroll-margin-top: 90px; /* For anchor scrolling under header */
+}
+
+#contact .section-title {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #BBE1FA;
+    text-align: center;
+}
+
+#contact .contact {
+     display: block;
+    width: 100%;
+    min-height: unset;
+    margin-bottom: 2rem;
+}
+
+.contact p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+#contact .btn {
+    margin-top: 0.5rem;
+}
+
+#contact footer {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    padding: 2rem;
+    background: rgba(27, 38, 44, 0.5);
+    backdrop-filter: blur(5px);
+    text-align: center;
+    min-height: 60px;
+}
+
+#contact .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+#contact footer a {
+    color: #BBE1FA;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+/* Responsive: mobile stacking */
+@media (max-width: 768px) {
+    #contact .section-title {
+        font-size: 2rem;
+    }
+    .contact p {
+        font-size: 1.1rem;
+    }
+    #contact footer {
+        padding: 1rem;
+    }
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+    background: rgba(27, 38, 44, 0.5);
+    backdrop-filter: blur(5px);
+    position: relative;
+    top: 90px;
+    margin-top: auto;     /* Pushes the footer to the bottom of Contact */
+    min-height: 60px;     /* Ensures footer is tall enough to anchor the page */
+}
+
+
+footer .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+footer a {
+    color: #BBE1FA;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+/*********************************************************
+ * 5. SHARED COMPONENTS
+ *********************************************************/
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #BBE1FA;
+    background: transparent;
+    border: 2px solid #BBE1FA;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #BBE1FA;
+    color: #0F4C75;
+    transform: translateY(-5px);
+}
+
+/*********************************************************
+ * 5.5 MODAL STYLES
+ *********************************************************/
+
+/* Modal Container */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(27, 38, 44, 0.7);
+    backdrop-filter: blur(8px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.open {
+    display: flex;
+    opacity: 1;
+    animation: modalFadeIn 0.3s ease forwards;
+}
+
+/* Modal Content */
+.modal-content {
+    background: rgba(27, 38, 44, 0.95);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(187, 225, 250, 0.1);
+    display: flex;
+    flex-direction: column;
+    animation: modalScaleIn 0.3s ease forwards;
+}
+
+/* Modal Content Area */
+.content-area {
+    padding: 2rem;
+    overflow-y: auto;
+    flex-grow: 1;
+    margin-bottom: 60px;
+}
+
+/* Scroll Fade Indicator */
+.scroll-fade::after {
+    content: '';
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(
+        transparent,
+        rgba(27, 38, 44, 0.95)
+    );
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.scroll-fade.has-overflow::after {
+    opacity: 1;
+}
+
+/* Modal Close Button */
+.close-btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: rgba(50, 130, 184, 0.1);
+    border: none;
+    color: #BBE1FA;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.close-btn:hover {
+    background: rgba(50, 130, 184, 0.2);
+}
+
+/* Modal Typography */
+.modal-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #BBE1FA;
+}
+
+.modal-content p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    color: #BBE1FA;
+}
+
+/* Resume LinkedIn Button Styles */
+.linkedin-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #BBE1FA;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.linkedin-icon-btn:hover {
+    background: rgba(187, 225, 250, 0.2);
+    transform: translateY(-2px);
+}
+
+.linkedin-icon-btn i {
+    font-size: 1.2rem;
+}
+
+/*********************************************************
+ * 5.6 FAVORITES STYLES
+ *********************************************************/
+.favorites-container {
+  max-width: 100%;
+  padding: 1rem;
+}
+
+.favorites-category {
+  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.favorites-category-title {
+  color: #BBE1FA;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(187, 225, 250, 0.2);
+}
+
+.favorites-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.favorites-item {
+  padding: 0.8rem 0;
+  line-height: 1.4;
+  border-bottom: 1px solid rgba(187, 225, 250, 0.1);
+}
+
+.favorites-item:last-child {
+  border-bottom: none;
+}
+
+.favorites-item strong {
+  color: #3282B8;
+  margin-right: 0.5rem;
+  font-weight: 600;
+}
+
+/* Ensure modal content is scrollable if too long */
+.modal-content .content-area {
+  max-height: calc(80vh - 60px);
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+@media (max-width: 768px) {
+  .favorites-container {
+    padding: 0.5rem;
+  }
+  
+  .favorites-category-title {
+    font-size: 1.2rem;
+  }
+  
+  .favorites-item {
+    font-size: 0.9rem;
+  }
+}
+
+/*********************************************************
+ * 6. MEDIA QUERIES
+ *********************************************************/
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
+    /* UPDATED: Mobile Section Heading Sizes */
+    #heroText {
+        font-size: 2.5rem;
+    }
+    
+    #about .section-title,
+    #projects .section-title,
+    #contact .section-title {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        width: 95%;
+        max-height: 85vh;
+    }
+
+    .modal-content h3 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        width: 98%;
+        max-height: 90vh;
+    }
+
+    .content-area {
+        padding: 1.5rem;
+    }
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .resume-social-links {
+    margin-top: 1.5rem;
+  }
+  
+  .resume-linkedin-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  #contact {
+    height: calc(100vh - 80px);
+    min-height: unset;
+    padding-bottom: 0;
+  }
+}

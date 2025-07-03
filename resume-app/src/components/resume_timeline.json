@@ -1,0 +1,292 @@
+{
+  "header": {
+    "name": "DAVID PATRICK DONOHUE",
+    "title": "FULL STACK DEVELOPER | CLOUD & CYBERSECURITY TECHNOLOGIST | HEALTHCARE IT",
+    "location": "Hobe Sound, FL",
+    "phone": "619-517-4277",
+    "email": "donohue76@hotmail.com",
+    "linkedin": "https://linkedin.com/in/DavidPatrickDonohue",
+    "website": "https://www.davidpdonohue.com",
+    "github": "https://www.github.com/sdirishguy"
+  },
+  "summary": "Resilient by experience. Driven by purpose. Building for what's next.\nI am a full-stack developer and cloud/cybersecurity technologist with 10+ years of cross-industry experience spanning healthcare IT leadership and EMR implementation to modern web application delivery. I architect and deploy secure, scalable systems using Python, Django, Ruby on Rails, JavaScript, and PostgreSQL, and I've led teams through complex cloud, infrastructure, and compliance challenges. My work is guided by a deep sense of purpose, blending technical excellence with empathy, adaptability, and a passion for solving problems that matter. Whether optimizing patient care workflows or developing secure digital platforms, I am committed to building technology that empowers people and moves us forward.",
+  "skills": {
+    "Languages, Frameworks & Databases": [
+      "Ruby",
+      "Python",
+      "JavaScript (ES6+)",
+      "Rails",
+      "Django",
+      "Node.js",
+      "Vue3.js",
+      "React.js",
+      "HTML5",
+      "CSS",
+      "Sass",
+      "Bootstrap",
+      "SQL",
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+      "Redis."
+    ],
+    "Cloud & Infrastructure": [
+      "AWS",
+      "GCP",
+      "Microsoft Azure",
+      "Docker",
+      "Kubernetes",
+      "Ansible"
+    ],
+    "Cybersecurity": [
+      "Ethical Hacking",
+      "Cybersecurity Foundations",
+      "Network Security",
+      "Kali Linux",
+      "Metasploit Framework",
+      "Nmap",
+      "Nessus",
+      "Aircrack-ng",
+      "Wireshark",
+      "Burp Suite",
+      "John the Ripper",
+      "Haschat"
+    ],
+    "Development & DevOps Tools": [
+      "Git",
+      "Github",
+      "GitLab",
+      "Heroku",
+      "CI/CD",
+      "Jira",
+      "BitBucket",
+      "Trello",
+      "MS Project",
+      "Monday"
+    ],
+    "Healthcare IT & Compliance": [
+      "HIPAA",
+      "HITECH",
+      "CLIA",
+      "CMS",
+      "ICD-10",
+      "FCA",
+      "FHIR",
+      "EMR/EHR Implementation",
+      "RCM Optimization",
+      "Regulatory Attestation Support"
+    ],
+    "Systems & Networking": [
+      "Linux CLI",
+      "Windows OS",
+      "MacOS",
+      "Ubuntu",
+      "Kali",
+      "Cisco Meraki",
+      "Desktop Support",
+      "Remote Troubleshooting",
+      "Network Configuration",
+      "Infrastructure Deployment"
+    ],
+    "Project Management & Collaboration": [
+      "Agile/Scrum",
+      "Stakeholder Engagement",
+      "Cross-Functional Team Leadership",
+      "Technical Documentation",
+      "Client Training & Support"
+    ]
+  },
+  "experience": [
+    {
+      "company": "Lucky D's Hostel",
+      "title": "IT Manager (Part-Time)",
+      "location": "San Diego, CA",
+      "dates": "Sept 2019 - Sept 2024",
+      "start": "2019-09",
+      "end": "2024-09",
+      "details": [
+        "Oversaw all IT infrastructure upgrades using Cisco Meraki, improving system reliability and network performance",
+        "Implemented security protocols and firewall configurations to ensure GDPR and PCI compliance.",
+        "Migrated operations to a cloud-based platform, reducing downtime and improving remote management.",
+        "Trained staff on cybersecurity best practices, reducing security incidents by 60%"
+      ]
+    },
+    {
+      "company": "Notch8",
+      "title": "Full Stack Web Developer",
+      "location": "San Diego, CA",
+      "dates": "Jun 2016 - Aug 2018",
+      "start": "2016-06",
+      "end": "2018-08",
+      "details": [
+        "Developed web apps using Ruby, Rails, JavaScript, PostgreSQL, MySQL, and JavaScript frameworks lik React and Angular",
+        "Built infrastructure with Docker Containers, Rancher, and Ansible, deploying to AWS and Google Cloud for scalability.",
+        "Led QA cycles, managed plugin integration, and handled staging-to-production deployment pipelines.",
+        "Delivered custom software for clients including Broadband Forum, TCTrac, and UCSD S.U.R.F., Moishe House, La Jolla Kayak, Scientist.com (AssayDepot)."
+      ]
+    },
+    {
+      "company": "Q-Centrix",
+      "title": "Software Engineer Intern",
+      "location": "San Diego, CA",
+      "dates": "Apr 2016 - Jun 2016",
+      "start": "2016-04",
+      "end": "2016-06",
+      "details": [
+        "Enhanced HIPAA-compliant web application using Ruby on Rails, Angular, Ember, and PostgreSQL.",
+        "Collaborated in Agile teams, focusing on feature development, testing, and bug resolution.",
+        "Developed and validated form logic aligned with NCDR standards for clinical registry compliance.",
+        "Applied Behavior-Driven Development (BDD) principles while pair-programming with senior engineers,"
+      ]
+    },
+    {
+      "company": "",
+      "title": "Career Break",
+      "location": "",
+      "dates": "2013 - 2017",
+      "start": "2013-04",
+      "end": "2017-09",
+      "details": [
+        "Battled and overcame major health challenges including cancer, building personal resilience and renewed focus.",
+        "Completed a 20-week full-stack coding bootcamp at LEARN Academy in San Diego (2016).",
+        "Completed a software engineering internship at Q-Centrix, contributing to a HIPAA-compliant clinical application.",
+        "Transitioned back into the workforce as a full stack web developer at Notch8, reigniting a passion for technology and continuous learning."
+      ]
+    },
+    {
+      "company": "XIFIN, Inc.",
+      "title": "Project Manager - Implementation",
+      "location": "San Diego, CA",
+      "dates": "Nov 2012 - Mar 2013",
+      "start": "2012-11",
+      "end": "2013-04",
+      "details": [
+        "Directed rollout of SaaS-based RCM system for large national reference lab with 100+ users.",
+        "Mapped operational workflows to system functionality, reducing claim errors by 30%.",
+        "Ensured on-time, within-budget delivery through tight coordination across client and internal teams.",
+        "Conducted hands-on training, achieving strong provider adoption and minimal post-launch issues."
+      ]
+    },
+    {
+      "company": "Healthcare Data Solutions",
+      "title": "Project Manager - Implementations & Special Projects",
+      "location": "Miami, FL",
+      "dates": "2010 - 2012",
+      "start": "2010-07",
+      "end": "2012-07",
+      "details": [
+        "Led SaaS implementations of Allscripts PM/EHR systems for 50+ small to mid-sized clinics.",
+        "Created custom training guides that improved provider Meaningful Use attestation success rates.",
+        "Maintained 100% go-live success rate and 98% customer satisfaction over three years.",
+        "Reduced post-go-live support by introducing self-service resources and process optimizations."
+      ]
+    },
+    {
+      "company": "gMed",
+      "title": "Senior Application Specialist",
+      "location": "Weston, FL",
+      "dates": "2007 - 2010",
+      "start": "2007-10",
+      "end": "2010-05",
+      "details": [
+        "Delivered EHR implementation and training for multi-provider GI practices using gCare2 and gGastro.",
+        "Managed system rollouts across 26-provider networks, consistently meeting time and budget goals.",
+        "Drove workflow improvements that cut post-go-live support tickets by over 50%.",
+        "Earned 4.96/5.00 satisfaction score four years running; selected for Product and Dev Committees."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "San Diego College of Continuing Education | AWS Academy",
+      "credential": "Python Programming",
+      "start": "2025",
+      "end": "2025",
+      "status": "completed"
+    },
+    {
+      "school": "San Diego College of Continuing Education | AWS Academy",
+      "credential": "Cybersecurity Analyst Certification Program",
+      "start": "2025",
+      "end": "2026",
+      "status": "in progress"
+    },
+    {
+      "school": "San Diego College of Continuing Education | AWS Academy",
+      "credential": "AWS Associate - Cloud Architecture",
+      "start": "2024",
+      "end": "2024",
+      "status": "completed"
+    },
+    {
+      "school": "Udacity",
+      "credential": "Generative AI with AWS",
+      "start": "2025",
+      "end": "2025",
+      "status": "completed"
+    },
+    {
+      "school": "Udacity",
+      "credential": "Frontend Development Nanodegree",
+      "start": "2025",
+      "end": "2025",
+      "status": "completed"
+    },
+    {
+      "school": "Udacity",
+      "credential": "Certificate in Cloud Computing",
+      "start": "2024",
+      "end": "2024",
+      "status": "completed"
+    },
+    {
+      "school": "Udacity",
+      "credential": "Ethical Hacking Nanodegree",
+      "start": "2025",
+      "end": "2025",
+      "status": "completed"
+    },
+    {
+      "school": "Udacity",
+      "credential": "Mobile and Web Application Development",
+      "start": "2018",
+      "end": "2018",
+      "status": "completed"
+    },
+    {
+      "school": "Western Governors University",
+      "credential": "Bachelor of Science in Network Operations & Security",
+      "start": "2020",
+      "end": "2026",
+      "status": "in progress"
+    },
+    {
+      "school": "LEARN Academy | San Diego, CA",
+      "credential": "Immersive, full-stack web development bootcamp focused on Ruby on Rails. Gained hands-on experience in building dynamic web applications, collaborating with a team, and deploying projects to production. Curriculum included in-depth training in Ruby, Ruby on Rails, JavaScript, PostgreSQL, HTML, CSS, Bootstrap, Git, and Heroku with exposure to React.js. Skills: Ruby, Ruby on Rails, JavaScript, Node.js, React.js, PostgreSQL, HTML, CSS, Bootstrap, Git, GitHub, Heroku.",
+      "start": "2016",
+      "end": "2016",
+      "status": "completed"
+    },
+    {
+      "school": "University of Nebraska - Lincoln",
+      "credential": "Bachelor of Science in Economics (pending, 6 credits remaining)",
+      "start": "2000",
+      "end": "2003",
+      "status": "pending"
+    },
+    {
+      "school": "University of Nebraska - Lincoln",
+      "credential": "Bachelor of Business Administration in Finance (pending, 6 credits remaining)",
+      "start": "2000",
+      "end": "2003",
+      "status": "pending"
+    },
+    {
+      "school": "Vanderbilt University - Nashville, TN",
+      "credential": "Bachelor of Arts in Economics and Political Science (withdrew due to prolonged illness)",
+      "start": "1995",
+      "end": "1997",
+      "status": "withdrew"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+<!-- davidpdonohue/main.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>David P. Donohue | Portfolio &amp; Projects</title>
+    <meta name="description" content="David P. Donohue's minimalist, creative, personal website showcasing innovation and accomplishments." />
+    <meta name="keywords" content="David P Donohue, minimalist, creative, web developer, cybersecurity, software engineer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="main-page">
+    <header>
+      <div class="logo">David P. Donohue</div>
+      <nav>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container" id="mainContainer">
+      <section id="hero" class="hero">
+        <h1 id="heroHeading">
+          <span id="heroText" class="fadeWave">Welcome to the Storm!</span>
+        </h1>
+        <p class="hero-description"></p>
+        <a href="#about" class="btn">About Me</a>
+      </section>
+
+      <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="cards-container" id="aboutCardsContainer">
+          <!-- Cards will be dynamically inserted here by script.js -->
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+          <!-- Project items will be populated dynamically by script.js -->
+        </div>
+      </section>
+      
+      <section id="contact" class="section-visible">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact">
+          <p>I'd love to hear from you! Whether you're interested in collaborating or just want to say hi, feel free to reach out.</p>
+          <a href="mailto:david@opfynder.com" class="btn">Email Me</a>
+        </div>
+        <footer>
+          <p>© 2025 David P. Donohue. All rights reserved.</p>
+          <div class="social-links">
+            <a href="https://github.com/sdirishguy" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://linkedin.com/in/davidpdonohue" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="mailto:david@opfynder.com">Email</a>
+          </div>
+        </footer>
+      </section>
+    </div>
+
+
+    <!-- Modal for About cards and Resume -->
+    <div id="modal" class="modal">
+      <div class="modal-content scroll-fade">
+        <div class="content-area">
+          <h3 id="modalTitle">Modal Title</h3>
+          <div id="modalBody">This is the modal content.</div>
+        </div>
+        <button class="close-btn" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+
+    <!-- Main site scripts -->
+    <script src="script.js"></script>
+    <!-- React Resume App styles and bundle: update file hashes if you rebuild! -->
+    <link rel="stylesheet" href="resume-build/assets/index-BFCru2OG.css" />
+    <script type="module" src="resume-build/assets/index-BN5dxngi.js"></script>
+  </body>
+</html>

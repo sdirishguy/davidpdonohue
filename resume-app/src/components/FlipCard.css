@@ -1,0 +1,71 @@
+/* src/components/FlipCard.css */
+.flip-card {
+  width: 320px;
+  height: 210px;
+  perspective: 1200px;
+  cursor: pointer;
+  border-radius: 1.8em;
+  box-shadow: 0 4px 32px 0 #2fc0c670, 0 2px 6px 0 #0004;
+  background: transparent;
+  margin: 0.5em 0;
+  transition: box-shadow 0.2s;
+}
+.flip-card:focus {
+  outline: 2px solid #9c2cd1;
+  box-shadow: 0 4px 32px 0 #9c2cd170, 0 2px 6px 0 #0004;
+}
+.flip-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.55s cubic-bezier(.5,-0.2,.4,1.5);
+  transform-style: preserve-3d;
+}
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 1.8em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+}
+.flip-card-front {
+  background: #03012a;
+  color: #fff;
+  border: 2px solid #2fc0c6;
+  box-shadow: 0 1px 16px 0 #9c2cd190;
+}
+.flip-icon {
+  font-size: 2.8em;
+  margin-bottom: 0.2em;
+  color: #2fc0c6;
+  filter: drop-shadow(0 1px 8px #2fc0c660);
+}
+.flip-card-front h2 {
+  font-size: 1.38em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+  margin: 0;
+}
+.flip-card-back {
+  background: linear-gradient(120deg, #2fc0c6 0%, #9c2cd1 100%);
+  color: #fff;
+  transform: rotateY(180deg);
+  border: 2px solid #9c2cd1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flip-card-instructions {
+  text-align: center;
+  font-size: 1.12em;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}

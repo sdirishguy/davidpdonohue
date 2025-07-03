@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Sitemap: https://davidpdonohue.com/sitemap.xml
+
+# Allow all bots to access everything
+User-agent: *
+Disallow:
+
+# Specific rules for images
+User-agent: Googlebot-Image
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.png$
+Allow: /*.webp$
+
+# Block certain directories if needed
+# Disallow: /private/
+# Disallow: /admin/
+# Disallow: /temp/
