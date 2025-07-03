@@ -1,0 +1,329 @@
+/****************************************************
+ * 1. MAIN CONTAINER & HEADER
+ ****************************************************/
+.ocean-resume-container {
+  background: rgba(27,38,44,0.89);
+  border-radius: 18px;
+  max-width: 800px;
+  margin: 40px auto;
+  box-shadow: 0 8px 36px rgba(50,130,184,0.22);
+  color: #BBE1FA;
+  padding: 2.5rem 2rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.ocean-resume-header h1 {
+  font-size: 2.3rem;
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+.ocean-title {
+  color: #2FC0C6;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+.ocean-contact a {
+  color: #9C2CD1;
+  text-decoration: underline;
+}
+
+/****************************************************
+ * 2. VERTICAL TIMELINE (Unified Timeline)
+ ****************************************************/
+.vertical-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6em;
+  position: relative;
+  margin: 2.2rem 0 2.7rem 0;
+  border-left: 3px solid #2FC0C6;
+  padding-left: 28px;
+}
+.timeline-item {
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+  padding-bottom: 0.3em;
+}
+.timeline-item.expanded {
+  background: rgba(46, 192, 198, 0.07);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px #2FC0C620;
+}
+.timeline-icon {
+  position: absolute;
+  left: -36px;
+  top: 7px;
+  background: #fff;
+  border-radius: 50%;
+  width: 29px;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #2FC0C6;
+  z-index: 1;
+}
+.timeline-years {
+  color: #FF9A0B;
+  font-size: 0.93em;
+  font-weight: 600;
+}
+.timeline-title {
+  color: #2FC0C6;
+  font-size: 1.07em;
+  font-weight: 600;
+  margin-bottom: 0.13em;
+}
+.timeline-where {
+  font-size: 1em;
+  color: #BBE1FA;
+  margin-bottom: 0.2em;
+  font-weight: 500;
+}
+.timeline-details {
+  margin-top: 0.6em;
+  color: #eee;
+}
+
+/****************************************************
+ * 3. OCEAN CARD (Content Cards)
+ ****************************************************/
+.ocean-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 2px 8px #1B262C22;
+  margin-bottom: 2rem;
+}
+.ocean-card h2 {
+  color: #FF9A0B;
+  font-size: 1.2rem;
+}
+.ocean-card ul {
+  margin-top: 1rem;
+}
+
+/****************************************************
+ * 4. SKILLS DISPLAY
+ ****************************************************/
+.skills-carousel {
+  margin: 2rem 0 1rem 0;
+}
+.carousel-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+/* Icon + Label Style */
+.skill-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px 10px 0;
+  min-width: 60px;
+}
+.skill-label {
+  font-size: 0.85rem;
+  margin-top: 4px;
+  color: #BBE1FA;
+  text-align: center;
+}
+/* Gradient Skill Chips */
+.skill-chip {
+  display: inline-block;
+  background: linear-gradient(90deg, #3282B8 50%, #2FC0C6 100%);
+  border-radius: 999px;
+  padding: 7px 20px;
+  color: #fff;
+  font-size: 0.97rem;
+  font-weight: 500;
+  margin: 0 10px 10px 0;
+  box-shadow: 0 1px 6px #2FC0C688;
+}
+/* Skill Categories grid (for grouped display) */
+.skills-category-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  margin-top: 1.2rem;
+}
+.skills-category {
+  min-width: 180px;
+}
+.skills-cat-title {
+  color: #9C2CD1;
+  font-size: 1.1em;
+  font-weight: 700;
+  margin-bottom: 0.6em;
+}
+
+/****************************************************
+ * 5. RESUME DOWNLOAD BUTTON
+ ****************************************************/
+.download-buoy {
+  display: inline-block;
+  background: #2FC0C6;
+  color: #fff;
+  padding: 0.7rem 1.7rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 1rem;
+  box-shadow: 0 2px 8px #2FC0C666;
+  transition: background 0.2s;
+}
+.download-buoy:hover {
+  background: #3282B8;
+}
+
+/****************************************************
+ * 6. RESPONSIVE DESIGN
+ ****************************************************/
+@media (max-width: 700px) {
+  .skills-category-columns {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .ocean-resume-container {
+    padding: 1.2rem 0.5rem;
+  }
+}
+
+.summary-section {
+  background: rgba(27, 29, 63, 0.92);
+  border: 2px solid #2FC0C6;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px 0 rgba(44, 44, 89, 0.17), 0 1.5px 8px #9C2CD1;
+  padding: 2.5rem 2rem 2rem 2rem;
+  margin-bottom: 2.5rem;
+  color: #e2eaf3;
+  transition: box-shadow 0.2s;
+}
+.summary-section h2 {
+  color: #2FC0C6;
+  margin-bottom: 1rem;
+}
+/* --- Card-like styling for summary and download --- */
+.summary-section,
+.resume-download-section {
+  background: rgba(12, 18, 46, 0.96); /* match card bg */
+  border: 1.5px solid #2fc0c6;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 36px -2px rgba(44, 43, 94, 0.14);
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  margin-bottom: 2.5rem;
+  color: #e7f6ff;
+}
+
+.summary-section h2,
+.resume-download-section h2 {
+  color: #2fc0c6;
+  margin-bottom: 1.2rem;
+}
+
+.resume-download-section {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 68px;
+}
+
+/* --- Style for Download Button --- */
+.download-buoy {
+  background: linear-gradient(90deg, #2fc0c6 30%, #9c2cd1 80%);
+  color: #fff;
+  border: none;
+  padding: 0.85em 2.2em;
+  border-radius: 2em;
+  font-size: 1.15em;
+  font-weight: 700;
+  box-shadow: 0 2px 24px -2px #2fc0c677;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.2s, background 0.18s;
+  text-decoration: none;
+  margin-left: auto;
+  margin-right: 0.6rem;
+}
+
+.download-buoy:hover,
+.download-buoy:focus {
+  background: linear-gradient(90deg, #9c2cd1 30%, #2fc0c6 90%);
+  transform: translateY(-2px) scale(1.035);
+  box-shadow: 0 4px 36px 0 #9c2cd199;
+}
+.ocean-card {
+  background: rgba(12, 18, 46, 0.96);
+  border: 1.5px solid #2fc0c6;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 36px -2px rgba(44, 43, 94, 0.14);
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  margin-bottom: 2.5rem;
+  color: #e7f6ff;
+  text-align: center; /* This will center the button */
+}
+
+.download-card {
+  margin-top: 2.5rem;
+  margin-bottom: 0;
+}
+
+.download-buoy {
+  background: transparent;
+  color: #2fc0c6;
+  border: 2px solid #2fc0c6;
+  padding: 0.9em 2.5em;
+  border-radius: 2em;
+  font-size: 1.2em;
+  font-weight: 700;
+  box-shadow: 0 2px 24px -2px #2fc0c677;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: 
+    background 0.2s,
+    color 0.18s,
+    transform 0.16s,
+    box-shadow 0.22s;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 0.2em;
+}
+
+.download-buoy:hover,
+.download-buoy:focus {
+  background: #2fc0c6;
+  color: #fff;
+  border-color: #2fc0c6;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 36px 0 #2fc0c6cc;
+}
+.download-buoy {
+  background: rgba(12, 18, 46, 0.96);
+  color: #e7f6ff;
+  border: 1.5px solid #2fc0c6;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 36px -2px rgba(44, 43, 94, 0.14);
+  padding: 1.1rem 2.5rem;
+  font-size: 1.15em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background 0.2s,
+    color 0.18s,
+    transform 0.16s,
+    box-shadow 0.22s;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.download-buoy:hover,
+.download-buoy:focus {
+  background: #2fc0c6;
+  color: #0c122e;
+  border-color: #2fc0c6;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 36px 0 #2fc0c6cc;
+}

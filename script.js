@@ -1,126 +1,102 @@
 /* davidpdonohue/script.js */
 
-// Define languages and animations at the global scope
+// Define languages and animations
 const languages = [
-  "Welcome",
-  "Fáilte",
-  "Bienvenido",
-  "Bienvenue",
-  "Benvenuto",
-  "Willkommen",
-  "私の世界へようこそ",
-  "欢迎来到我的世界",
+  "Welcome", "Fáilte", "Bienvenido", "Bienvenue", "Benvenuto", "Willkommen",
+  "私の世界へようこそ", "欢迎来到我的世界"
 ];
 
 const animations = [
-  "typewriter",
-  "bounceInLetter",
-  "bounceInWord",
-  "slideInRightLetter",
-  "slideInRightWord",
-  "rollInRightLetter",
-  "rollInRightWord",
-  "slideInLeftLetter",
-  "slideInLeftWord"
+  "typewriter", "bounceInLetter", "bounceInWord",
+  "slideInRightLetter", "slideInRightWord",
+  "rollInRightLetter", "rollInRightWord",
+  "slideInLeftLetter", "slideInLeftWord"
 ];
 
 let animationPool = [...animations];
 let lastAnimClass = "";
 let currentLangIndex = 0;
 
-// Content Loading Function
+// Load content from JSON
 async function loadContent() {
   try {
     const response = await fetch('content.json');
     if (!response.ok) throw new Error('Failed to fetch content');
-    
+
     const content = await response.json();
     const mainContent = content.main;
 
-    // Update navigation (with error checking)
-    const logoElement = document.querySelector('.logo');
-    if (logoElement) logoElement.textContent = mainContent.navigation.logo;
+    // Navigation
+    const logo = document.querySelector('.logo');
+    if (logo) logo.textContent = mainContent.navigation.logo;
 
-    // Update hero section (with error checking)
-    const heroTextElement = document.querySelector('#heroText');
-    const heroDescElement = document.querySelector('.hero-description');
-    if (heroTextElement) heroTextElement.textContent = mainContent.hero.heading;
-    if (heroDescElement) heroDescElement.textContent = mainContent.hero.description;
+    // Hero
+    const heroText = document.querySelector('#heroText');
+    const heroDesc = document.querySelector('.hero-description');
+    if (heroText) heroText.textContent = mainContent.hero.heading;
+    if (heroDesc) heroDesc.textContent = mainContent.hero.description;
 
-    // Update about section (with error checking)
-    const aboutTitleElement = document.querySelector('#about .section-title');
-    if (aboutTitleElement) aboutTitleElement.textContent = mainContent.about.title;
-    
-    // Dynamically create about cards (with error checking)
+    // About Section
+    const aboutTitle = document.querySelector('#about .section-title');
     const aboutCardsContainer = document.getElementById('aboutCardsContainer');
+    if (aboutTitle) aboutTitle.textContent = mainContent.about.title;
     if (aboutCardsContainer) {
-      aboutCardsContainer.innerHTML = ''; // Clear existing content
-      
+      aboutCardsContainer.innerHTML = '';
       Object.entries(mainContent.about.cards).forEach(([key, card]) => {
-        const cardHTML = `
+        aboutCardsContainer.insertAdjacentHTML('beforeend', `
           <div onclick="openModal('${key}')" class="card">
             <h3>${card.title}</h3>
             <p>${card.preview}</p>
           </div>
-        `;
-        aboutCardsContainer.insertAdjacentHTML('beforeend', cardHTML);
+        `);
       });
     }
 
-    // Update projects section (with error checking)
-    const projectsTitleElement = document.querySelector('#projects .section-title');
+    // Projects Section
+    const projectsTitle = document.querySelector('#projects .section-title');
     const projectsGrid = document.querySelector('.projects-grid');
-    if (projectsTitleElement) projectsTitleElement.textContent = mainContent.projects.title;
+    if (projectsTitle) projectsTitle.textContent = mainContent.projects.title;
     if (projectsGrid) {
       projectsGrid.innerHTML = '';
-
       mainContent.projects.items.forEach(project => {
-        let extraLinksHTML = '';
-        if (project.extraLinks) {
-          extraLinksHTML = '<div class="project-links">';
-          for (const [label, url] of Object.entries(project.extraLinks)) {
-            extraLinksHTML += `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a> `;
-          }
-          extraLinksHTML += '</div>';
-        }
+        const extraLinksHTML = project.extraLinks
+          ? `<div class="project-links">
+               ${Object.entries(project.extraLinks).map(
+                 ([label, url]) => `<a href="${url}" target="_blank">${label}</a>`
+               ).join(' ')}
+             </div>`
+          : '';
 
-        const projectHTML = project.link
+        const cardHTML = project.link
           ? `<a href="${project.link}" target="_blank" class="project-item">
-              <div class="${project.hasGradientWave ? 'gradient-wave' : ''}">
-                <h3>${project.title}</h3>
-                <p>${project.description}</p>
-                ${extraLinksHTML}
-              </div>
-            </a>`
+               <div class="${project.hasGradientWave ? 'gradient-wave' : ''}">
+                 <h3>${project.title}</h3>
+                 <p>${project.description}</p>
+                 ${extraLinksHTML}
+               </div>
+             </a>`
           : `<div class="project-item">
-              <h3>${project.title}</h3>
-              <p>${project.description}</p>
-              ${extraLinksHTML}
-            </div>`;
-        projectsGrid.insertAdjacentHTML('beforeend', projectHTML);
+               <h3>${project.title}</h3>
+               <p>${project.description}</p>
+               ${extraLinksHTML}
+             </div>`;
+        projectsGrid.insertAdjacentHTML('beforeend', cardHTML);
       });
     }
 
+    // Contact
+    const contact = mainContent.contact;
+    document.querySelector('#contact .section-title').textContent = contact.title;
+    document.querySelector('#contact .contact p').textContent = contact.description;
+    document.querySelector('#contact .contact .btn').href = `mailto:${contact.email}`;
 
-    // Update contact section (with error checking)
-    const contactTitleElement = document.querySelector('#contact .section-title');
-    const contactDescElement = document.querySelector('#contact .contact p');
-    const contactBtnElement = document.querySelector('#contact .contact .btn');
-    if (contactTitleElement) contactTitleElement.textContent = mainContent.contact.title;
-    if (contactDescElement) contactDescElement.textContent = mainContent.contact.description;
-    if (contactBtnElement) contactBtnElement.href = `mailto:${mainContent.contact.email}`;
-
-    // Update footer (with error checking)
-    const footerTextElement = document.querySelector('footer p');
-    const footerSocialLinks = document.querySelector('footer .social-links');
-    if (footerTextElement) footerTextElement.textContent = mainContent.footer.copyright;
-    if (footerSocialLinks) {
-      footerSocialLinks.innerHTML = `
-        <a href="${mainContent.contact.socialLinks.github}" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="${mainContent.contact.socialLinks.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="mailto:${mainContent.contact.socialLinks.email}">Email</a>
-      `;
-    }
+    // Footer
+    document.querySelector('footer p').textContent = mainContent.footer?.copyright || '';
+    document.querySelector('footer .social-links').innerHTML = `
+      <a href="${contact.socialLinks.github}" target="_blank">GitHub</a>
+      <a href="${contact.socialLinks.linkedin}" target="_blank">LinkedIn</a>
+      <a href="mailto:${contact.socialLinks.email}">Email</a>
+    `;
   } catch (error) {
     console.error('Error loading content:', error);
   }
@@ -128,29 +104,20 @@ async function loadContent() {
 
 function updateHeroText(newText, animClass) {
   const heroText = document.getElementById("heroText");
-  if (!heroText) return; // Guard clause for missing element
+  if (!heroText) return;
 
-  heroText.innerHTML = ""; // Clear previous content
+  heroText.innerHTML = "";
 
   if (animClass === "typewriter") {
     heroText.textContent = newText;
     heroText.classList.add("typewriter");
-  } else if (animClass.includes("Letter")) {
+  } else {
     heroText.classList.remove("typewriter");
-    for (let i = 0; i < newText.length; i++) {
+    const fragments = animClass.includes("Word") ? newText.split(" ") : [...newText];
+    fragments.forEach((part, i) => {
       const span = document.createElement("span");
-      span.textContent = newText[i];
-      span.style.animationDelay = `${i * 0.1}s`;
-      span.classList.add(animClass);
-      heroText.appendChild(span);
-    }
-  } else if (animClass.includes("Word")) {
-    heroText.classList.remove("typewriter");
-    const words = newText.split(" ");
-    words.forEach((word, index) => {
-      const span = document.createElement("span");
-      span.textContent = word + " ";
-      span.style.animationDelay = `${index * 0.2}s`;
+      span.textContent = part + (animClass.includes("Word") ? " " : "");
+      span.style.animationDelay = `${i * (animClass.includes("Word") ? 0.2 : 0.1)}s`;
       span.classList.add(animClass);
       heroText.appendChild(span);
     });
@@ -159,209 +126,144 @@ function updateHeroText(newText, animClass) {
 
 function changeLanguage() {
   currentLangIndex = (currentLangIndex + 1) % languages.length;
-  const heroText = document.getElementById("heroText");
-  if (!heroText) return; // Guard clause for missing element
-
-  heroText.classList.remove(...animations);
-
-  if (animationPool.length === 0) {
-    animationPool = [...animations];
-  }
-  let randomIndex = Math.floor(Math.random() * animationPool.length);
-  let animClass = animationPool[randomIndex];
-  
-  if (animationPool.length > 1) {
-    while (animClass === lastAnimClass) {
-      randomIndex = Math.floor(Math.random() * animationPool.length);
-      animClass = animationPool[randomIndex];
-    }
-  }
-  
-  animationPool.splice(randomIndex, 1);
-  lastAnimClass = animClass;
-
+  const animClass = pickAnimation();
   updateHeroText(languages[currentLangIndex], animClass);
 }
 
-/* Modal Functions */
+function pickAnimation() {
+  if (animationPool.length === 0) animationPool = [...animations];
+  let animClass;
+  do {
+    const index = Math.floor(Math.random() * animationPool.length);
+    animClass = animationPool.splice(index, 1)[0];
+  } while (animClass === lastAnimClass && animationPool.length > 1);
+  lastAnimClass = animClass;
+  return animClass;
+}
+
+// Modal Handling
 async function openModal(contentId) {
   const modal = document.getElementById("modal");
   const modalTitle = document.getElementById("modalTitle");
   const modalBody = document.getElementById("modalBody");
-  
-  if (!modal || !modalTitle || !modalBody) return;
-  
   const contentArea = modal.querySelector('.content-area');
-  if (!contentArea) return;
+  if (!modal || !modalTitle || !modalBody || !contentArea) return;
 
   try {
     const response = await fetch('content.json');
     if (!response.ok) throw new Error('Failed to fetch content');
     const data = await response.json();
-    
-    // Get content from the correct location in your JSON structure
     const content = data.main.about.cards[contentId];
     if (!content) throw new Error(`Content not found for: ${contentId}`);
 
     modalTitle.textContent = content.title;
 
-    if (contentId === 'favorites') {
-      const favoritesContainer = document.createElement('div');
-      favoritesContainer.className = 'favorites-container';
-
-      // Loop through each category
-      Object.entries(content.categories).forEach(([categoryName, items]) => {
-        const categorySection = document.createElement('div');
-        categorySection.className = 'favorites-category';
-        const categoryTitle = document.createElement('h4');
-        categoryTitle.textContent = categoryName;
-        categoryTitle.className = 'favorites-category-title';
-        categorySection.appendChild(categoryTitle);
-
-        const itemsList = document.createElement('ul');
-        itemsList.className = 'favorites-list';
-        items.forEach(item => {
-          if (item.label && item.value) {
-            const listItem = document.createElement('li');
-            listItem.className = 'favorites-item';
-            listItem.innerHTML = `<strong>${item.label}:</strong> ${item.value}`;
-            itemsList.appendChild(listItem);
-          }
-        });
-        if (itemsList.children.length > 0) {
-          categorySection.appendChild(itemsList);
-          favoritesContainer.appendChild(categorySection);
-        }
-      });
-      
-      modalBody.innerHTML = '';
-      modalBody.appendChild(favoritesContainer);
-
-    } else if (contentId === 'resume') {
-      // New: Embed the React Resume as an iframe
+    if (contentId === 'resume') {
       modalBody.innerHTML = `
         <iframe 
-          src="resume/index.html" 
-          style="width:100%;height:600px;min-height:60vh;border:none;border-radius:8px;background:white;"
-          title="Interactive Resume"
-          allowfullscreen
-        ></iframe>
-        <div style="margin-top:1em;">
-          <a href="resume/index.html" target="_blank" class="btn">Open Full Resume in New Tab</a>
-        </div>
-      `;
+          src="/resume-build/index.html"
+          style="width: 95%; max-width: 1024px; height: 80vh; border: none; border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.2); transition: transform 0.5s ease, opacity 0.5s ease;"
+          class="resume-iframe"
+          title="Resume Viewer"
+        ></iframe>`;
+    } else if (contentId === 'favorites') {
+      const container = document.createElement('div');
+      container.className = 'favorites-container';
+      Object.entries(content.categories).forEach(([cat, items]) => {
+        const section = document.createElement('div');
+        section.className = 'favorites-category';
+        section.innerHTML = `<h4 class="favorites-category-title">${cat}</h4>`;
+        const list = document.createElement('ul');
+        list.className = 'favorites-list';
+        items.forEach(({ label, value }) => {
+          if (label && value) {
+            const li = document.createElement('li');
+            li.className = 'favorites-item';
+            li.innerHTML = `<strong>${label}:</strong> ${value}`;
+            list.appendChild(li);
+          }
+        });
+        if (list.children.length) section.appendChild(list);
+        container.appendChild(section);
+      });
+      modalBody.innerHTML = '';
+      modalBody.appendChild(container);
     } else {
       modalBody.innerHTML = content.content;
     }
 
     modal.classList.add("open");
     document.body.style.overflow = "hidden";
-
     checkScrollIndicator(contentArea);
     contentArea.addEventListener('scroll', () => checkScrollIndicator(contentArea));
-
-  } catch (error) {
-    console.error('Error loading modal content:', error);
-    modalBody.innerHTML = `
-      <div class="error-message">
-        <p>Error loading content. Please try again later.</p>
-        <p class="error-details">${error.message}</p>
-      </div>
-    `;
+  } catch (err) {
+    console.error("Modal error:", err);
+    modalBody.innerHTML = `<p class="error-message">Error loading content: ${err.message}</p>`;
   }
 }
 
 function closeModal() {
   const modal = document.getElementById("modal");
-  if (!modal) return;
-  
-  modal.classList.remove("open");
-  document.body.style.overflow = "";
+  modal.classList.add("closing");
+  setTimeout(() => {
+    modal.classList.remove("open", "closing");
+    document.body.style.overflow = "";
+  }, 300);
 }
 
 function checkScrollIndicator(contentArea) {
   if (!contentArea) return;
-  
   const hasOverflow = contentArea.scrollHeight > contentArea.clientHeight;
-  const isScrolledToBottom = Math.abs(
-    contentArea.scrollHeight - contentArea.scrollTop - contentArea.clientHeight
-  ) < 1;
-  
-  contentArea.parentElement?.classList.toggle('has-overflow', hasOverflow && !isScrolledToBottom);
+  const atBottom = Math.abs(contentArea.scrollHeight - contentArea.scrollTop - contentArea.clientHeight) < 1;
+  contentArea.parentElement?.classList.toggle('has-overflow', hasOverflow && !atBottom);
 }
 
-// Event Listeners
+// Global listeners
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    closeModal();
-  }
+  if (e.key === "Escape") closeModal();
 });
 
 document.addEventListener("click", (e) => {
-  const modal = document.getElementById("modal");
-  if (e.target === modal) {
-    closeModal();
-  }
+  if (e.target.id === "modal") closeModal();
 });
 
-// Scroll handling
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
-
-// DOM Content Loaded handler
+// Initialize
 document.addEventListener('DOMContentLoaded', () => {
-  // Load content
   loadContent();
-
-  // Initialize language animation if not on splash page
   if (!document.body.classList.contains("splash-page")) {
-    const heroText = document.getElementById("heroText");
-    if (heroText) {
+    const hero = document.getElementById("heroText");
+    if (hero) {
       updateHeroText(languages[currentLangIndex], animations[0]);
       setInterval(changeLanguage, 3000);
     }
   }
 
-  // Intersection Observer for sections
-  const sections = document.querySelectorAll('#mainContainer section');
+  // IntersectionObserver for section animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
+      entry.target.classList.toggle('section-visible', entry.isIntersecting);
       if (entry.isIntersecting) {
-        entry.target.classList.add('section-visible');
-        
-        // Update nav links
         const id = entry.target.getAttribute('id');
         document.querySelectorAll('nav a').forEach(link => {
           link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
         });
-      } else {
-        entry.target.classList.remove('section-visible');
       }
     });
-  }, {
-    threshold: 0.3
-  });
+  }, { threshold: 0.3 });
 
-  sections.forEach(section => observer.observe(section));
+  document.querySelectorAll('#mainContainer section').forEach(s => observer.observe(s));
 
-  // Smooth scroll handling
+  // Smooth scroll
   document.querySelectorAll('nav a').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      const targetId = link.getAttribute('href')?.substring(1);
-      const targetSection = targetId ? document.getElementById(targetId) : null;
-      
-      if (targetSection) {
-        targetSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
+      const id = link.getAttribute('href')?.substring(1);
+      const target = document.getElementById(id);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
     });
   });
 
-  // Fade in main container
+  // Fade-in animation
   const container = document.getElementById("mainContainer");
   if (container) {
     container.style.opacity = 0;
@@ -372,7 +274,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Reset scroll position on page load
-window.onload = function() { 
-  window.scrollTo(0, 0);
-};
+window.onload = () => window.scrollTo(0, 0);

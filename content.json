@@ -70,52 +70,41 @@
         }
       }
     },
-    "projects": {
-      "title": "Projects",
-      "items": [
-        {
-          "title": "Opfynder",
-          "description": "Opfynder is your personal job search and application tracker, simplifying your journey to career success.",
-          "link": "https://opfynder.com",
-          "hasGradientWave": true
-        },
-        {
-          "title": "ShellRosetta",
-          "description": "ShellRosetta is a cross-platform command translator for instantly converting CLI commands between Linux, macOS, and Windows PowerShell.",
-          "link": "https://github.com/yourusername/shellrosetta",
-          "extraLinks": {
-            "PyPI": "https://pypi.org/project/shellrosetta"
-          },
-          "hasGradientWave": true
-        },
-        {
-          "title": "MCP Server",
-          "description": "MCP Server is a programmable agent server for automating workflows via the Model Context Protocol (MCP).",
-          "link": "https://github.com/sdirishguy/mcp_server_project",
-          "extraLinks": {
-            "Docs": "https://modelcontextprotocol.io/introduction"
-          },
-          "hasGradientWave": true
-        },
-        {
-          "title": "MCPHelper Sublime Plugin",
-          "description": "MCPHelper is a Sublime Text plugin that connects to your MCP Server for on-demand code generation, translation, and refactoring—powered by OpenAI or Gemini.",
-          "link": "https://github.com/sdirishguy/MCPHelperSublimePlugin",
-          "hasGradientWave": true
-        },
-        {
-          "title": "Project Five",
-          "description": "Coming a Little Later",
-          "link": null
-        },
-        {
-          "title": "Project Six",
-          "description": "Last but not least!",
-          "link": null
-        }
-      ]
+"projects": {
+  "title": "Projects",
+  "items": [
+    {
+      "title": "Opfynder",
+      "description": "Opfynder is your personal job search and application tracker, simplifying your journey to career success.",
+      "link": "https://opfynder.com",
+      "hasGradientWave": true
     },
-
+    {
+      "title": "ShellRosetta",
+      "description": "ShellRosetta is a cross-platform command translator for instantly converting CLI commands between Linux, macOS, and Windows PowerShell.",
+      "link": "https://github.com/yourusername/shellrosetta",
+      "extraLinks": {
+        "PyPI": "https://pypi.org/project/shellrosetta"
+      },
+      "hasGradientWave": true
+    },
+    {
+      "title": "MCP Server",
+      "description": "MCP Server is a programmable agent server for automating workflows via the Model Context Protocol (MCP).",
+      "link": "https://github.com/sdirishguy/mcp_server_project",
+      "extraLinks": {
+        "Docs": "https://modelcontextprotocol.io/introduction"
+      },
+      "hasGradientWave": true
+    },
+    {
+      "title": "MCPHelper Sublime Plugin",
+      "description": "MCPHelper is a Sublime Text plugin that connects to your MCP Server for on-demand code generation, translation, and refactoring—powered by OpenAI or Gemini.",
+      "link": "https://github.com/sdirishguy/MCPHelperSublimePlugin",
+      "hasGradientWave": true
+    }
+  ]
+},
     "contact": {
       "title": "Contact",
       "description": "I'd love to hear from you! Whether you're interested in collaborating or just want to say hi, feel free to reach out.",
