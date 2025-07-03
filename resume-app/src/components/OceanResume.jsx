@@ -3,7 +3,7 @@
 import React from "react";
 import "./OceanResume.css";
 import resumeData from "./resume_timeline.json";
-import { FaLinkedin, FaGithub, FaGlobe } from "react-icons/fa";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 import ResumeShowcase from "./ResumeShowcase";
 
 const { header, summary } = resumeData;
@@ -46,17 +46,6 @@ export default function OceanResume() {
               style={{ marginRight: 10, color: "#2FC0C6" }}
             >
               <FaGithub size={20} style={{ verticalAlign: "middle", marginRight: 3 }} />
-            </a>
-          )}
-          {header.website && (
-            <a
-              href={header.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Website"
-              style={{ marginRight: 10, color: "#9C2CD1" }}
-            >
-              <FaGlobe size={20} style={{ verticalAlign: "middle", marginRight: 3 }} />
             </a>
           )}
         </p>
