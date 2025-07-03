@@ -486,6 +486,23 @@ footer a {
     transform: translateY(-5px);
 }
 
+.btn.hero-about {
+  background: transparent;
+  border: 2px solid #2FC0C6;
+  color: #2FC0C6;
+  transition: all 0.3s ease;
+}
+
+.btn.hero-about:hover {
+  background: #2FC0C6;
+  color: #BBE1FA;
+  border-color: #2FC0C6;
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px #2FC0C6;
+}
+
+
+
 /*********************************************************
  * 5.5 MODAL STYLES
  *********************************************************/
@@ -589,6 +606,17 @@ footer a {
     line-height: 1.8;
     color: #BBE1FA;
 }
+
+/* Fade-Out Animation for Modal Close */
+@keyframes modalFadeOut {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.9); }
+}
+
+.modal.closing {
+  animation: modalFadeOut 0.3s ease forwards;
+}
+
 
 /* Resume LinkedIn Button Styles */
 .linkedin-icon-btn {
@@ -751,4 +779,49 @@ footer a {
     min-height: unset;
     padding-bottom: 0;
   }
+}
+
+/*********************************************************
+ * 7. RESUME MODAL + UNIFIED CARD STYLES
+ *********************************************************/
+
+/* Resume iframe animations */
+.resume-iframe {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.modal.open .resume-iframe {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Resume Modal Wrapper */
+.resume-modal-wrapper {
+  display: flex;
+  justify-content: center;
+  background: #f5fafd;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+/* Unified About Card Styling */
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 5px solid #2FC0C6;
+  padding: 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card h3 {
+  color: #2FC0C6;
 }

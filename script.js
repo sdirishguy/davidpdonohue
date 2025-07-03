@@ -176,31 +176,33 @@ async function openModal(contentId) {
   const modal = document.getElementById("modal");
   const modalTitle = document.getElementById("modalTitle");
   const modalBody = document.getElementById("modalBody");
-  
+
   if (!modal || !modalTitle || !modalBody) return;
-  
+
   const contentArea = modal.querySelector('.content-area');
   if (!contentArea) return;
 
   try {
     const response = await fetch('content.json');
-    if (!response.ok) {
-      throw new Error('Failed to fetch content');
-    }
-    
+    if (!response.ok) throw new Error('Failed to fetch content');
+
     const data = await response.json();
     const content = data.main.about.cards[contentId];
-    if (!content) {
-      throw new Error(`Content not found for: ${contentId}`);
-    }
+    if (!content) throw new Error(`No content found for ID: ${contentId}`);
 
-    modalTitle.textContent = content.title;
+    modalTitle.textContent = content.title || "Details";
 
-    // === Updated logic: React Resume modal ===
     if (contentId === 'resume') {
-      modalTitle.textContent = content.title || "Resume";
-      modalBody.innerHTML = '<div id="resume-root" style="width:100%"></div>';
-      // React bundle will mount the resume here!
+      modalBody.innerHTML = `
+        <div style="display: flex; justify-content: center;">
+          <iframe
+            src="/resume-build/index.html"
+            style="width: 95%; max-width: 1024px; height: 80vh; border: none; border-radius: 12px; box-shadow: 0 0 12px rgba(0,0,0,0.2); transition: transform 0.5s ease, opacity 0.5s ease;"
+            class="resume-iframe"
+            title="Resume Viewer"
+          ></iframe>
+        </div>
+      `;
     } else if (contentId === 'favorites') {
       const favoritesContainer = document.createElement('div');
       favoritesContainer.className = 'favorites-container';
@@ -208,25 +210,30 @@ async function openModal(contentId) {
       Object.entries(content.categories).forEach(([categoryName, items]) => {
         const categorySection = document.createElement('div');
         categorySection.className = 'favorites-category';
+
         const categoryTitle = document.createElement('h4');
         categoryTitle.textContent = categoryName;
         categoryTitle.className = 'favorites-category-title';
         categorySection.appendChild(categoryTitle);
+
         const itemsList = document.createElement('ul');
         itemsList.className = 'favorites-list';
+
         items.forEach(item => {
           if (item.label && item.value) {
-            const listItem = document.createElement('li');
-            listItem.className = 'favorites-item';
-            listItem.innerHTML = `<strong>${item.label}:</strong> ${item.value}`;
-            itemsList.appendChild(listItem);
+            const li = document.createElement('li');
+            li.className = 'favorites-item';
+            li.innerHTML = `<strong>${item.label}:</strong> ${item.value}`;
+            itemsList.appendChild(li);
           }
         });
+
         if (itemsList.children.length > 0) {
           categorySection.appendChild(itemsList);
           favoritesContainer.appendChild(categorySection);
         }
       });
+
       modalBody.innerHTML = '';
       modalBody.appendChild(favoritesContainer);
     } else {
@@ -235,31 +242,29 @@ async function openModal(contentId) {
 
     modal.classList.add("open");
     document.body.style.overflow = "hidden";
-
     checkScrollIndicator(contentArea);
     contentArea.addEventListener('scroll', () => checkScrollIndicator(contentArea));
 
-  } catch (error) {
-    console.error('Error loading modal content:', error);
+  } catch (err) {
+    console.error("Error loading modal content:", err);
     modalBody.innerHTML = `
       <div class="error-message">
         <p>Error loading content. Please try again later.</p>
-        <p class="error-details">${error.message}</p>
+        <p class="error-details">${err.message}</p>
       </div>
     `;
   }
 }
 
+
 function closeModal() {
   const modal = document.getElementById("modal");
-  if (!modal) return;
-  
-  modal.classList.remove("open");
-  document.body.style.overflow = "";
-  // Optional: Unmount resume on modal close to reset React state
-  const resumeRoot = document.getElementById('resume-root');
-  if (resumeRoot) resumeRoot.remove();
+  modal.classList.add("closing");
+  setTimeout(() => {
+    modal.classList.remove("open", "closing");
+  }, 300); // Match fade-out duration
 }
+
 
 function checkScrollIndicator(contentArea) {
   if (!contentArea) return;
