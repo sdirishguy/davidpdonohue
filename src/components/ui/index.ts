@@ -1,6 +1,4 @@
-// UI components will be exported here
-// Example: export { default as Button } from './Button'
-// Example: export { default as Card } from './Card'
-
-// Placeholder to prevent TypeScript errors
-export {}
+// Export all UI components
+export { default as Button } from './Button'
+export { default as Card, CardHeader, CardContent, CardFooter } from './Card'
+export { default as Badge } from './Badge'
