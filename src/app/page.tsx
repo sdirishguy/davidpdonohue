@@ -1,8 +1,9 @@
+import Layout from '@/components/layout/Layout'
 import ComponentShowcase from '@/components/ComponentShowcase'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-slate-900">
+    <Layout>
       <div className="container mx-auto py-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-cyan-400 mb-4">
@@ -15,6 +16,6 @@ export default function Home() {
         
         <ComponentShowcase />
       </div>
-    </main>
+    </Layout>
   )
 }

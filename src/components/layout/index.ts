@@ -1,6 +1,4 @@
-// Layout components will be exported here
-// Example: export { default as Header } from './Header'
-// Example: export { default as Footer } from './Footer'
-
-// Placeholder to prevent TypeScript errors
-export {}
+// Export all layout components using named exports
+export { default as Header } from './Header'
+export { default as Footer } from './Footer'
+export { default as Layout } from './Layout'

@@ -1,7 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Button, Card, CardHeader, CardContent, CardFooter, Badge } from '@/components/ui'
+import Button from '@/components/ui/Button'
+import Card, { CardHeader, CardContent, CardFooter } from '@/components/ui/Card'
+import Badge from '@/components/ui/Badge'
 import { Heart, ExternalLink, Github } from 'lucide-react'
 import { FaReact, FaNodeJs } from 'react-icons/fa'
 
