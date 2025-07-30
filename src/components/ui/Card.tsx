@@ -18,9 +18,9 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ className, variant = 'default', padding = 'md', hover = false, children, ...props }, ref) => {
     
     const variants = {
-      default: 'bg-slate-800/50 backdrop-blur-sm',
-      elevated: 'bg-slate-800/80 backdrop-blur-sm shadow-xl shadow-slate-900/20',
-      bordered: 'bg-slate-800/30 backdrop-blur-sm border border-slate-700'
+      default: 'bg-primary-navy/80/50 backdrop-blur-sm',
+      elevated: 'bg-primary-navy/80/80 backdrop-blur-sm shadow-xl shadow-slate-900/20',
+      bordered: 'bg-primary-navy/80/30 backdrop-blur-sm border border-primary-blue/30'
     }
     
     const paddings = {
@@ -37,7 +37,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           'rounded-xl',
           variants[variant],
           paddings[padding],
-          hover && 'hover:bg-slate-800/70 transition-colors cursor-pointer',
+          hover && 'hover:bg-primary-navy/80/70 transition-colors cursor-pointer',
           className
         )}
         whileHover={hover ? { y: -2 } : undefined}
@@ -65,7 +65,7 @@ const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn('text-slate-300', className)}
+      className={cn('text-slate-200', className)}
       {...props}
     />
   )
@@ -89,3 +89,4 @@ CardFooter.displayName = 'CardFooter'
 
 export { Card, CardHeader, CardContent, CardFooter }
 export default Card
+

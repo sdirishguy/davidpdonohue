@@ -19,7 +19,7 @@ export default function Layout({
   showFooter = true 
 }: LayoutProps) {
   return (
-    <div className="min-h-screen bg-slate-900 flex flex-col">
+    <div className="min-h-screen bg-primary-navy flex flex-col">
       {showHeader && <Header />}
       
       <motion.main
@@ -35,3 +35,4 @@ export default function Layout({
     </div>
   )
 }
+

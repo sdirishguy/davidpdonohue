@@ -4,8 +4,6 @@ import { motion } from 'framer-motion'
 import Button from '@/components/ui/Button'
 import Card, { CardHeader, CardContent, CardFooter } from '@/components/ui/Card'
 import Badge from '@/components/ui/Badge'
-import { Heart, ExternalLink, Github } from 'lucide-react'
-import { FaReact, FaNodeJs } from 'react-icons/fa'
 
 export default function ComponentShowcase() {
   return (
@@ -15,123 +13,103 @@ export default function ComponentShowcase() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center"
       >
-        <h2 className="text-3xl font-bold text-white mb-2">Design System Showcase</h2>
-        <p className="text-slate-400">Testing our reusable UI components</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          Component Showcase
+        </h2>
+        <p className="text-slate-300">
+          Interactive components built with Tailwind CSS
+        </p>
       </motion.div>
 
-      {/* Button Showcase */}
+      {/* Buttons */}
       <Card>
         <CardHeader>
-          <h3 className="text-xl font-semibold text-white">Buttons</h3>
+          <h3 className="text-2xl font-semibold text-white">Buttons</h3>
         </CardHeader>
-        <CardContent>
-          <div className="flex flex-wrap gap-4">
-            <Button variant="primary">Primary Button</Button>
-            <Button variant="secondary">Secondary</Button>
-            <Button variant="outline">Outline</Button>
-            <Button variant="ghost">Ghost</Button>
-            <Button variant="primary" size="sm" leftIcon={<Heart className="w-4 h-4" />}>
-              With Icon
-            </Button>
-            <Button variant="outline" size="lg" rightIcon={<ExternalLink className="w-5 h-5" />}>
-              Large Button
-            </Button>
-            <Button variant="primary" isLoading>
-              Loading State
-            </Button>
-          </div>
+        <CardContent className="flex flex-wrap gap-4">
+          <Button variant="primary">Primary Button</Button>
+          <Button variant="secondary">Secondary Button</Button>
+          <Button variant="outline">Outline Button</Button>
+          <Button variant="ghost">Ghost Button</Button>
+          <Button variant="primary" size="sm">Small</Button>
+          <Button variant="primary" size="lg">Large</Button>
         </CardContent>
       </Card>
 
-      {/* Card Showcase */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card variant="default" hover>
-          <CardHeader>
-            <h3 className="text-lg font-semibold text-white">Default Card</h3>
-          </CardHeader>
-          <CardContent>
-            <p>This is a default card with hover effects.</p>
-          </CardContent>
-          <CardFooter>
-            <Badge variant="primary">Default</Badge>
-          </CardFooter>
-        </Card>
-
-        <Card variant="elevated" hover>
-          <CardHeader>
-            <h3 className="text-lg font-semibold text-white">Elevated Card</h3>
-          </CardHeader>
-          <CardContent>
-            <p>This card has elevated styling with shadows.</p>
-          </CardContent>
-          <CardFooter>
-            <Badge variant="success">Elevated</Badge>
-          </CardFooter>
-        </Card>
-
-        <Card variant="bordered" hover>
-          <CardHeader>
-            <h3 className="text-lg font-semibold text-white">Bordered Card</h3>
-          </CardHeader>
-          <CardContent>
-            <p>This card has a subtle border.</p>
-          </CardContent>
-          <CardFooter>
-            <Badge variant="warning">Bordered</Badge>
-          </CardFooter>
-        </Card>
-      </div>
-
-      {/* Badge Showcase */}
+      {/* Cards */}
       <Card>
         <CardHeader>
-          <h3 className="text-xl font-semibold text-white">Badges</h3>
+          <h3 className="text-2xl font-semibold text-white">Cards</h3>
         </CardHeader>
-        <CardContent>
-          <div className="flex flex-wrap gap-3">
-            <Badge variant="default">Default</Badge>
-            <Badge variant="primary">Primary</Badge>
-            <Badge variant="secondary">Secondary</Badge>
-            <Badge variant="success">Success</Badge>
-            <Badge variant="warning">Warning</Badge>
-            <Badge variant="error">Error</Badge>
-            <Badge variant="primary" size="sm">Small</Badge>
-            <Badge variant="success" size="lg">Large</Badge>
-          </div>
+        <CardContent className="grid gap-4 md:grid-cols-2">
+          <Card>
+            <CardHeader>
+              <h4 className="text-lg font-semibold text-white">Project Card</h4>
+            </CardHeader>
+            <CardContent>
+              <p className="text-slate-200 mb-4">
+                A sample project card with description and badges.
+              </p>
+              <div className="flex gap-2">
+                <Badge variant="primary">React</Badge>
+                <Badge variant="secondary">TypeScript</Badge>
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Button variant="outline" size="sm">View Project</Button>
+            </CardFooter>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <h4 className="text-lg font-semibold text-white">Skill Card</h4>
+            </CardHeader>
+            <CardContent>
+              <p className="text-slate-200 mb-4">
+                Another example card showing different content types.
+              </p>
+              <div className="flex gap-2">
+                <Badge variant="success">Advanced</Badge>
+                <Badge variant="outline">Frontend</Badge>
+              </div>
+            </CardContent>
+          </Card>
         </CardContent>
       </Card>
 
-      {/* Technology Stack Example */}
-      <Card variant="elevated">
+      {/* Badges */}
+      <Card>
         <CardHeader>
-          <h3 className="text-xl font-semibold text-white">Example: Technology Stack</h3>
+          <h3 className="text-2xl font-semibold text-white">Badges</h3>
+        </CardHeader>
+        <CardContent className="flex flex-wrap gap-2">
+          <Badge variant="primary">Primary</Badge>
+          <Badge variant="secondary">Secondary</Badge>
+          <Badge variant="success">Success</Badge>
+          <Badge variant="warning">Warning</Badge>
+          <Badge variant="error">Error</Badge>
+          <Badge variant="outline">Outline</Badge>
+        </CardContent>
+      </Card>
+
+      {/* Interactive Demo */}
+      <Card>
+        <CardHeader>
+          <h3 className="text-2xl font-semibold text-white">Interactive Demo</h3>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-wrap gap-2 mb-4">
-            <Badge variant="primary">
-              <FaReact className="w-3 h-3 mr-1" />
-              React
-            </Badge>
-            <Badge variant="primary">
-              <FaNodeJs className="w-3 h-3 mr-1" />
-              Node.js
-            </Badge>
-            <Badge variant="success">TypeScript</Badge>
-            <Badge variant="warning">Tailwind CSS</Badge>
-          </div>
-          <p className="text-slate-300 mb-4">
-            This demonstrates how our components work together to create rich, interactive interfaces.
+          <p className="text-slate-200 mb-4">
+            Click the button below to see a simple interaction:
           </p>
+          <Button 
+            variant="primary"
+            onClick={() => alert('Hello from David P. Donohue\'s portfolio!')}
+          >
+            Click Me!
+          </Button>
         </CardContent>
-        <CardFooter className="gap-3">
-          <Button variant="primary" leftIcon={<Github className="w-4 h-4" />}>
-            View Code
-          </Button>
-          <Button variant="outline" rightIcon={<ExternalLink className="w-4 h-4" />}>
-            Live Demo
-          </Button>
-        </CardFooter>
       </Card>
     </div>
   )
 }
+

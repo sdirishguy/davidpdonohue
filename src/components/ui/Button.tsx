@@ -28,10 +28,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     
     // Variant styles
     const variants = {
-      primary: 'bg-cyan-500 hover:bg-cyan-400 text-slate-900 shadow-lg shadow-cyan-500/25',
+      primary: 'bg-primary-blue hover:bg-primary-blue text-slate-900 shadow-lg shadow-cyan-500/25',
       secondary: 'bg-slate-700 hover:bg-slate-600 text-white',
-      outline: 'border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-slate-900',
-      ghost: 'text-cyan-400 hover:bg-cyan-500/10'
+      outline: 'border-2 border-primary-blue text-primary-blue hover:bg-primary-blue hover:text-slate-900',
+      ghost: 'text-primary-blue hover:bg-primary-blue/10'
     }
     
     // Size styles
@@ -80,3 +80,4 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = 'Button'
 
 export default Button
+

@@ -14,13 +14,14 @@ export default function TestAnimation() {
       transition={{ duration: ANIMATIONS.pageTransition.duration }}
       className={cn(
         "flex items-center gap-4 p-4 rounded-lg",
-        "bg-slate-800 border border-slate-700",
+        "bg-primary-navy/80 border border-primary-blue/30",
         "hover:bg-slate-700 transition-colors"
       )}
     >
-      <FaReact className="text-cyan-400 text-2xl animate-spin" style={{ animationDuration: '3s' }} />
+      <FaReact className="text-primary-blue text-2xl animate-spin" style={{ animationDuration: '3s' }} />
       <span className="text-white">Project structure created successfully!</span>
       <Heart className="text-red-400 text-xl" />
     </motion.div>
   )
 }
+

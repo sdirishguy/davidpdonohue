@@ -108,7 +108,7 @@ export default function HeroSection() {
             <div className="text-primary-blue/70 font-mono text-sm">terminal@davidpdonohue.com</div>
             <div className="flex gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500"></div>
-              <div className="w-3 h-3 rounded-full bg-primary-amber"></div>
+                              <div className="w-3 h-3 rounded-full bg-primary-sunset-orange"></div>
               <div className="w-3 h-3 rounded-full bg-green-500"></div>
             </div>
           </div>
@@ -116,7 +116,7 @@ export default function HeroSection() {
           {/* Terminal Content */}
           <div className="font-mono text-left space-y-4">
             {/* Welcome Text */}
-            <div className="text-2xl md:text-3xl lg:text-4xl text-primary-amber font-bold">
+            <div className="text-2xl md:text-3xl lg:text-4xl text-primary-sunset-orange font-bold">
               {welcomeText}
               {welcomeText.length < typingContent.welcome.length && (
                 <span className="animate-pulse">▌</span>

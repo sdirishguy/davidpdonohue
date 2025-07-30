@@ -4,7 +4,8 @@ export const COLORS = {
     navy: '#0B1426',
     blue: '#22D3EE',
     magenta: '#EC4899',
-    amber: '#F59E0B'
+    sunsetOrange: '#FD5E53',
+    yellow: '#FFEB3B'
   },
   neutral: {
     slate: {

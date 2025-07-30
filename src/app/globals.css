@@ -4,15 +4,17 @@
   --primary-navy: #0B1426;
   --primary-blue: #22D3EE;
   --primary-magenta: #EC4899;
-  --primary-amber: #F59E0B;
+  --primary-sunset-orange: #FD5E53;
+  --primary-yellow: #FFEB3B;
   
   --background: var(--primary-navy);
   --foreground: #ffffff;
 }
 
-@theme {
-  /* This is where you can extend Tailwind's theme if needed in v4 */
-}
+/* @theme directive for Tailwind CSS v4 - can be used to extend theme */
+/* @theme { */
+/*   This is where you can extend Tailwind's theme if needed in v4 */
+/* } */
 
 body {
   background-color: var(--background);
@@ -24,17 +26,20 @@ body {
 .bg-primary-navy { background-color: var(--primary-navy); }
 .bg-primary-blue { background-color: var(--primary-blue); }
 .bg-primary-magenta { background-color: var(--primary-magenta); }
-.bg-primary-amber { background-color: var(--primary-amber); }
+.bg-primary-sunset-orange { background-color: var(--primary-sunset-orange); }
+.bg-primary-yellow { background-color: var(--primary-yellow); }
 
 .text-primary-navy { color: var(--primary-navy); }
 .text-primary-blue { color: var(--primary-blue); }
 .text-primary-magenta { color: var(--primary-magenta); }
-.text-primary-amber { color: var(--primary-amber); }
+.text-primary-sunset-orange { color: var(--primary-sunset-orange); }
+.text-primary-yellow { color: var(--primary-yellow); }
 
 .border-primary-navy { border-color: var(--primary-navy); }
 .border-primary-blue { border-color: var(--primary-blue); }
 .border-primary-magenta { border-color: var(--primary-magenta); }
-.border-primary-amber { border-color: var(--primary-amber); }
+.border-primary-sunset-orange { border-color: var(--primary-sunset-orange); }
+.border-primary-yellow { border-color: var(--primary-yellow); }
 
 /* Hover states */
 .hover\:text-primary-blue:hover { color: var(--primary-blue); }
@@ -47,3 +52,12 @@ body {
 .border-primary-blue\/20 { border-color: rgba(34, 211, 238, 0.2); }
 .border-primary-blue\/30 { border-color: rgba(34, 211, 238, 0.3); }
 .text-primary-blue\/70 { color: rgba(34, 211, 238, 0.7); }
+
+/* Sunset orange opacity variants */
+.bg-primary-sunset-orange\/20 { background-color: rgba(253, 94, 83, 0.2); }
+.bg-primary-sunset-orange\/30 { background-color: rgba(253, 94, 83, 0.3); }
+
+/* Sun yellow opacity variants */
+.bg-primary-yellow\/20 { background-color: rgba(255, 235, 59, 0.2); }
+.bg-primary-yellow\/30 { background-color: rgba(255, 235, 59, 0.3); }
+.text-primary-yellow\/70 { color: rgba(255, 235, 59, 0.7); }
