@@ -31,6 +31,7 @@ const footerLinks = [
       { name: 'Resume', href: '/professional' },
       { name: 'Experience', href: '/professional#experience' },
       { name: 'Skills', href: '/professional#skills' },
+      { name: 'Download Resume', href: '/2025CurrentResume-DavidDonohue.pdf' },
     ]
   },
   {

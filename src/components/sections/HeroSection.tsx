@@ -105,7 +105,7 @@ export default function HeroSection() {
         <div className="max-w-4xl mx-auto bg-primary-navy/70 backdrop-blur-sm p-8 rounded-lg border border-primary-blue/20 shadow-xl">
           {/* Terminal Header */}
           <div className="flex items-center justify-between mb-4 border-b border-primary-blue/20 pb-2">
-            <div className="text-primary-blue/70 font-mono text-sm">terminal@davidpdonohue.com</div>
+            <div className="text-primary-blue/70 font-mono text-sm">terminal@opfynder.com</div>
             <div className="flex gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500"></div>
                               <div className="w-3 h-3 rounded-full bg-primary-sunset-orange"></div>

@@ -117,7 +117,7 @@ export default function ProjectsSection() {
         >
           <div className="max-w-3xl mx-auto bg-primary-navy/40 backdrop-blur-sm p-6 rounded-lg border border-primary-blue/20 shadow-lg">
             <div className="flex items-center justify-between mb-4 border-b border-primary-blue/20 pb-2">
-              <div className="text-primary-blue/70 font-mono text-sm">projects@davidpdonohue.com</div>
+              <div className="text-primary-blue/70 font-mono text-sm">projects@opfynder.com</div>
               <div className="flex gap-2">
                 <div className="w-3 h-3 rounded-full bg-red-500"></div>
                 <div className="w-3 h-3 rounded-full bg-primary-yellow"></div>

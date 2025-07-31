@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Github, Linkedin, Mail } from 'lucide-react'
+import { Menu, X, Github, Linkedin, Mail, FileText } from 'lucide-react'
 import Button from '@/components/ui/Button'
 import { cn } from '@/lib/utils'
 
@@ -15,16 +15,17 @@ interface HeaderProps {
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
-  { name: 'Professional', href: '/professional' },
   { name: 'Projects', href: '/projects' },
+  { name: 'Professional', href: '/professional' },
   { name: 'Content', href: '/content' },
   { name: 'Contact', href: '/contact' },
 ]
 
 const socialLinks = [
-  { name: 'GitHub', href: 'https://github.com/sdirishguy', icon: Github },
+  { name: 'GitHub', href: 'https://www.github.com/sdirishguy', icon: Github },
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/davidpatrickdonohue', icon: Linkedin },
   { name: 'Email', href: 'mailto:david@opfynder.com', icon: Mail },
+  { name: 'Resume', href: '/2025CurrentResume-DavidDonohue.pdf', icon: FileText },
 ]
 
 export default function Header({ className }: HeaderProps) {

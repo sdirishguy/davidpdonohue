@@ -18,8 +18,8 @@ import {
 
 // Typing animation content with multiple lines
 const typingContent = {
-  intro: { text: "Hey! You're still here! Me too!", color: "text-primary-yellow" },
-  welcome: { text: "Let me welcome you to the Professional section of my website, thanks for dropping by!", color: "text-primary-magenta" },
+  intro: { text: "Hey! You're still here! Me too! Well, since you stuck around...", color: "text-primary-yellow" },
+  welcome: { text: "Let me welcome you to the Professional section of my website!", color: "text-primary-magenta" },
   instructions: { text: "Use the navigation buttons appearing on the left to learn all about my professional journey, skills, experience, education, certs and if you're really interested, feel free to download a PDF version of my resume.", color: "text-primary-sunset-orange" },
   salutation: { text: "Cheers!", color: "text-primary-blue" }
 };
@@ -361,7 +361,7 @@ export default function ProfessionalSection() {
           >
             <div className="max-w-3xl mx-auto bg-primary-navy/40 backdrop-blur-sm p-6 rounded-lg border border-primary-blue/20 shadow-lg">
               <div className="flex items-center justify-between mb-4 border-b border-primary-blue/20 pb-2">
-                <div className="text-primary-blue/70 font-mono text-sm">professional@davidpdonohue.com</div>
+                <div className="text-primary-blue/70 font-mono text-sm">professional@opfynder.com</div>
                 <div className="flex gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-500"></div>
                   <div className="w-3 h-3 rounded-full bg-primary-yellow"></div>
@@ -477,6 +477,25 @@ export default function ProfessionalSection() {
                     <div className="flex items-center">
                       <span className="text-2xl mr-3">💼</span>
                       <span className="font-medium">Digital Resume</span>
+                    </div>
+                  </motion.button>
+                  
+                  {/* Resume Download Button */}
+                  <motion.button
+                    initial={{ x: -50, opacity: 0 }}
+                    animate={showNavigation ? { x: 0, opacity: 1 } : { x: -50, opacity: 0 }}
+                    transition={{ delay: 0.8, duration: 0.8 }}
+                    whileHover={{ scale: 1.05, x: 5 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => window.open('/2025CurrentResume-DavidDonohue.pdf', '_blank')}
+                    className="w-full text-left p-4 rounded-lg transition-all bg-primary-navy/50 text-slate-300 hover:bg-primary-navy/70 border border-primary-blue/30 hover:border-primary-blue/50"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <span className="text-2xl mr-3">📄</span>
+                        <span className="font-medium">Download Resume</span>
+                      </div>
+                      <span className="text-sm text-primary-blue">PDF</span>
                     </div>
                   </motion.button>
                   
