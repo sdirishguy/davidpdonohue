@@ -57,6 +57,10 @@ body {
 .bg-primary-sunset-orange\/20 { background-color: rgba(253, 94, 83, 0.2); }
 .bg-primary-sunset-orange\/30 { background-color: rgba(253, 94, 83, 0.3); }
 
+/* Magenta opacity variants */
+.border-primary-magenta\/30 { border-color: rgba(236, 72, 153, 0.3); }
+.border-primary-magenta\/40 { border-color: rgba(236, 72, 153, 0.4); }
+
 /* Sun yellow opacity variants */
 .bg-primary-yellow\/20 { background-color: rgba(255, 235, 59, 0.2); }
 .bg-primary-yellow\/30 { background-color: rgba(255, 235, 59, 0.3); }
