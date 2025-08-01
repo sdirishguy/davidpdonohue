@@ -11,7 +11,7 @@ const typingContent = [
   { intro: "Let's connect! 🤝", color: "text-primary-blue" },
   { description: "I'm always interested in new opportunities, collaborations, and interesting conversations.", color: "text-primary-magenta" },
   { instructions: "Choose your preferred method below or use the contact form.", color: "text-primary-sunset-orange" },
-  { action: "Looking forward to hearing from you!", color: "text-primary-yellow" }
+  { action: "I look forward to hearing from you!", color: "text-primary-yellow" }
 ];
 
 // Contact methods

@@ -11,7 +11,7 @@ const typingContent = [
   { intro: "Welcome to my project showcase! 🚀", color: "text-primary-sunset-orange" },
   { description: "These are the tools and applications I've built to solve real-world problems.", color: "text-primary-blue" },
   { instructions: "Feel free to explore each one and check out the source code on GitHub.", color: "text-primary-magenta" },
-  { action: "Let's dive in! Shall We?", color: "text-primary-yellow" }
+  { action: "Ready to dive in? Let's go!", color: "text-primary-yellow" }
 ];
 
 // Projects content from JSON

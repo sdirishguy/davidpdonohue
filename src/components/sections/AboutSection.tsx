@@ -30,7 +30,7 @@ interface AboutContent {
 
 // Typing animation content
 const typingContent = {
-  greeting: "Hi again, it's me, your host, David.",
+  greeting: "Hey, David here! I'm so glad you decided to stick around!",
   description: "Welcome to my digital living room! Here you'll find the stories that shaped me and the quirks that make me... well, me. Click around to discover what makes me tick beyond just lines of code."
 };
 
