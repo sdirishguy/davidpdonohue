@@ -58,7 +58,7 @@ export default function ProjectsSection() {
   const [completedLines, setCompletedLines] = useState<string[]>([]);
   
   // Helper function to get text content from any line object
-  const getLineText = (line: any) => {
+  const getLineText = (line: {intro?: string, description?: string, instructions?: string, action?: string}) => {
     return line.intro || line.description || line.instructions || line.action || '';
   };
   

@@ -83,7 +83,7 @@ export default function ContactSection() {
   }, []);
   
   // Helper function to get text content from any line object
-  const getLineText = (line: any) => {
+  const getLineText = (line: {intro?: string, description?: string, instructions?: string, action?: string}) => {
     return line.intro || line.description || line.instructions || line.action || '';
   };
   
@@ -526,10 +526,10 @@ export default function ContactSection() {
           className="mt-16 text-center"
         >
           <div className="max-w-2xl mx-auto bg-gradient-to-r from-primary-blue/10 via-primary-magenta/10 to-primary-sunset-orange/10 p-8 rounded-lg backdrop-blur-sm">
-            <h3 className="text-2xl font-bold text-white mb-4">Let's Build Something Amazing! 🚀</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">Let&apos;s Build Something Amazing! 🚀</h3>
             <p className="text-slate-300 mb-6">
               Whether you have a project in mind, want to collaborate, or just want to chat about technology, 
-              I'm always excited to connect with fellow developers and creators.
+              I&apos;m always excited to connect with fellow developers and creators.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button

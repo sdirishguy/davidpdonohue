@@ -202,20 +202,10 @@ const terminalCommands = {
 };
 
 export default function ContentSection() {
-  // Show placeholder if flag is set
-  if (SHOW_PLACEHOLDER) {
-    return <ContentPlaceholder />;
-  }
-
-  // Typing animation states
+  // Typing animation states - moved to top to fix hooks rule
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [completedLines, setCompletedLines] = useState<string[]>([]);
-  
-  // Helper function to get text content from any line object
-  const getLineText = (line: any) => {
-    return line.intro || line.description || line.instructions || line.action || '';
-  };
   
   // Terminal states
   const [terminalInput, setTerminalInput] = useState("");
@@ -231,9 +221,14 @@ export default function ContentSection() {
   const terminalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   
+  // Helper function to get text content from any line object
+  const getLineText = (line: {intro?: string, description?: string, instructions?: string, action?: string}) => {
+    return line.intro || line.description || line.instructions || line.action || '';
+  };
+
   // Typing effect using setTimeout
   useEffect(() => {
-    if (currentLineIndex >= typingContent.length) return;
+    if (SHOW_PLACEHOLDER || currentLineIndex >= typingContent.length) return;
     
     const currentLine = typingContent[currentLineIndex];
     const currentLineText = getLineText(currentLine);
@@ -256,6 +251,14 @@ export default function ContentSection() {
     }
   }, [currentLineIndex, currentCharIndex]);
   
+  // Scroll terminal to bottom when history updates
+  useEffect(() => {
+    if (SHOW_PLACEHOLDER) return;
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    }
+  }, [terminalHistory]);
+
   // Get current typed text
   const getCurrentTypedText = () => {
     if (currentLineIndex >= typingContent.length) return '';
@@ -263,13 +266,11 @@ export default function ContentSection() {
     const currentLineText = getLineText(currentLine);
     return currentLineText.slice(0, currentCharIndex);
   };
-  
-  // Scroll terminal to bottom when history updates
-  useEffect(() => {
-    if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
-    }
-  }, [terminalHistory]);
+
+  // Show placeholder if flag is set
+  if (SHOW_PLACEHOLDER) {
+    return <ContentPlaceholder />;
+  }
   
   // Focus input when terminal is clicked
   const focusInput = () => {
