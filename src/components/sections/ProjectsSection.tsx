@@ -20,7 +20,7 @@ const projectsContent = {
   items: [
     {
       title: "MCP Server",
-      description: "MCP Server is a programmable agent server for automating workflows via the Model Context Protocol (MCP).",
+      description: "AnMCP Server is a programmable agent server for automating workflows via the Model Context Protocol (MCP).",
       link: "https://github.com/sdirishguy/mcp_server_project",
       extraLinks: {
         "Docs": "https://modelcontextprotocol.io/introduction"

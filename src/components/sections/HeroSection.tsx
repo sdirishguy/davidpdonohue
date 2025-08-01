@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 // Content to be typed
 const typingContent = {
   welcome: "Hi! Welcome to DavidPDonohue.com!!",
-  intro: "I'll be your host for todays visit. Please call me David.",
+  intro: "I'm David, and I'll be your guide as you explore my website!",
   roles: [
     "Full Stack Web Developer,",
     "a Project Manager,",

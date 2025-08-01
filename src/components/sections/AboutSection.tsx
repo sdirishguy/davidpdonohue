@@ -30,8 +30,8 @@ interface AboutContent {
 
 // Typing animation content
 const typingContent = {
-  greeting: "Hey, David here! I'm so glad you decided to stick around!",
-  description: "Welcome to my digital living room! Here you'll find the stories that shaped me and the quirks that make me... well, me. Click around to discover what makes me tick beyond just lines of code."
+  greeting: "Hey, It's me, David! Just making sure you haven't gotten lost!",
+  description: "Welcome to my digital living room! Here you'll find the stories that shaped me and the quirks that make me... well, me! Click around to discover what makes me tick beyond just lines of code."
 };
 
 // About content - restructured for better engagement

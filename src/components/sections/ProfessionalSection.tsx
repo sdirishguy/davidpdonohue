@@ -18,7 +18,7 @@ import {
 
 // Typing animation content with multiple lines
 const typingContent = {
-  intro: { text: "Hi again! Guess you just couldn't get enough of me!! Well, since you're here...", color: "text-primary-yellow" },
+  intro: { text: "Hi again! Guess you just couldn't get enough of me!! Lucky you and very lucky me!", color: "text-primary-yellow" },
   welcome: { text: "Let me welcome you to the Professional section of my website!", color: "text-primary-magenta" },
   instructions: { text: "Use the navigation buttons appearing on the left to learn all about my professional journey, skills, experience, education, certs and if you're really interested, feel free to download a PDF version of my resume.", color: "text-primary-sunset-orange" },
   salutation: { text: "Cheers!", color: "text-primary-blue" }
