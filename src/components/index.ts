@@ -12,5 +12,4 @@ export { default as Layout } from './layout/Layout'
 // export * from './sections'
 
 // Test Components (temporary)
-export { default as TestAnimation } from './TestAnimation'
-export { default as ComponentShowcase } from './ComponentShowcase'
+// Removed development components
