@@ -67,3 +67,16 @@ export const storage = {
     }
   }
 }
+
+export function getTerminalPath(pathname: string): string {
+  const pathMap: Record<string, string> = {
+    '/': '/Home',
+    '/about': '/Personal',
+    '/professional': '/Professional', 
+    '/projects': '/Projects',
+    '/content': '/Content',
+    '/contact': '/Contact'
+  }
+  
+  return pathMap[pathname] || '/Home'
+}

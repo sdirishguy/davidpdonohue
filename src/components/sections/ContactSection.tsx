@@ -5,6 +5,8 @@ import { motion } from 'framer-motion'
 import Card, { CardHeader, CardContent, CardFooter } from '@/components/ui/Card'
 import Badge from '@/components/ui/Badge'
 import Button from '@/components/ui/Button'
+import { usePathname } from 'next/navigation'
+import { getTerminalPath } from '@/lib/utils'
 
 // Typing animation content
 const typingContent = [
@@ -21,7 +23,7 @@ const contactMethods = [
     title: "Email",
     description: "The most reliable way to reach me. I typically respond within 24 hours.",
     icon: "📧",
-    value: "david@opfynder.com",
+    value: "david@davidpdonohue.com",
     action: "Copy Email",
     type: "copy"
   },
@@ -56,6 +58,9 @@ const contactMethods = [
 ];
 
 export default function ContactSection() {
+  const pathname = usePathname()
+  const terminalPath = getTerminalPath(pathname)
+  
   // Typing animation states
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
@@ -276,7 +281,7 @@ export default function ContactSection() {
         >
           <div className="max-w-3xl mx-auto bg-primary-navy/40 backdrop-blur-sm p-6 rounded-lg border border-primary-blue/20 shadow-lg">
             <div className="flex items-center justify-between mb-4 border-b border-primary-blue/20 pb-2">
-              <div className="text-primary-blue/70 font-mono text-sm">contact@opfynder.com</div>
+              <div className="text-primary-blue/70 font-mono text-sm">terminal@davidpdonohue.com:{terminalPath}$</div>
               <div className="flex gap-2">
                 <div className="w-3 h-3 rounded-full bg-red-500"></div>
                 <div className="w-3 h-3 rounded-full bg-primary-yellow"></div>
@@ -381,7 +386,7 @@ export default function ContactSection() {
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-white mb-4">Send a Message 💬</h2>
               <p className="text-slate-300">
-                Prefer a direct message? Fill out the form below and I'll get back to you as soon as possible.
+                Prefer a direct message? Fill out the form below and I&apos;ll get back to you as soon as possible.
               </p>
             </div>
             
@@ -445,7 +450,7 @@ export default function ContactSection() {
                       className={`w-full px-4 py-2 bg-primary-navy/60 border rounded-lg text-white placeholder-slate-400 focus:outline-none ${
                         errors.subject ? 'border-red-500' : 'border-primary-blue/30 focus:border-primary-blue'
                       }`}
-                      placeholder="What's this about?"
+                      placeholder="What&apos;s this about?"
                     />
                     {errors.subject && (
                       <p className="text-red-400 text-sm mt-1">{errors.subject}</p>
@@ -534,7 +539,7 @@ export default function ContactSection() {
             <div className="flex flex-wrap justify-center gap-4">
               <Button
                 variant="primary"
-                onClick={() => copyToClipboard('david@opfynder.com')}
+                onClick={() => copyToClipboard('david@davidpdonohue.com')}
               >
                 Copy Email
               </Button>

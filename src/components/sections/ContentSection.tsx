@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
@@ -7,6 +6,23 @@ import Card, { CardHeader, CardContent, CardFooter } from '@/components/ui/Card'
 import Badge from '@/components/ui/Badge'
 import Button from '@/components/ui/Button'
 import ContentPlaceholder from './ContentPlaceholder'
+import { usePathname } from 'next/navigation'
+import { getTerminalPath } from '@/lib/utils'
+
+// Content item interface
+interface ContentItem {
+  id: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readTime?: string;
+  duration?: string;
+  type: string;
+  author: string;
+  tags: string[];
+  featured?: boolean;
+  url: string;
+}
 
 // Set this to true to show the placeholder, false to show the full content
 const SHOW_PLACEHOLDER = true;
@@ -202,6 +218,9 @@ const terminalCommands = {
 };
 
 export default function ContentSection() {
+  const pathname = usePathname()
+  const terminalPath = getTerminalPath(pathname)
+  
   // Typing animation states - moved to top to fix hooks rule
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
@@ -213,7 +232,7 @@ export default function ContentSection() {
     { type: "system", content: "Content Explorer v1.0.0" },
     { type: "system", content: "Type 'help' for available commands or start searching with 'search [keywords]'" }
   ]);
-  const [filteredContent, setFilteredContent] = useState<Array<any>>([]);
+  const [filteredContent, setFilteredContent] = useState<Array<ContentItem>>([]);
   const [showResults, setShowResults] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
@@ -454,7 +473,7 @@ export default function ContentSection() {
         >
           <div className="max-w-3xl mx-auto bg-primary-navy/40 backdrop-blur-sm p-6 rounded-lg border border-primary-blue/20 shadow-lg">
             <div className="flex items-center justify-between mb-4 border-b border-primary-blue/20 pb-2">
-              <div className="text-primary-blue/70 font-mono text-sm">content@opfynder.com</div>
+              <div className="text-primary-blue/70 font-mono text-sm">terminal@davidpdonohue.com:{terminalPath}$</div>
               <div className="flex gap-2">
                 <div className="w-3 h-3 rounded-full bg-red-500"></div>
                 <div className="w-3 h-3 rounded-full bg-primary-yellow"></div>

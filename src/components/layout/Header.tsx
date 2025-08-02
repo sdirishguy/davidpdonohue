@@ -24,7 +24,7 @@ const navigation = [
 const socialLinks = [
   { name: 'GitHub', href: 'https://www.github.com/sdirishguy', icon: Github },
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/davidpatrickdonohue', icon: Linkedin },
-  { name: 'Email', href: 'mailto:david@opfynder.com', icon: Mail },
+  { name: 'Email', href: 'mailto:david@davidpdonohue.com', icon: Mail },
   { name: 'Resume', href: '/2025CurrentResume-DavidDonohue.pdf', icon: FileText },
 ]
 
@@ -66,7 +66,7 @@ export default function Header({ className }: HeaderProps) {
           >
             <Link 
               href="/"
-              className="text-2xl font-bold bg-gradient-to-r from-[#22D3EE] via-[#EC4899] via-[#FD5E53] to-[#FFEB3B] bg-clip-text text-transparent hover:from-[#22D3EE]/90 hover:via-[#EC4899]/90 hover:via-[#FD5E53]/90 hover:to-[#FFEB3B]/90 transition-all duration-300"
+              className="text-2xl font-bold bg-gradient-to-r from-[#22D3EE] via-[#FD5E53] to-[#FFEB3B] bg-clip-text text-transparent hover:from-[#22D3EE]/90 hover:via-[#FD5E53]/90 hover:to-[#FFEB3B]/90 transition-all duration-300"
             >
               David P. Donohue
             </Link>

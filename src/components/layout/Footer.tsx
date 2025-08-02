@@ -12,7 +12,7 @@ interface FooterProps {
 const socialLinks = [
   { name: 'GitHub', href: 'https://www.github.com/sdirishguy', icon: Github },
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/davidpatrickdonohue', icon: Linkedin },
-  { name: 'Email', href: 'mailto:david@opfynder.com', icon: Mail },
+  { name: 'Email', href: 'mailto:david@davidpdonohue.com', icon: Mail },
 ]
 
 const footerLinks = [

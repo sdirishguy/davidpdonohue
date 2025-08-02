@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Card, { CardHeader, CardContent } from '@/components/ui/Card'
 import Badge from '@/components/ui/Badge'
+import { usePathname } from 'next/navigation'
+import { getTerminalPath } from '@/lib/utils'
 import { 
   SiPython, 
   SiDjango, 
@@ -262,6 +264,9 @@ const skillCategoryConfig: Record<string, { icon: string; color: string }> = {
 };
 
 export default function ProfessionalSection() {
+  const pathname = usePathname()
+  const terminalPath = getTerminalPath(pathname)
+  
   const [activeTab, setActiveTab] = useState<'summary' | 'experience' | 'skills' | 'certifications'>('summary');
   const [selectedExperience, setSelectedExperience] = useState<number>(0);
   
@@ -362,7 +367,7 @@ export default function ProfessionalSection() {
           >
             <div className="max-w-3xl mx-auto bg-primary-navy/40 backdrop-blur-sm p-6 rounded-lg border border-primary-blue/20 shadow-lg">
               <div className="flex items-center justify-between mb-4 border-b border-primary-blue/20 pb-2">
-                <div className="text-primary-blue/70 font-mono text-sm">professional@opfynder.com</div>
+                <div className="text-primary-blue/70 font-mono text-sm">terminal@davidpdonohue.com:{terminalPath}$</div>
                 <div className="flex gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-500"></div>
                   <div className="w-3 h-3 rounded-full bg-primary-yellow"></div>

@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { usePathname } from 'next/navigation'
+import { getTerminalPath } from '@/lib/utils'
 
 // Content to be typed
 const typingContent = {
@@ -17,6 +19,9 @@ const typingContent = {
 }
 
 export default function HeroSection() {
+  const pathname = usePathname()
+  const terminalPath = getTerminalPath(pathname)
+  
   // State for each line of text
   const [welcomeText, setWelcomeText] = useState("");
   const [introText, setIntroText] = useState("");
@@ -105,7 +110,7 @@ export default function HeroSection() {
         <div className="max-w-4xl mx-auto bg-primary-navy/70 backdrop-blur-sm p-8 rounded-lg border border-primary-blue/20 shadow-xl">
           {/* Terminal Header */}
           <div className="flex items-center justify-between mb-4 border-b border-primary-blue/20 pb-2">
-            <div className="text-primary-blue/70 font-mono text-sm">terminal@opfynder.com</div>
+            <div className="text-primary-blue/70 font-mono text-sm">terminal@davidpdonohue.com:{terminalPath}$</div>
             <div className="flex gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500"></div>
                               <div className="w-3 h-3 rounded-full bg-primary-sunset-orange"></div>
@@ -192,7 +197,7 @@ export default function HeroSection() {
             </svg>
           </a>
           <a 
-            href="mailto:david@opfynder.com"
+                            href="mailto:david@davidpdonohue.com"
             className="text-slate-400 hover:text-primary-blue transition-colors text-2xl"
           >
             <span className="sr-only">Email</span>
