@@ -12,6 +12,7 @@ interface HeaderProps {
   className?: string
 }
 
+// Updated navigation with Personal instead of About and reordered items
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Personal', href: '/about' },
