@@ -69,6 +69,9 @@ export const storage = {
 }
 
 export function getTerminalPath(pathname: string): string {
+  // Normalize the pathname to handle trailing slashes and different formats
+  const normalizedPath = pathname.replace(/\/$/, '') || '/'
+  
   const pathMap: Record<string, string> = {
     '/': '/Home',
     '/about': '/Personal',
@@ -78,5 +81,5 @@ export function getTerminalPath(pathname: string): string {
     '/contact': '/Contact'
   }
   
-  return pathMap[pathname] || '/Home'
+  return pathMap[normalizedPath] || '/Home'
 }
