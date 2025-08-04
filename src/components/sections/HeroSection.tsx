@@ -22,9 +22,6 @@ export default function HeroSection() {
   const pathname = usePathname()
   const terminalPath = getTerminalPath(pathname)
   
-  // Debug logging
-  console.log('HeroSection - pathname:', pathname, 'terminalPath:', terminalPath)
-  
   // State for each line of text
   const [welcomeText, setWelcomeText] = useState("");
   const [introText, setIntroText] = useState("");

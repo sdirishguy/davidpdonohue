@@ -156,9 +156,6 @@ export default function AboutSection() {
   const pathname = usePathname()
   const terminalPath = getTerminalPath(pathname)
   
-  // Debug logging
-  console.log('AboutSection - pathname:', pathname, 'terminalPath:', terminalPath)
-  
   const [activeStory, setActiveStory] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("Personal");
   
