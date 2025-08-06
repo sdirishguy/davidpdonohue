@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Badge from '@/components/ui/Badge'
 import { usePathname } from 'next/navigation'
-import { getTerminalPath } from '@/lib/utils'
+import { getTerminalPath, getTypingFontSize, getLineText, getLineColor } from '@/lib/utils'
 
 // Define types for our content
 interface FavoriteItem {
@@ -31,10 +31,12 @@ interface AboutContent {
 }
 
 // Typing animation content
-const typingContent = {
-  greeting: "Hey, It's me, David! Just making sure you haven't gotten lost!",
-  description: "Welcome to my digital living room! Here you'll find the stories that shaped me and the quirks that make me... well, me! Click around to discover what makes me tick beyond just lines of code."
-};
+const typingContent = [
+  { greeting: "Hey, It's me, David! Just making sure you haven't gotten lost!", color: "text-primary-blue" },
+  { intro: "Welcome to my digital living room!", color: "text-primary-sunset-orange" },
+  { body: "Here you'll find the stories that shaped me and the quirks that make me... well, me!", color: "text-primary-yellow" },
+  { narrative: "Click around to discover what makes me tick beyond just lines of code.", color: "text-primary-magenta" }
+];
 
 // About content - restructured for better engagement
 const aboutContent: AboutContent = {
@@ -145,9 +147,9 @@ const categoryConfig: Record<string, { icon: string; color: string; bgColor: str
   },
   "Tech": { 
     icon: "💻", 
-    color: "text-primary-sunset-orange",
-    bgColor: "bg-primary-sunset-orange/20", // using custom sunset orange
-    cardBg: "bg-primary-sunset-orange/30",  // using custom sunset orange
+    color: "text-primary-yellow",
+    bgColor: "bg-primary-yellow/20", // using custom yellow
+    cardBg: "bg-primary-yellow/30",  // using custom yellow
     emoji: "⚙️"
   }
 };
@@ -160,39 +162,42 @@ export default function AboutSection() {
   const [activeCategory, setActiveCategory] = useState<string>("Personal");
   
   // Typing animation states
-  const [greetingText, setGreetingText] = useState("");
-  const [descriptionText, setDescriptionText] = useState("");
-  const [currentTypingIndex, setCurrentTypingIndex] = useState(0);
+  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const [currentCharIndex, setCurrentCharIndex] = useState(0);
+  const [completedLines, setCompletedLines] = useState<string[]>([]);
   
-  // Typing effect
+  // Typing effect using setTimeout
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    if (currentLineIndex >= typingContent.length) return;
     
-    // Type greeting text
-    if (currentTypingIndex === 0) {
-      if (greetingText.length < typingContent.greeting.length) {
-        timeout = setTimeout(() => {
-          setGreetingText(typingContent.greeting.slice(0, greetingText.length + 1));
-        }, 50);
-      } else {
-        // Move to next text after a pause
-        timeout = setTimeout(() => {
-          setCurrentTypingIndex(1);
-        }, 500);
-      }
+    const currentLine = typingContent[currentLineIndex];
+    const currentLineText = getLineText(currentLine);
+    
+    if (currentCharIndex < currentLineText.length) {
+      const timeout = setTimeout(() => {
+        setCurrentCharIndex(prev => prev + 1);
+      }, Math.floor(Math.random() * 40) + 40);
+      
+      return () => clearTimeout(timeout);
+    } else {
+      // Line is complete, move to next line after delay
+      const timeout = setTimeout(() => {
+        setCompletedLines(prev => [...prev, currentLineText]);
+        setCurrentLineIndex(prev => prev + 1);
+        setCurrentCharIndex(0);
+      }, 1000);
+      
+      return () => clearTimeout(timeout);
     }
-    
-    // Type description text
-    else if (currentTypingIndex === 1) {
-      if (descriptionText.length < typingContent.description.length) {
-        timeout = setTimeout(() => {
-          setDescriptionText(typingContent.description.slice(0, descriptionText.length + 1));
-        }, 20);
-      }
-    }
-    
-    return () => clearTimeout(timeout);
-  }, [greetingText, descriptionText, currentTypingIndex]);
+  }, [currentLineIndex, currentCharIndex]);
+  
+  // Get current typed text
+  const getCurrentTypedText = () => {
+    if (currentLineIndex >= typingContent.length) return '';
+    const currentLine = typingContent[currentLineIndex];
+    const currentLineText = getLineText(currentLine);
+    return currentLineText.slice(0, currentCharIndex);
+  };
 
   // Helper function to split comma-separated values into arrays
   const splitValues = (value: string, label?: string): string[] => {
@@ -229,22 +234,39 @@ export default function AboutSection() {
               </div>
             </div>
             
-            <div className="font-mono text-left">
-              {/* Greeting Text */}
-              <div className="text-2xl md:text-3xl text-primary-sunset-orange font-bold mb-4">
-                {greetingText}
-                {greetingText.length < typingContent.greeting.length && (
-                  <span className="animate-pulse">▌</span>
-                )}
-              </div>
+            <div className="font-mono text-left space-y-4">
+              {/* Display completed lines */}
+              {completedLines.map((lineText, index) => {
+                const lineConfig = typingContent[index];
+                if (!lineConfig) return null;
+                
+                const lineType = Object.keys(lineConfig).find(key => key !== 'color') || '';
+                const fontSize = getTypingFontSize(lineType);
+                const color = getLineColor(lineConfig);
+                
+                return (
+                  <div key={index} className={`${fontSize} ${color}`}>
+                    {lineText}
+                  </div>
+                );
+              })}
               
-              {/* Description Text */}
-              {greetingText === typingContent.greeting && (
+              {/* Current typing line */}
+              {currentLineIndex < typingContent.length && (
+                <div className={`${(() => {
+                  const currentLine = typingContent[currentLineIndex];
+                  const lineType = Object.keys(currentLine).find(key => key !== 'color') || '';
+                  return getTypingFontSize(lineType);
+                })()} ${getLineColor(typingContent[currentLineIndex])}`}>
+                  {getCurrentTypedText()}
+                  <span className="animate-pulse">▌</span>
+                </div>
+              )}
+              
+              {/* Show cursor at the end when all lines are typed */}
+              {currentLineIndex >= typingContent.length && (
                 <div className="text-lg text-primary-blue">
-                  {descriptionText}
-                  {descriptionText.length < typingContent.description.length && (
-                    <span className="animate-pulse">▌</span>
-                  )}
+                  <span className="animate-pulse">▌</span>
                 </div>
               )}
             </div>

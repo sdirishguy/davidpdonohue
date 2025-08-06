@@ -6,14 +6,14 @@ import Card, { CardHeader, CardContent, CardFooter } from '@/components/ui/Card'
 import Badge from '@/components/ui/Badge'
 import Button from '@/components/ui/Button'
 import { usePathname } from 'next/navigation'
-import { getTerminalPath } from '@/lib/utils'
+import { getTerminalPath, getTypingFontSize, getLineText, getLineColor } from '@/lib/utils'
 
 // Typing animation content
 const typingContent = [
-  { intro: "Let's connect! 🤝", color: "text-primary-blue" },
-  { description: "I'm always interested in new opportunities, collaborations, and interesting conversations.", color: "text-primary-magenta" },
-  { instructions: "Choose your preferred method below or use the contact form.", color: "text-primary-sunset-orange" },
-  { action: "I look forward to hearing from you!", color: "text-primary-yellow" }
+  { greeting: "Still can't get enough, huh? Let's connect! 🤝", color: "text-primary-sunset-orange" },
+  { intro: "I'm always interested in new opportunities, collaborations, and interesting conversations.", color: "text-primary-magenta" },
+  { body: "I've got several options for you get in touch with me, scroll down and pick your preferred method!", color: "text-primary-yellow" },
+  { narrative: "I can't wait to hear from you! Cheers!", color: "text-primary-blue" }
 ];
 
 // Contact methods
@@ -86,11 +86,6 @@ export default function ContactSection() {
     setCaptchaAnswer((num1 + num2).toString());
     setCaptchaValue(`${num1} + ${num2} = ?`);
   }, []);
-  
-  // Helper function to get text content from any line object
-  const getLineText = (line: {intro?: string, description?: string, instructions?: string, action?: string}) => {
-    return line.intro || line.description || line.instructions || line.action || '';
-  };
   
   // Copy to clipboard function
   const copyToClipboard = async (text: string) => {
@@ -295,8 +290,12 @@ export default function ContactSection() {
                 const lineConfig = typingContent[index];
                 if (!lineConfig) return null;
                 
+                const lineType = Object.keys(lineConfig).find(key => key !== 'color') || '';
+                const fontSize = getTypingFontSize(lineType);
+                const color = getLineColor(lineConfig);
+                
                 return (
-                  <div key={index} className={`text-lg ${lineConfig.color}`}>
+                  <div key={index} className={`${fontSize} ${color}`}>
                     {lineText}
                   </div>
                 );
@@ -304,7 +303,11 @@ export default function ContactSection() {
               
               {/* Current typing line */}
               {currentLineIndex < typingContent.length && (
-                <div className={`text-lg ${typingContent[currentLineIndex].color}`}>
+                <div className={`${(() => {
+                  const currentLine = typingContent[currentLineIndex];
+                  const lineType = Object.keys(currentLine).find(key => key !== 'color') || '';
+                  return getTypingFontSize(lineType);
+                })()} ${getLineColor(typingContent[currentLineIndex])}`}>
                   {getCurrentTypedText()}
                   <span className="animate-pulse">▌</span>
                 </div>

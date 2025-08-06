@@ -7,7 +7,7 @@ import Badge from '@/components/ui/Badge'
 import Button from '@/components/ui/Button'
 import ContentPlaceholder from './ContentPlaceholder'
 import { usePathname } from 'next/navigation'
-import { getTerminalPath } from '@/lib/utils'
+import { getTerminalPath, getTypingFontSize, getLineText, getLineColor } from '@/lib/utils'
 
 // Content item interface
 interface ContentItem {
@@ -29,10 +29,13 @@ const SHOW_PLACEHOLDER = true;
 
 // Typing animation content
 const typingContent = [
-  { intro: "Welcome to my content library! 📚", color: "text-primary-blue" },
-  { description: "Here you'll find articles, videos, tutorials, and resources I've created or found valuable.", color: "text-primary-magenta" },
-  { instructions: "Use the interactive terminal below to explore content by keywords or browse everything.", color: "text-primary-sunset-orange" },
-  { action: "Happy exploring!", color: "text-primary-yellow" }
+  { greeting: "Hey, there you are! I was starting to wonder where you wandered off to... 😄", color: "text-primary-sunset-orange" },
+  { intro: "Well, if you want to see how I learned to build this site—or what inspired those wild projects on my Projects page—you're in exactly the right place.", color: "text-primary-blue" },
+  { welcome: "Welcome to my Content Library!", color: "text-primary-magenta" },
+  { body: "Here you'll find articles and videos, both from me and from folks way smarter than me, covering my favorite tech rabbit holes—and a few other sources I've found especially mind-expanding.", color: "text-primary-yellow" },
+  { personal: "Want to know more about me beyond the curtain of code? You will find posts and videos on all kinds of topics that matter to me beyond tech.", color: "text-primary-blue" },
+  { outro: "If you like my style or want recommendations for more cool stuff, just say the word—I'm always happy to share my favorite corners of the web.", color: "text-primary-magenta" },
+  { farewell: "Alright, terminal is all yours. Happy exploring! 🚀", color: "text-primary-sunset-orange" }
 ];
 
 // Content database
@@ -221,7 +224,7 @@ export default function ContentSection() {
   const pathname = usePathname()
   const terminalPath = getTerminalPath(pathname)
   
-  // Typing animation states - moved to top to fix hooks rule
+  // Typing animation states
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [completedLines, setCompletedLines] = useState<string[]>([]);
@@ -232,7 +235,6 @@ export default function ContentSection() {
     { type: "system", content: "Content Explorer v1.0.0" },
     { type: "system", content: "Type 'help' for available commands or start searching with 'search [keywords]'" }
   ]);
-  const [filteredContent, setFilteredContent] = useState<Array<ContentItem>>([]);
   const [showResults, setShowResults] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
@@ -240,14 +242,12 @@ export default function ContentSection() {
   const terminalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   
-  // Helper function to get text content from any line object
-  const getLineText = (line: {intro?: string, description?: string, instructions?: string, action?: string}) => {
-    return line.intro || line.description || line.instructions || line.action || '';
-  };
-
+  // Content filtering states
+  const [filteredContent, setFilteredContent] = useState<Array<ContentItem>>([]);
+  
   // Typing effect using setTimeout
   useEffect(() => {
-    if (SHOW_PLACEHOLDER || currentLineIndex >= typingContent.length) return;
+    if (currentLineIndex >= typingContent.length) return;
     
     const currentLine = typingContent[currentLineIndex];
     const currentLineText = getLineText(currentLine);
@@ -457,7 +457,7 @@ export default function ContentSection() {
   };
   
   return (
-    <section className="py-20 bg-primary-navy relative overflow-hidden">
+    <section id="content" className="py-20 bg-primary-navy relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(34,211,238,0.03),transparent_40%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(236,73,153,0.03),transparent_40%)]"></div>
@@ -487,8 +487,12 @@ export default function ContentSection() {
                 const lineConfig = typingContent[index];
                 if (!lineConfig) return null;
                 
+                const lineType = Object.keys(lineConfig).find(key => key !== 'color') || '';
+                const fontSize = getTypingFontSize(lineType);
+                const color = getLineColor(lineConfig);
+                
                 return (
-                  <div key={index} className={`text-lg ${lineConfig.color}`}>
+                  <div key={index} className={`${fontSize} ${color}`}>
                     {lineText}
                   </div>
                 );
@@ -496,7 +500,11 @@ export default function ContentSection() {
               
               {/* Current typing line */}
               {currentLineIndex < typingContent.length && (
-                <div className={`text-lg ${typingContent[currentLineIndex].color}`}>
+                <div className={`${(() => {
+                  const currentLine = typingContent[currentLineIndex];
+                  const lineType = Object.keys(currentLine).find(key => key !== 'color') || '';
+                  return getTypingFontSize(lineType);
+                })()} ${getLineColor(typingContent[currentLineIndex])}`}>
                   {getCurrentTypedText()}
                   <span className="animate-pulse">▌</span>
                 </div>

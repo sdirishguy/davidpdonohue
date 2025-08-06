@@ -3,102 +3,61 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
-import { getTerminalPath } from '@/lib/utils'
+import { getTerminalPath, getTypingFontSize, getLineText, getLineColor } from '@/lib/utils'
 
 // Content to be typed
-const typingContent = {
-  welcome: "Hi! Welcome to DavidPDonohue.com!!",
-  intro: "I'm David, and I'll be your guide as you explore my website!",
-  roles: [
-    "Full Stack Web Developer,",
-    "a Project Manager,",
-    "an IT Professional,",
-    "and a human being."
-  ],
-  description: "I'm passionate about Healthcare, FinTech, Cybersecurity, Artificial Intelligence and creating elegant, functional solutions that solve real-world problems. Feel free to explore the projects I've worked on, learn about my personal and professional journey, and discover my thoughts on technology and the world beyond tech!"
-}
+const typingContent = [
+  { greeting: "Welcome to David P Donohue.com!! I'm so happy you stopped by!", color: "text-primary-sunset-orange" },
+  { intro: "I'm David, and I'll be your guide as you explore my website!", color: "text-primary-blue" },
+  { body: "I am a Full Stack Web Developer,", color: "text-primary-magenta" },
+  { body: "a Project Manager,", color: "text-primary-magenta" },
+  { body: "an IT Professional,", color: "text-primary-magenta" },
+  { body: "and a human being.", color: "text-primary-magenta" },
+  { narrative: "I'm passionate about Healthcare, FinTech, Cybersecurity, Artificial Intelligence and creating elegant, functional solutions that solve real-world problems.", color: "text-primary-yellow" },
+  { narrative: "Use the navigation links at the top of the page to explore and learn more about me! Enjoy!", color: "text-primary-yellow" }
+];
 
 export default function HeroSection() {
   const pathname = usePathname()
   const terminalPath = getTerminalPath(pathname)
   
-  // State for each line of text
-  const [welcomeText, setWelcomeText] = useState("");
-  const [introText, setIntroText] = useState("");
-  const [rolesText, setRolesText] = useState<string[]>(["", "", "", ""]); // Initialize with 4 empty strings
-  const [descriptionText, setDescriptionText] = useState("");
+  // Typing animation states
+  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const [currentCharIndex, setCurrentCharIndex] = useState(0);
+  const [completedLines, setCompletedLines] = useState<string[]>([]);
   
-  // State to track which element is currently being typed
-  const [currentTypingIndex, setCurrentTypingIndex] = useState(0);
-  
-  // Typing effect
+  // Typing effect using setTimeout
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    if (currentLineIndex >= typingContent.length) return;
     
-    // Type welcome text
-    if (currentTypingIndex === 0) {
-      if (welcomeText.length < typingContent.welcome.length) {
-        timeout = setTimeout(() => {
-          setWelcomeText(typingContent.welcome.slice(0, welcomeText.length + 1));
-        }, 50); // Adjust speed as needed
-      } else {
-        // Move to next text after a pause
-        timeout = setTimeout(() => {
-          setCurrentTypingIndex(1);
-        }, 500);
-      }
-    }
+    const currentLine = typingContent[currentLineIndex];
+    const currentLineText = getLineText(currentLine);
     
-    // Type intro text
-    else if (currentTypingIndex === 1) {
-      if (introText.length < typingContent.intro.length) {
-        timeout = setTimeout(() => {
-          setIntroText(typingContent.intro.slice(0, introText.length + 1));
-        }, 50);
-      } else {
-        timeout = setTimeout(() => {
-          setCurrentTypingIndex(2);
-        }, 500);
-      }
-    }
-    
-    // Type roles text (one by one)
-    else if (currentTypingIndex >= 2 && currentTypingIndex <= 5) { // Changed to 5 to include the 4th role
-      const roleIndex = currentTypingIndex - 2;
+    if (currentCharIndex < currentLineText.length) {
+      const timeout = setTimeout(() => {
+        setCurrentCharIndex(prev => prev + 1);
+      }, Math.floor(Math.random() * 40) + 40);
       
-      // Check if this role exists
-      if (roleIndex < typingContent.roles.length) {
-        const currentRole = typingContent.roles[roleIndex];
-        const currentTypedRole = rolesText[roleIndex];
-        
-        if (currentTypedRole.length < currentRole.length) {
-          timeout = setTimeout(() => {
-            const newRolesText = [...rolesText];
-            newRolesText[roleIndex] = currentRole.slice(0, currentTypedRole.length + 1);
-            setRolesText(newRolesText);
-          }, 50);
-        } else {
-          timeout = setTimeout(() => {
-            setCurrentTypingIndex(currentTypingIndex + 1);
-          }, 500);
-        }
-      } else {
-        // Move to description if we've finished all roles
-        setCurrentTypingIndex(6); // Changed to 6 since we now have 4 roles
-      }
+      return () => clearTimeout(timeout);
+    } else {
+      // Line is complete, move to next line after delay
+      const timeout = setTimeout(() => {
+        setCompletedLines(prev => [...prev, currentLineText]);
+        setCurrentLineIndex(prev => prev + 1);
+        setCurrentCharIndex(0);
+      }, 1000);
+      
+      return () => clearTimeout(timeout);
     }
-    
-    // Type description text
-    else if (currentTypingIndex === 6) { // Changed to 6
-      if (descriptionText.length < typingContent.description.length) {
-        timeout = setTimeout(() => {
-          setDescriptionText(typingContent.description.slice(0, descriptionText.length + 1));
-        }, 20); // Faster typing for longer text
-      }
-    }
-    
-    return () => clearTimeout(timeout);
-  }, [welcomeText, introText, rolesText, descriptionText, currentTypingIndex]);
+  }, [currentLineIndex, currentCharIndex]);
+  
+  // Get current typed text
+  const getCurrentTypedText = () => {
+    if (currentLineIndex >= typingContent.length) return '';
+    const currentLine = typingContent[currentLineIndex];
+    const currentLineText = getLineText(currentLine);
+    return currentLineText.slice(0, currentCharIndex);
+  };
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-primary-navy">
@@ -120,48 +79,38 @@ export default function HeroSection() {
           
           {/* Terminal Content */}
           <div className="font-mono text-left space-y-4">
-            {/* Welcome Text */}
-            <div className="text-2xl md:text-3xl lg:text-4xl text-primary-sunset-orange font-bold">
-              {welcomeText}
-              {welcomeText.length < typingContent.welcome.length && (
-                <span className="animate-pulse">▌</span>
-              )}
-            </div>
-            
-            {/* Intro Text */}
-            {welcomeText === typingContent.welcome && (
-              <div className="text-xl text-primary-blue">
-                {introText}
-                {introText.length < typingContent.intro.length && currentTypingIndex === 1 && (
-                  <span className="animate-pulse">▌</span>
-                )}
-              </div>
-            )}
-            
-            {/* Roles */}
-            {introText === typingContent.intro && (
-              <div className="text-xl">
-                <span className="text-primary-magenta">I am a:</span>
-                <div className="ml-4 space-y-1">
-                  {rolesText.map((role, index) => (
-                    <div key={index} className="text-primary-magenta">
-                      {role}
-                      {role.length < (typingContent.roles[index] || '').length && currentTypingIndex === index + 2 && (
-                        <span className="animate-pulse">▌</span>
-                      )}
-                    </div>
-                  ))}
+            {/* Display completed lines */}
+            {completedLines.map((lineText, index) => {
+              const lineConfig = typingContent[index];
+              if (!lineConfig) return null;
+              
+              const lineType = Object.keys(lineConfig).find(key => key !== 'color') || '';
+              const fontSize = getTypingFontSize(lineType);
+              const color = getLineColor(lineConfig);
+              
+              return (
+                <div key={index} className={`${fontSize} ${color}`}>
+                  {lineText}
                 </div>
+              );
+            })}
+            
+            {/* Current typing line */}
+            {currentLineIndex < typingContent.length && (
+              <div className={`${(() => {
+                const currentLine = typingContent[currentLineIndex];
+                const lineType = Object.keys(currentLine).find(key => key !== 'color') || '';
+                return getTypingFontSize(lineType);
+              })()} ${getLineColor(typingContent[currentLineIndex])}`}>
+                {getCurrentTypedText()}
+                <span className="animate-pulse">▌</span>
               </div>
             )}
             
-            {/* Description */}
-            {rolesText[3] === typingContent.roles[3] && ( // Changed to check the 4th role
+            {/* Show cursor at the end when all lines are typed */}
+            {currentLineIndex >= typingContent.length && (
               <div className="text-lg text-primary-blue">
-                {descriptionText}
-                {descriptionText.length < typingContent.description.length && (
-                  <span className="animate-pulse">▌</span>
-                )}
+                <span className="animate-pulse">▌</span>
               </div>
             )}
           </div>
@@ -170,7 +119,7 @@ export default function HeroSection() {
         {/* Social Links */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: rolesText[3] === typingContent.roles[3] ? 1 : 0 }} // Changed to check the 4th role
+          animate={{ opacity: currentLineIndex >= typingContent.length ? 1 : 0 }}
           transition={{ duration: 0.5 }}
           className="flex justify-center gap-6 mt-12"
         >

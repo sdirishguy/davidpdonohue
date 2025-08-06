@@ -1,5 +1,5 @@
-import { clsx, type ClassValue } from 'clsx'
-import { twMerge } from 'tailwind-merge'
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
 
 /**
  * Utility function to merge Tailwind CSS classes
@@ -82,4 +82,28 @@ export function getTerminalPath(pathname: string): string {
   }
   
   return pathMap[normalizedPath] || '/Home'
+}
+
+// Centralized font size configuration for typing animations
+export function getTypingFontSize(lineType: 'greeting' | 'intro' | 'body' | 'narrative' | string): string {
+  switch (lineType) {
+    case 'greeting':
+      return "text-2xl md:text-3xl lg:text-4xl font-bold";
+    case 'intro':
+      return "text-2xl font-bold";
+    case 'body':
+    case 'narrative':
+    default:
+      return "text-lg";
+  }
+}
+
+// Helper function to get text content from any line object
+export function getLineText(line: { greeting?: string, intro?: string, body?: string, narrative?: string, text?: string }): string {
+  return line.greeting || line.intro || line.body || line.narrative || line.text || '';
+}
+
+// Helper function to get color from line object
+export function getLineColor(line: { color?: string }): string {
+  return line.color || 'text-primary-blue';
 }

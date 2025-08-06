@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Card, { CardHeader, CardContent } from '@/components/ui/Card'
 import Badge from '@/components/ui/Badge'
 import { usePathname } from 'next/navigation'
-import { getTerminalPath } from '@/lib/utils'
+import { getTerminalPath, getTypingFontSize, getLineText, getLineColor } from '@/lib/utils'
 import { 
   SiPython, 
   SiDjango, 
@@ -19,13 +19,14 @@ import {
   SiVuedotjs
 } from 'react-icons/si'
 
-// Typing animation content with multiple lines
-const typingContent = {
-  intro: { text: "Hi again! Guess you just couldn't get enough of me!! Lucky you and very lucky me!", color: "text-primary-yellow" },
-  welcome: { text: "Let me welcome you to the Professional section of my website!", color: "text-primary-magenta" },
-  instructions: { text: "Use the navigation buttons appearing on the left to learn all about my professional journey, skills, experience, education, certs and if you're really interested, feel free to download a PDF version of my resume.", color: "text-primary-sunset-orange" },
-  salutation: { text: "Cheers!", color: "text-primary-blue" }
-};
+// Typing animation content
+const typingContent = [
+  { greeting: "Hi again! Guess you just couldn't get enough of me!! Lucky you and very lucky me!", color: "text-primary-yellow" },
+  { intro: "Let me welcome you to the Professional section of my website!", color: "text-primary-magenta" },
+  { body: "Use the navigation buttons appearing shortly to learn all about my professional journey, skills, experience, education, and certifications.", color: "text-primary-blue" },
+  { narrative: "If you're interested, click on the piece of paper icon at the top right of the page to download a PDF version of my resume.", color: "text-primary-sunset-orange" },
+  { narrative: "Cheers!", color: "text-primary-blue" }
+];
 
 // Professional content from your resume
 const professionalContent = {
@@ -270,163 +271,130 @@ export default function ProfessionalSection() {
   const [activeTab, setActiveTab] = useState<'summary' | 'experience' | 'skills' | 'certifications'>('summary');
   const [selectedExperience, setSelectedExperience] = useState<number>(0);
   
-  // State for each line of text (like HeroSection)
-  const [introText, setIntroText] = useState("");
-  const [welcomeText, setWelcomeText] = useState("");
-  const [instructionsText, setInstructionsText] = useState("");
-  const [salutationText, setSalutationText] = useState("");
+  // Typing animation states
+  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const [currentCharIndex, setCurrentCharIndex] = useState(0);
+  const [completedLines, setCompletedLines] = useState<string[]>([]);
   
-  // State to track which element is currently being typed
-  const [currentTypingIndex, setCurrentTypingIndex] = useState(0);
+  // Typing effect using setTimeout
+  useEffect(() => {
+    if (currentLineIndex >= typingContent.length) return;
+    
+    const currentLine = typingContent[currentLineIndex];
+    const currentLineText = getLineText(currentLine);
+    
+    if (currentCharIndex < currentLineText.length) {
+      const timeout = setTimeout(() => {
+        setCurrentCharIndex(prev => prev + 1);
+      }, Math.floor(Math.random() * 40) + 40);
+      
+      return () => clearTimeout(timeout);
+    } else {
+      // Line is complete, move to next line after delay
+      const timeout = setTimeout(() => {
+        setCompletedLines(prev => [...prev, currentLineText]);
+        setCurrentLineIndex(prev => prev + 1);
+        setCurrentCharIndex(0);
+      }, 1000);
+      
+      return () => clearTimeout(timeout);
+    }
+  }, [currentLineIndex, currentCharIndex]);
   
-  // State to track when terminal typing is complete
-  const [isTerminalComplete, setIsTerminalComplete] = useState(false);
-  
+  // Get current typed text
+  const getCurrentTypedText = () => {
+    if (currentLineIndex >= typingContent.length) return '';
+    const currentLine = typingContent[currentLineIndex];
+    const currentLineText = getLineText(currentLine);
+    return currentLineText.slice(0, currentCharIndex);
+  };
+
   // State to control navigation animation
   const [showNavigation, setShowNavigation] = useState(false);
   
-  // Typing effect
+  // Show navigation when terminal animation is complete
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
-    
-    // Type intro text
-    if (currentTypingIndex === 0) {
-      if (introText.length < typingContent.intro.text.length) {
-        timeout = setTimeout(() => {
-          setIntroText(typingContent.intro.text.slice(0, introText.length + 1));
-        }, 50);
-      } else {
-        timeout = setTimeout(() => {
-          setCurrentTypingIndex(1);
-        }, 500);
-      }
+    if (currentLineIndex >= typingContent.length) {
+      const timer = setTimeout(() => {
+        setShowNavigation(true);
+      }, 500); // Small delay after terminal completes
+      
+      return () => clearTimeout(timer);
     }
-    
-    // Type welcome text
-    else if (currentTypingIndex === 1) {
-      if (welcomeText.length < typingContent.welcome.text.length) {
-        timeout = setTimeout(() => {
-          setWelcomeText(typingContent.welcome.text.slice(0, welcomeText.length + 1));
-        }, 50);
-      } else {
-        timeout = setTimeout(() => {
-          setCurrentTypingIndex(2);
-        }, 500);
-      }
-    }
-    
-    // Type instructions text
-    else if (currentTypingIndex === 2) {
-      if (instructionsText.length < typingContent.instructions.text.length) {
-        timeout = setTimeout(() => {
-          setInstructionsText(typingContent.instructions.text.slice(0, instructionsText.length + 1));
-        }, 50);
-      } else {
-        timeout = setTimeout(() => {
-          setCurrentTypingIndex(3);
-        }, 500);
-      }
-    }
-    
-         // Type salutation text
-     else if (currentTypingIndex === 3) {
-       if (salutationText.length < typingContent.salutation.text.length) {
-         timeout = setTimeout(() => {
-           setSalutationText(typingContent.salutation.text.slice(0, salutationText.length + 1));
-         }, 50);
-       } else {
-         // Terminal typing is complete - longer pause to let user read
-         timeout = setTimeout(() => {
-           setIsTerminalComplete(true);
-           // Trigger navigation animation after a longer pause
-           setTimeout(() => {
-             setShowNavigation(true);
-           }, 2000); // Increased from 1000ms to 2000ms
-         }, 1500); // Added 1.5 second pause after "Cheers!" is typed
-       }
-     }
-    
-    return () => clearTimeout(timeout);
-  }, [introText, welcomeText, instructionsText, salutationText, currentTypingIndex]);
-
+    return undefined; // Explicit return for when condition is false
+  }, [currentLineIndex]);
+  
   return (
-    <section className="py-20 bg-primary-navy relative overflow-hidden">
+    <section id="professional" className="py-20 bg-primary-navy relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(34,211,238,0.03),transparent_40%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(236,73,153,0.03),transparent_40%)]"></div>
       
       <div className="container mx-auto px-6 relative z-10">
-        {/* Terminal Typing Animation - Only show when typing is not complete */}
-        {!isTerminalComplete && (
+        {/* Terminal Typing Animation */}
+        {!showNavigation && (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ 
+              duration: 0.6,
+              ease: "easeInOut"
+            }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div className="max-w-3xl mx-auto bg-primary-navy/40 backdrop-blur-sm p-6 rounded-lg border border-primary-blue/20 shadow-lg">
-              <div className="flex items-center justify-between mb-4 border-b border-primary-blue/20 pb-2">
-                <div className="text-primary-blue/70 font-mono text-sm">terminal@davidpdonohue.com:{terminalPath}$</div>
-                <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-primary-yellow"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                </div>
-              </div>
-              
-              <div className="font-mono text-left space-y-4">
-                {/* Intro Text */}
-                <div className={`text-lg ${typingContent.intro.color}`}>
-                  {introText}
-                  {introText.length < typingContent.intro.text.length && currentTypingIndex === 0 && (
-                    <span className="animate-pulse">▌</span>
-                  )}
-                </div>
-                
-                {/* Welcome Text */}
-                {introText === typingContent.intro.text && (
-                  <div className={`text-lg ${typingContent.welcome.color}`}>
-                    {welcomeText}
-                    {welcomeText.length < typingContent.welcome.text.length && currentTypingIndex === 1 && (
-                      <span className="animate-pulse">▌</span>
-                    )}
-                  </div>
-                )}
-                
-                {/* Instructions Text */}
-                {welcomeText === typingContent.welcome.text && (
-                  <div className={`text-lg ${typingContent.instructions.color}`}>
-                    {instructionsText}
-                    {instructionsText.length < typingContent.instructions.text.length && currentTypingIndex === 2 && (
-                      <span className="animate-pulse">▌</span>
-                    )}
-                  </div>
-                )}
-                
-                {/* Salutation Text */}
-                {instructionsText === typingContent.instructions.text && (
-                  <div className={`text-lg ${typingContent.salutation.color}`}>
-                    {salutationText}
-                    {salutationText.length < typingContent.salutation.text.length && currentTypingIndex === 3 && (
-                      <span className="animate-pulse">▌</span>
-                    )}
-                  </div>
-                )}
-                
-                {/* Show cursor at the end when all lines are typed */}
-                {salutationText === typingContent.salutation.text && (
-                  <div className="text-lg text-primary-blue">
-                    <span className="animate-pulse">▌</span>
-                  </div>
-                )}
+          <div className="max-w-3xl mx-auto bg-primary-navy/40 backdrop-blur-sm p-6 rounded-lg border border-primary-blue/20 shadow-lg">
+            <div className="flex items-center justify-between mb-4 border-b border-primary-blue/20 pb-2">
+              <div className="text-primary-blue/70 font-mono text-sm">terminal@davidpdonohue.com:{terminalPath}$</div>
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-primary-yellow"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
               </div>
             </div>
-          </motion.div>
+            
+            <div className="font-mono text-left space-y-4">
+              {/* Display completed lines */}
+              {completedLines.map((lineText, index) => {
+                const lineConfig = typingContent[index];
+                if (!lineConfig) return null;
+                
+                const lineType = Object.keys(lineConfig).find(key => key !== 'color') || '';
+                const fontSize = getTypingFontSize(lineType);
+                const color = getLineColor(lineConfig);
+                
+                return (
+                  <div key={index} className={`${fontSize} ${color}`}>
+                    {lineText}
+                  </div>
+                );
+              })}
+              
+              {/* Current typing line */}
+              {currentLineIndex < typingContent.length && (
+                <div className={`${(() => {
+                  const currentLine = typingContent[currentLineIndex];
+                  const lineType = Object.keys(currentLine).find(key => key !== 'color') || '';
+                  return getTypingFontSize(lineType);
+                })()} ${getLineColor(typingContent[currentLineIndex])}`}>
+                  {getCurrentTypedText()}
+                  <span className="animate-pulse">▌</span>
+                </div>
+              )}
+              
+              {/* Show cursor at the end when all lines are typed */}
+              {currentLineIndex >= typingContent.length && (
+                <div className="text-lg text-primary-blue">
+                  <span className="animate-pulse">▌</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </motion.div>
         )}
 
         {/* Navigation and Content Layout - Show when terminal is complete */}
-        {isTerminalComplete && (
+        {currentLineIndex >= typingContent.length && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
