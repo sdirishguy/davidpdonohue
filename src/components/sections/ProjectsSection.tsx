@@ -13,9 +13,10 @@ import { getTerminalPath, getTypingFontSize, getLineText, getLineColor } from '@
 // Typing animation content
 const typingContent = [
   { greeting: "Welcome to my project showcase! 🚀", color: "text-primary-sunset-orange" },
-  { intro: "These are the tools and applications I've built to solve real-world problems.", color: "text-primary-blue" },
+  { intro: "Here are the most recent projects I've worked on from my personal and professional life.", color: "text-primary-blue" },
   { body: "Feel free to explore each one and check out the source code on GitHub.", color: "text-primary-magenta" },
-  { narrative: "Ready to dive in? Let's go!", color: "text-primary-yellow" }
+  { body: "Ready to dive in?", color: "text-primary-yellow" },
+  { narrative: "Have at it!", color: "text-primary-magenta" }
 ];
 
 // Projects content from JSON

@@ -21,8 +21,12 @@ import {
 
 // Typing animation content
 const typingContent = [
-  { greeting: "Hi again! Guess you just couldn't get enough of me!! Lucky you and very lucky me!", color: "text-primary-yellow" },
-  { intro: "Let me welcome you to the Professional section of my website!", color: "text-primary-magenta" },
+  { greeting: "Still here? Sweet!", color: "text-primary-yellow" },
+  { intro: "Let me welcome you to the Professional section of my website!", color: "text-primary-blue" },
+  { body: "This is where you'll learn that I am a Full Stack Web Developer", color: "text-primary-magenta"},
+  { bosy: "a Project Manager", color: "text-primary-magenta"},
+  { body: "an IT Projessional", color: "text-primary-magenta"},
+  { body: "and a life long learner", color: "text-primary-magenta"},
   { body: "Use the navigation buttons appearing shortly to learn all about my professional journey, skills, experience, education, and certifications.", color: "text-primary-blue" },
   { narrative: "If you're interested, click on the piece of paper icon at the top right of the page to download a PDF version of my resume.", color: "text-primary-sunset-orange" },
   { narrative: "Cheers!", color: "text-primary-blue" }

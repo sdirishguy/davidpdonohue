@@ -88,13 +88,13 @@ export function getTerminalPath(pathname: string): string {
 export function getTypingFontSize(lineType: 'greeting' | 'intro' | 'body' | 'narrative' | string): string {
   switch (lineType) {
     case 'greeting':
-      return "text-2xl md:text-3xl lg:text-4xl font-bold";
+      return "text-2xl md:text-2xl lg:text-3xl font-bold";
     case 'intro':
-      return "text-2xl font-bold";
+      return "text-1xl md: text-1xl lg:text-2xl font-bold";
     case 'body':
     case 'narrative':
     default:
-      return "text-lg";
+      return "text-lxl font-bold";
   }
 }
 

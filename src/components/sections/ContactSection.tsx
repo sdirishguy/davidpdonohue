@@ -10,7 +10,8 @@ import { getTerminalPath, getTypingFontSize, getLineText, getLineColor } from '@
 
 // Typing animation content
 const typingContent = [
-  { greeting: "Still can't get enough, huh? Let's connect! 🤝", color: "text-primary-sunset-orange" },
+  { greeting: "Still can't get enough, huh?", color: "text-primary-sunset-orange" },
+  { intro: " Let's connect! 🤝", color: "text-primary-blue"},
   { intro: "I'm always interested in new opportunities, collaborations, and interesting conversations.", color: "text-primary-magenta" },
   { body: "I've got several options for you get in touch with me, scroll down and pick your preferred method!", color: "text-primary-yellow" },
   { narrative: "I can't wait to hear from you! Cheers!", color: "text-primary-blue" }

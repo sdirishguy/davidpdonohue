@@ -32,10 +32,11 @@ interface AboutContent {
 
 // Typing animation content
 const typingContent = [
-  { greeting: "Hey, It's me, David! Just making sure you haven't gotten lost!", color: "text-primary-blue" },
-  { intro: "Welcome to my digital living room!", color: "text-primary-sunset-orange" },
-  { body: "Here you'll find the stories that shaped me and the quirks that make me... well, me!", color: "text-primary-yellow" },
-  { narrative: "Click around to discover what makes me tick beyond just lines of code.", color: "text-primary-magenta" }
+  { greeting: "Welcome to my digital living room!", color: "text-primary-blue" },
+  { intro: "Thanks for taking a look around!", color: "text-primary-green"},
+  { intro: "Here you'll find fun facts and  stories that shaped me and the quirks that make me... well, me!", color: "text-primary-sunset-orange" },
+  { body: "Click the buttons below to discover what makes me tick beyond just lines of code.", color: "text-primary-yellow" },
+  { narrative: "Go on then! Enjoy!", color: "text-primary-magenta" }
 ];
 
 // About content - restructured for better engagement
