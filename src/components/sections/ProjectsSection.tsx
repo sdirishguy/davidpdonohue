@@ -1,6 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable react/no-unescaped-entities */
 'use client'
+
+/* eslint-disable react/no-unescaped-entities */
+import Image from 'next/image'
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
@@ -425,10 +426,13 @@ export default function ProjectsSection() {
                     <div className="w-full h-48 bg-primary-navy/80 rounded-t-lg flex items-center justify-center overflow-hidden">
                       {project.title === "Opfynder" ? (
                         <div className="w-full h-full bg-[#04042a] flex items-center justify-center">
-                          <img 
+                          <Image 
                             src="/opfynder_logo5.png" 
                             alt="Opfynder Logo" 
+                            width={400}
+                            height={300}
                             className="w-full h-full object-contain border-2 border-primary-blue rounded-lg"
+                            unoptimized
                           />
                         </div>
                       ) : project.title === "MCPHelper Sublime Plugin" ? (
