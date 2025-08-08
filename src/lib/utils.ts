@@ -90,11 +90,13 @@ export function getTypingFontSize(lineType: 'greeting' | 'intro' | 'body' | 'nar
     case 'greeting':
       return "text-2xl md:text-2xl lg:text-3xl font-bold";
     case 'intro':
-      return "text-1xl md: text-1xl lg:text-2xl font-bold";
+      return "text-2xl font-bold";
     case 'body':
+      return "text-2xl font-bold";
     case 'narrative':
+      return "text-2xl font-bold";
     default:
-      return "text-lxl font-bold";
+      return "text-2xl font-bold";
   }
 }
 

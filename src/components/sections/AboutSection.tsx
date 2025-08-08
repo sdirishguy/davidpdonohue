@@ -33,9 +33,9 @@ interface AboutContent {
 // Typing animation content
 const typingContent = [
   { greeting: "Welcome to my digital living room!", color: "text-primary-blue" },
-  { intro: "Thanks for taking a look around!", color: "text-primary-green"},
+  { intro: "Thanks for taking a look around!", color: "text-green-400"},
   { intro: "Here you'll find fun facts and  stories that shaped me and the quirks that make me... well, me!", color: "text-primary-sunset-orange" },
-  { body: "Click the buttons below to discover what makes me tick beyond just lines of code.", color: "text-primary-yellow" },
+  { body: "Click the buttons below and get to know me!", color: "text-primary-yellow" },
   { narrative: "Go on then! Enjoy!", color: "text-primary-magenta" }
 ];
 
