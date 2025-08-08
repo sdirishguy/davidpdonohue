@@ -21,14 +21,14 @@ import {
 
 // Typing animation content
 const typingContent = [
-  { greeting: "Still here? Sweet!", color: "text-primary-yellow" },
-  { intro: "Let me welcome you to the Professional section of my website!", color: "text-primary-blue" },
-  { body: "This is where you'll learn that I am a Full Stack Web Developer", color: "text-primary-magenta"},
-  { bosy: "a Project Manager", color: "text-primary-magenta"},
-  { body: "an IT Projessional", color: "text-primary-magenta"},
-  { body: "and a life long learner", color: "text-primary-magenta"},
-  { body: "Use the navigation buttons appearing shortly to learn all about my professional journey, skills, experience, education, and certifications.", color: "text-primary-blue" },
-  { narrative: "If you're interested, click on the piece of paper icon at the top right of the page to download a PDF version of my resume.", color: "text-primary-sunset-orange" },
+  { greeting: "Let me welcome you to the Professional section of my website!", color: "text-primary-yellow" },
+  { intro: "This is my favorite section of the site!", color: "text-primary-blue" },
+  { body: "It is where you'll learn all about my experience as a Full Stack Web Developer,", color: "text-primary-magenta"},
+  { body: "a Project Manager,", color: "text-primary-magenta"},
+  { body: "an IT Projessional,", color: "text-primary-magenta"},
+  { body: "and a life long learner.", color: "text-primary-magenta"},
+  { body: "Use the navigation menu appearing shortly to learn all about my professional journey, skills, experience, education, and certifications.", color: "text-primary-blue" },
+  { narrative: "For a PDF copy of my resume, click on the paper icon at the top right of the page.", color: "text-primary-sunset-orange" },
   { narrative: "Cheers!", color: "text-primary-blue" }
 ];
 
@@ -454,26 +454,7 @@ export default function ProfessionalSection() {
                    >
                     <div className="flex items-center">
                       <span className="text-2xl mr-3">💼</span>
-                      <span className="font-medium">Digital Resume</span>
-                    </div>
-                  </motion.button>
-                  
-                  {/* Resume Download Button */}
-                  <motion.button
-                    initial={{ x: -50, opacity: 0 }}
-                    animate={showNavigation ? { x: 0, opacity: 1 } : { x: -50, opacity: 0 }}
-                    transition={{ delay: 0.8, duration: 0.8 }}
-                    whileHover={{ scale: 1.05, x: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => window.open('/2025CurrentResume-DavidDonohue.pdf', '_blank')}
-                    className="w-full text-left p-4 rounded-lg transition-all bg-primary-navy/50 text-slate-300 hover:bg-primary-navy/70 border border-primary-blue/30 hover:border-primary-blue/50"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center">
-                        <span className="text-2xl mr-3">📄</span>
-                        <span className="font-medium">Download Resume</span>
-                      </div>
-                      <span className="text-sm text-primary-blue">PDF</span>
+                      <span className="font-medium">Experience</span>
                     </div>
                   </motion.button>
                   
@@ -512,6 +493,25 @@ export default function ProfessionalSection() {
                     <div className="flex items-center">
                       <span className="text-2xl mr-3">🏆</span>
                       <span className="font-medium">Education/Certifications</span>
+                    </div>
+                  </motion.button>
+                  
+                  {/* Resume Download Button - Moved to last */}
+                  <motion.button
+                    initial={{ x: -50, opacity: 0 }}
+                    animate={showNavigation ? { x: 0, opacity: 1 } : { x: -50, opacity: 0 }}
+                    transition={{ delay: 1.0, duration: 0.8 }}
+                    whileHover={{ scale: 1.05, x: 5 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => window.open('/2025CurrentResume-DavidDonohue.pdf', '_blank')}
+                    className="w-full text-left p-4 rounded-lg transition-all bg-primary-navy/50 text-slate-300 hover:bg-primary-navy/70 border border-primary-blue/30 hover:border-primary-blue/50"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <span className="text-2xl mr-3">📄</span>
+                        <span className="font-medium">Download Resume</span>
+                      </div>
+                      <span className="text-sm text-primary-blue">PDF</span>
                     </div>
                   </motion.button>
                 </div>
