@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Button from '@/components/ui/Button'
 
@@ -9,17 +9,19 @@ export default function ContentPlaceholder() {
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [emailError, setEmailError] = useState('');
-  const [captchaValue, setCaptchaValue] = useState('');
-  const [captchaAnswer, setCaptchaAnswer] = useState('');
-  const [captchaError, setCaptchaError] = useState('');
+  const [isHumanVerified, setIsHumanVerified] = useState(false);
+  const [verificationError, setVerificationError] = useState('');
 
-  // Generate captcha
-  useEffect(() => {
-    const num1 = Math.floor(Math.random() * 10) + 1;
-    const num2 = Math.floor(Math.random() * 10) + 1;
-    setCaptchaAnswer((num1 + num2).toString());
-    setCaptchaValue(`${num1} + ${num2} = ?`);
-  }, []);
+  // Handle verification checkbox
+  const handleVerificationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const checked = e.target.checked;
+    setIsHumanVerified(checked);
+    if (checked) {
+      setVerificationError('');
+    } else {
+      setVerificationError('Please verify that you are human');
+    }
+  };
 
   // Email validation
   const validateEmail = (email: string) => {
@@ -42,23 +44,15 @@ export default function ContentPlaceholder() {
     }
   };
 
-  const handleCaptchaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setCaptchaValue(value);
-    if (value !== captchaAnswer) {
-      setCaptchaError('Incorrect answer');
-    } else {
-      setCaptchaError('');
-    }
-  };
+
 
   const handleEmailSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validate email and captcha
-    if (!email.trim() || isSubmitting || emailError || captchaValue !== captchaAnswer) {
-      if (captchaValue !== captchaAnswer) {
-        setCaptchaError('Please solve the captcha correctly');
+    // Validate email and verification
+    if (!email.trim() || isSubmitting || emailError || !isHumanVerified) {
+      if (!isHumanVerified) {
+        setVerificationError('Please verify that you are human');
       }
       return;
     }
@@ -68,14 +62,8 @@ export default function ContentPlaceholder() {
       await new Promise(resolve => setTimeout(resolve, 1000));
       setIsSubscribed(true);
       setEmail("");
-      setCaptchaValue('');
-      setCaptchaError('');
-      
-      // Generate new captcha
-      const num1 = Math.floor(Math.random() * 10) + 1;
-      const num2 = Math.floor(Math.random() * 10) + 1;
-      setCaptchaAnswer((num1 + num2).toString());
-      setCaptchaValue(`${num1} + ${num2} = ?`);
+      setIsHumanVerified(false);
+      setVerificationError('');
     } catch (error) {
       console.error('Signup error:', error);
     } finally {
@@ -101,7 +89,7 @@ export default function ContentPlaceholder() {
           <div className="max-w-3xl mx-auto bg-primary-navy/40 backdrop-blur-sm p-8 rounded-lg border border-primary-blue/20 shadow-lg">
             <h2 className="text-4xl font-bold text-white mb-6">Content Library 📚</h2>
             <p className="text-xl text-slate-300 mb-8">
-              I'm currently building an amazing collection of articles, tutorials, and resources. 
+              I&apos;m currently building an amazing collection of articles, tutorials, and resources. 
               This section is under active development - check back often for updates!
             </p>
             
@@ -133,29 +121,26 @@ export default function ContentPlaceholder() {
                   {/* Captcha */}
                   <div>
                     <div className="flex items-center gap-4">
-                      <div className="bg-primary-navy/60 px-4 py-2 rounded-lg border border-primary-blue/30 text-primary-blue font-mono">
-                        {captchaValue}
-                      </div>
                       <input
-                        type="text"
-                        value={captchaValue}
-                        onChange={handleCaptchaChange}
-                        placeholder="Answer"
-                        className={`w-32 px-4 py-2 bg-primary-navy/60 border rounded-lg text-white placeholder-slate-400 focus:outline-none ${
-                          captchaError ? 'border-red-500' : 'border-primary-blue/30 focus:border-primary-blue'
-                        }`}
-                        required
+                        type="checkbox"
+                        id="human-verification"
+                        checked={isHumanVerified}
+                        onChange={handleVerificationChange}
+                        className="h-4 w-4 text-primary-blue focus:ring-primary-blue border-gray-300 rounded"
                       />
+                      <label htmlFor="human-verification" className="text-slate-300 text-sm">
+                        I&apos;m a human.
+                      </label>
                     </div>
-                    {captchaError && (
-                      <p className="text-red-400 text-sm mt-1">{captchaError}</p>
+                    {verificationError && (
+                      <p className="text-red-400 text-sm mt-1">{verificationError}</p>
                     )}
                   </div>
                   
                   <Button
                     type="submit"
                     variant="primary"
-                    disabled={isSubmitting || !!emailError || !!captchaError}
+                    disabled={isSubmitting || !!emailError || !isHumanVerified || !!verificationError}
                     className="w-full"
                   >
                     {isSubmitting ? 'Signing Up...' : 'Notify Me'}
@@ -163,9 +148,9 @@ export default function ContentPlaceholder() {
                 </form>
               ) : (
                 <div className="bg-green-500/20 border border-green-500/30 rounded-lg p-4">
-                  <p className="text-green-400 font-semibold">✅ You're all set!</p>
+                  <p className="text-green-400 font-semibold">✅ You&apos;re all set!</p>
                   <p className="text-slate-300 text-sm mt-1">
-                    You'll receive updates when new content is published.
+                    You&apos;ll receive updates when new content is published.
                   </p>
                 </div>
               )}

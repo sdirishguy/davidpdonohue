@@ -23,7 +23,7 @@ import {
 const typingContent = [
   { greeting: "Let me welcome you to the Professional section of my website!", color: "text-primary-yellow" },
   { intro: "This is my favorite section of the site!", color: "text-primary-blue" },
-  { body: "It is where you'll learn all about my experience as a Full Stack Web Developer,", color: "text-primary-magenta"},
+  { body: "It is where you&apos;ll learn all about my experience as a Full Stack Web Developer,", color: "text-primary-magenta"},
   { body: "a Project Manager,", color: "text-primary-magenta"},
   { body: "an IT Projessional,", color: "text-primary-magenta"},
   { body: "and a life long learner.", color: "text-primary-magenta"},
@@ -35,12 +35,12 @@ const typingContent = [
 // Professional content from your resume
 const professionalContent = {
   title: "Professional Experience",
-  resumeSummary: "<p>Resilient by experience. Driven by purpose. Building for what's next. I am a full-stack developer and cloud/cybersecurity technologist with 10+ years of cross-industry experience—from healthcare IT leadership and EMR implementation to modern web application delivery.</p><p>I architect and deploy secure, scalable systems using Python, Django, Ruby on Rails, JavaScript, and PostgreSQL, and I've led teams through complex cloud, infrastructure, and compliance challenges. I am driven by a strong sense of purpose, combining technical expertise with empathy, adaptability, and a commitment to addressing meaningful challenges.</p><p>Whether optimizing patient care workflows or developing secure digital platforms, I'm committed to building technology that empowers people and moves us forward.</p>",
+  resumeSummary: "Resilient by experience. Driven by purpose. Building for what's next. I am a full-stack developer and cloud/cybersecurity technologist with 10+ years of cross-industry experience—from healthcare IT leadership and EMR implementation to modern web application delivery. I architect and deploy secure, scalable systems using Python, Django, Ruby on Rails, JavaScript, and PostgreSQL, and I've led teams through complex cloud, infrastructure, and compliance challenges. I am driven by a strong sense of purpose, combining technical expertise with empathy, adaptability, and a commitment to addressing meaningful challenges. Whether optimizing patient care workflows or developing secure digital platforms, I'm committed to building technology that empowers people and moves us forward.",
   
   experience: [
     {
       title: "IT Manager (Part-Time)",
-      company: "Lucky D's Hostel",
+      company: "Lucky D&apos;s Hostel",
       period: "Sept 2019 – Sept 2024",
       location: "San Diego, CA",
       description: "Managed IT infrastructure and security for a hospitality business.",
@@ -95,7 +95,7 @@ const professionalContent = {
       technologies: ["SaaS Implementation", "RCM Systems", "Project Management", "Healthcare IT"]
     },
     {
-      title: "Project Manager – Implementations & Special Projects",
+      title: "Project Manager – Implementations &amp; Special Projects",
       company: "Healthcare Data Solutions",
       period: "2010 – 2012",
       location: "Miami, FL",
@@ -125,21 +125,21 @@ const professionalContent = {
   ],
   
   skills: {
-    "Languages & Frameworks": [
+          "Languages &amp; Frameworks": [
       "Ruby", "Python", "JavaScript (ES6+)", "Rails", "Django", "Node.js", 
       "Vue3.js", "React.js", "HTML5", "CSS", "Sass", "Bootstrap", "Tailwind CSS", "Next.js"
     ],
     "Databases": [
       "SQL", "PostgreSQL", "MySQL", "MongoDB", "Redis", "SQLite", "SQL Server"
     ],
-    "Cloud & Infrastructure": [
+    "Cloud &amp; Infrastructure": [
       "AWS", "GCP", "Microsoft Azure", "Docker", "VMware", "VirtualBox"
     ],
     "Cybersecurity": [
       "Ethical Hacking", "Network Security", "Kali Linux", "Metasploit", 
       "Nmap", "Nessus", "Wireshark", "Burp Suite", "Hashcat", "John the Ripper"
     ],
-    "Development & DevOps": [
+    "Development &amp; DevOps": [
       "Git", "GitHub", "GitLab", "Heroku", "CI/CD", "Jira", "Bitbucket", "Trello"
     ],
     "Healthcare IT": [
@@ -177,9 +177,9 @@ const professionalContent = {
     {
       institution: "Western Governors University",
       degrees: [
-        "Bachelor of Science in Network Operations & Security (Started in 2020, on hold)"
+        "Bachelor of Science in Network Operations &amp; Security (Started in 2020, on hold)"
       ],
-      description: "Program started in 2020, on hold due to COVID-19 & financial reasons"
+              description: "Program started in 2020, on hold due to COVID-19 &amp; financial reasons"
     },
     {
       institution: "University of Nebraska - Lincoln",
@@ -260,11 +260,11 @@ const tabConfig = {
 
 // Skill category icons and colors
 const skillCategoryConfig: Record<string, { icon: string; color: string }> = {
-  "Languages & Frameworks": { icon: "💻", color: "text-primary-blue" },
+  "Languages &amp; Frameworks": { icon: "💻", color: "text-primary-blue" },
   "Databases": { icon: "🗄️", color: "text-primary-magenta" },
-  "Cloud & Infrastructure": { icon: "☁️", color: "text-primary-sunset-orange" },
+  "Cloud &amp; Infrastructure": { icon: "☁️", color: "text-primary-sunset-orange" },
   "Cybersecurity": { icon: "🔒", color: "text-primary-yellow" },
-  "Development & DevOps": { icon: "🔄", color: "text-primary-blue" },
+  "Development &amp; DevOps": { icon: "🔄", color: "text-primary-blue" },
   "Healthcare IT": { icon: "🏥", color: "text-primary-magenta" }
 };
 

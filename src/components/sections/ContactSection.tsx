@@ -76,17 +76,10 @@ export default function ContactSection() {
   });
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [captchaValue, setCaptchaValue] = useState('');
-  const [captchaAnswer, setCaptchaAnswer] = useState('');
-  const [captchaError, setCaptchaError] = useState('');
+  const [isHumanVerified, setIsHumanVerified] = useState(false);
+  const [verificationError, setVerificationError] = useState('');
   
-  // Generate captcha
-  useEffect(() => {
-    const num1 = Math.floor(Math.random() * 10) + 1;
-    const num2 = Math.floor(Math.random() * 10) + 1;
-    setCaptchaAnswer((num1 + num2).toString());
-    setCaptchaValue(`${num1} + ${num2} = ?`);
-  }, []);
+
   
   // Copy to clipboard function
   const copyToClipboard = async (text: string) => {
@@ -95,6 +88,17 @@ export default function ContactSection() {
       // You could add a toast notification here
     } catch (err) {
       console.error('Failed to copy text: ', err);
+    }
+  };
+
+  // Handle verification checkbox
+  const handleVerificationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const checked = e.target.checked;
+    setIsHumanVerified(checked);
+    if (checked) {
+      setVerificationError('');
+    } else {
+      setVerificationError('Please verify that you are human');
     }
   };
 
@@ -169,15 +173,7 @@ export default function ContactSection() {
     validateInput(name, value);
   };
 
-  const handleCaptchaChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setCaptchaValue(value);
-    if (value !== captchaAnswer) {
-      setCaptchaError('Incorrect answer');
-    } else {
-      setCaptchaError('');
-    }
-  };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -187,11 +183,10 @@ export default function ContactSection() {
     const isEmailValid = validateInput('email', formData.email);
     const isSubjectValid = validateInput('subject', formData.subject);
     const isMessageValid = validateInput('message', formData.message);
-    const isCaptchaValid = captchaValue === captchaAnswer;
     
-    if (!isNameValid || !isEmailValid || !isSubjectValid || !isMessageValid || !isCaptchaValid) {
-      if (!isCaptchaValid) {
-        setCaptchaError('Please solve the captcha correctly');
+    if (!isNameValid || !isEmailValid || !isSubjectValid || !isMessageValid || !isHumanVerified) {
+      if (!isHumanVerified) {
+        setVerificationError('Please verify that you are human');
       }
       return;
     }
@@ -210,14 +205,8 @@ export default function ContactSection() {
         message: ''
       });
       setErrors({});
-      setCaptchaValue('');
-      setCaptchaError('');
-      
-      // Generate new captcha
-      const num1 = Math.floor(Math.random() * 10) + 1;
-      const num2 = Math.floor(Math.random() * 10) + 1;
-      setCaptchaAnswer((num1 + num2).toString());
-      setCaptchaValue(`${num1} + ${num2} = ?`);
+      setIsHumanVerified(false); // Reset verification state
+      setVerificationError(''); // Clear verification error
       
       // You could add a success notification here
     } catch (error) {
@@ -488,24 +477,21 @@ export default function ContactSection() {
                       Security Check *
                     </label>
                     <div className="flex items-center gap-4">
-                      <div className="bg-primary-navy/60 px-4 py-2 rounded-lg border border-primary-blue/30 text-primary-blue font-mono">
-                        {captchaValue}
-                      </div>
                       <input
-                        type="text"
+                        type="checkbox"
                         id="captcha"
                         name="captcha"
-                        value={captchaValue}
-                        onChange={handleCaptchaChange}
+                        checked={isHumanVerified}
+                        onChange={handleVerificationChange}
                         required
-                        className={`w-32 px-4 py-2 bg-primary-navy/60 border rounded-lg text-white placeholder-slate-400 focus:outline-none ${
-                          captchaError ? 'border-red-500' : 'border-primary-blue/30 focus:border-primary-blue'
-                        }`}
-                        placeholder="Answer"
+                        className="h-4 w-4 text-primary-blue focus:ring-primary-blue border-gray-300 rounded"
                       />
+                      <label htmlFor="captcha" className="text-sm text-white">
+                        I am a human.
+                      </label>
                     </div>
-                    {captchaError && (
-                      <p className="text-red-400 text-sm mt-1">{captchaError}</p>
+                    {verificationError && (
+                      <p className="text-red-400 text-sm mt-1">{verificationError}</p>
                     )}
                   </div>
                   
