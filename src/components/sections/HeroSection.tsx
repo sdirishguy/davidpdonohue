@@ -8,7 +8,7 @@ import { getTerminalPath, getTypingFontSize, getLineText, getLineColor } from '@
 const typingContent = [
   { greeting: "Welcome to David P Donohue.com!! I'm so happy you stopped by!", color: "text-primary-sunset-orange" },
   { intro: "I'm David, and I'll be your guide as you explore my website!", color: "text-primary-blue" },
-  { body: "The site is divided up into 5 sections: Personal, Professional, Projects and Content amd Contact.", color: "text-primary-magenta" },
+  { body: "The site is divided up into 5 sections: Personal, Professional, Projects, Content and Contact.", color: "text-primary-magenta" },
   { body: "I'm a curious guy with interests and passions covering topics ranging from healthcare, fintech, cybersecurity, and artificial intelligence.", color: "text-primary-blue" },
   { narrative: "To sports like tennis and soccer, traveling, and food to politics, philosohpy and religion", color: "text-primary-blue" },
   { narrative: "Use the navigation links at the top of the page to explore and learn more about me!", color: "text-primary-yellow" },
