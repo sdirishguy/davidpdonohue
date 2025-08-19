@@ -26,12 +26,15 @@ const projectsContent = {
   items: [
     {
       title: "MCP Server",
-      description: "AnMCP Server is a programmable agent server for automating workflows via the Model Context Protocol (MCP).",
+      description: "A production-ready Model Context Protocol (MCP) Server with comprehensive security, monitoring, and deployment capabilities. Features 8 tools for filesystem operations, shell commands, and LLM code generation, with 100% test coverage for core functionality and enterprise-grade security features.",
       link: "https://github.com/sdirishguy/mcp_server_project",
       extraLinks: {
-        "Docs": "https://modelcontextprotocol.io/introduction"
+        "Docker Guide": "https://github.com/sdirishguy/mcp_server_project/blob/main/DOCKER.md",
+        "Production Report": "https://github.com/sdirishguy/mcp_server_project/blob/main/PRODUCTION_READINESS_REPORT.md",
+        "FastMCP Integration": "https://github.com/sdirishguy/mcp_server_project/blob/main/FASTMCP_LIFESPAN_ISSUE_REPORT.md",
+        "Testing Strategy": "https://github.com/sdirishguy/mcp_server_project/blob/main/ROBUST_TESTING_STRATEGY.md"
       },
-      technologies: ["Python", "API", "AI", "Automation"]
+      technologies: ["Python 3.12.3", "FastMCP 2.8.0", "Starlette", "Docker", "Prometheus", "OpenAI", "Gemini", "Security", "Monitoring"]
     },
     {
       title: "ShellRosetta",
@@ -269,9 +272,9 @@ export default function ProjectsSection() {
                 </Button>
                 <Button
                   variant="outline"
-                  onClick={() => window.open(projectsContent.items[0].extraLinks?.Docs, '_blank')}
+                  onClick={() => window.open(projectsContent.items[0].extraLinks?.["Docker Guide"], '_blank')}
                 >
-                  MCP Documentation
+                  Docker Guide
                 </Button>
               </div>
             </div>
