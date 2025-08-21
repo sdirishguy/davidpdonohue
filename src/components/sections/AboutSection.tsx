@@ -95,17 +95,17 @@ const aboutContent: AboutContent = {
         { "label": "Scents", "value": "Mediterranean Lavender, Allure by Chanel, " },
         { "label": "Quotes", "value": "It is better to remain silent at the risk of being thought a fool, than to talk and remove all doubt of it. -Maurice Switzer|Those who can make you believe absurdities can make you commit atrocities.-Voltaire" },
         { "label": "Beverages", "value": "Original Coke, Sweet Tea, Starbucks Chai Latte" },
-        { "label": "Food", "value": "Japanese, Seafood" },
+        { "label": "Foods", "value": "Japanese, Seafood, Italian, Mexican/South American" },
         { "label": "Ice Cream", "value": "Hagen Daz Banana Split, Ben&Jerrys Chocolate Therapy" }
       ],
       "Entertainment": [
-        { "label": "Movies", "value": "Stand By Me, Gladiator, Silence of the Lambs, Misery, Fried Green Tomatoes, The Shawshank Redemption, " },
-        { "label": "TV/Streaming Shows", "value": "Family Ties, Murderbot, Reacher, MobLand, Halo, The Sandman, The Boys, Foundations, The Morning Show, Ted Lasso" },
+        { "label": "Movies", "value": "Stand By Me, Gladiator, Silence of the Lambs, Misery, Fried Green Tomatoes, The Shawshank Redemption, Clueless, Lord of the Rinds Trilogy, Star Wars 4-9 " },
+        { "label": "TV/Streaming Shows", "value": "Family Ties, Murderbot, Reacher, MobLand, Halo, The Sandman, The Boys, Foundations, The Morning Show, Ted Lasso, The Guilded Age, The Last of Us, " },
         { "label": "Video Games", "value": "Baldur's Gate, Halo series, Diablo series" },
-        { "label": "Books", "value": "Lord of The Rings triology, The Chronicles of Narnia, The Phoenix Project, The Rise and Fall of the Third Reich" },
+        { "label": "Books", "value": "Lord of The Rings triology, The Chronicles of Narnia, The Phoenix Project, The Rise and Fall of the Third Reich, The Let Me Theory, The Next Conversation, Into The Magic Shop, Spare, The Subtle Art of Not Giving a F*ck, " },
         { "label": "Authors", "value": "C.S. Lewis, T.S. Eliott, Stephen King" },
         { "label": "Songs", "value": "All Too Well, Mayonaise, Beautiful Disaster, " },
-        { "label": "Musicians/Bands", "value": "Taylor Swift, Smashing Pumpkins, U2, Celine Dion, Kendrick Lamar, Pink, Kelly Clarkson" }
+        { "label": "Musicians/Bands", "value": "Taylor Swift, Smashing Pumpkins, U2, Celine Dion, Kendrick Lamar, Pink, Kelly Clarkson, Morgan Wallen, Chappell Roan, Lady Gaga, " }
       ],
       "Nature": [
         { "label": "Animals", "value": "Killer Whale, Octopi, Red Tibetan Mastiff, Staffordshite Terrier, Bengal Tiger" },
@@ -115,8 +115,8 @@ const aboutContent: AboutContent = {
       ],
       "Tech": [
         { "label": "Programming Language", "value": "Python, Ruby, Javascript" },
-        { "label": "Frameworks", "value": "Django, Vue" },
-        { "label": "Code Editors", "value": "Cursor, Windsurf, Sublime" },
+        { "label": "Frameworks", "value": "Django, Vue, Next.js, React" },
+        { "label": "Code Editors", "value": "Cursor, Windsurf, Sublime, VSCode" },
         { "label": "Line of Code", "value": "x = (lambda f: f(f))(lambda f: lambda n: 1 if n < 2 else n * f(f)(n - 1))" }
       ]
     }
