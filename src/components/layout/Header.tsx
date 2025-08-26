@@ -26,7 +26,7 @@ const socialLinks = [
   { name: 'GitHub', href: 'https://www.github.com/sdirishguy', icon: Github },
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/davidpatrickdonohue', icon: Linkedin },
   { name: 'Email', href: 'mailto:david@davidpdonohue.com', icon: Mail },
-  { name: 'Resume', href: '/2025CurrentResume-DavidDonohue.pdf', icon: FileText },
+      { name: 'Resume', href: '/DavidPDonohue_Resume2025.pdf', icon: FileText },
 ]
 
 export default function Header({ className }: HeaderProps) {

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Card, { CardHeader, CardContent, CardFooter } from '@/components/ui/Card'
 import Badge from '@/components/ui/Badge'
@@ -8,6 +8,8 @@ import Button from '@/components/ui/Button'
 import ContentPlaceholder from './ContentPlaceholder'
 import { usePathname } from 'next/navigation'
 import { getTerminalPath, getTypingFontSize, getLineText, getLineColor } from '@/lib/utils'
+import { useTerminalAnimation } from '@/hooks/useTerminalAnimation'
+import { TerminalHeader } from '@/components/ui/TerminalHeader'
 
 // Content item interface
 interface ContentItem {
@@ -224,10 +226,18 @@ export default function ContentSection() {
   const pathname = usePathname()
   const terminalPath = getTerminalPath(pathname)
   
-  // Typing animation states
-  const [currentLineIndex, setCurrentLineIndex] = useState(0);
-  const [currentCharIndex, setCurrentCharIndex] = useState(0);
-  const [completedLines, setCompletedLines] = useState<string[]>([]);
+  // Use the terminal animation hook
+  const {
+    currentLineIndex,
+    completedLines,
+    isAnimationComplete,
+    skipAnimation,
+    replayAnimation,
+    getCurrentTypedText,
+  } = useTerminalAnimation({
+    typingContent,
+    getLineText,
+  });
   
   // Terminal states
   const [terminalInput, setTerminalInput] = useState("");
@@ -245,31 +255,6 @@ export default function ContentSection() {
   // Content filtering states
   const [filteredContent, setFilteredContent] = useState<Array<ContentItem>>([]);
   
-  // Typing effect using setTimeout
-  useEffect(() => {
-    if (currentLineIndex >= typingContent.length) return;
-    
-    const currentLine = typingContent[currentLineIndex];
-    const currentLineText = getLineText(currentLine);
-    
-    if (currentCharIndex < currentLineText.length) {
-      const timeout = setTimeout(() => {
-        setCurrentCharIndex(prev => prev + 1);
-      }, Math.floor(Math.random() * 40) + 40);
-      
-      return () => clearTimeout(timeout);
-    } else {
-      // Line is complete, move to next line after delay
-      const timeout = setTimeout(() => {
-        setCompletedLines(prev => [...prev, currentLineText]);
-        setCurrentLineIndex(prev => prev + 1);
-        setCurrentCharIndex(0);
-      }, 1000);
-      
-      return () => clearTimeout(timeout);
-    }
-  }, [currentLineIndex, currentCharIndex]);
-  
   // Scroll terminal to bottom when history updates
   useEffect(() => {
     if (SHOW_PLACEHOLDER) return;
@@ -277,14 +262,6 @@ export default function ContentSection() {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
   }, [terminalHistory]);
-
-  // Get current typed text
-  const getCurrentTypedText = () => {
-    if (currentLineIndex >= typingContent.length) return '';
-    const currentLine = typingContent[currentLineIndex];
-    const currentLineText = getLineText(currentLine);
-    return currentLineText.slice(0, currentCharIndex);
-  };
 
   // Show placeholder if flag is set
   if (SHOW_PLACEHOLDER) {
@@ -472,14 +449,12 @@ export default function ContentSection() {
           className="text-center mb-16"
         >
           <div className="max-w-3xl mx-auto bg-primary-navy/40 backdrop-blur-sm p-6 rounded-lg border border-primary-blue/20 shadow-lg">
-            <div className="flex items-center justify-between mb-4 border-b border-primary-blue/20 pb-2">
-              <div className="text-primary-blue/70 font-mono text-sm">terminal@davidpdonohue.com:{terminalPath}$</div>
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-primary-yellow"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-              </div>
-            </div>
+            <TerminalHeader
+              terminalPath={terminalPath}
+              isAnimationComplete={isAnimationComplete}
+              onSkip={skipAnimation}
+              onReplay={replayAnimation}
+            />
             
             <div className="font-mono text-left space-y-4">
               {/* Display completed lines */}
