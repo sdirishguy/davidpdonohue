@@ -96,7 +96,7 @@ const aboutContent: AboutContent = {
         { "label": "Quotes", "value": "It is better to remain silent at the risk of being thought a fool, than to talk and remove all doubt of it. -Maurice Switzer|Those who can make you believe absurdities can make you commit atrocities.-Voltaire" },
         { "label": "Beverages", "value": "Original Coke, Sweet Tea, Starbucks Chai Latte" },
         { "label": "Foods", "value": "Japanese, Seafood, Italian, Mexican/South American" },
-        { "label": "Ice Cream", "value": "Hagen Daz Banana Split, Ben&Jerrys Chocolate Therapy" }
+        { "label": "Ice Cream", "value": "Hagen Daz Banana Split, Ben & Jerry's Chocolate Therapy" }
       ],
       "Entertainment": [
         { "label": "Movies", "value": "Stand By Me, Gladiator, Silence of the Lambs, Misery, Fried Green Tomatoes, The Shawshank Redemption, Clueless, Lord of the Rinds Trilogy, Star Wars 4-9 " },

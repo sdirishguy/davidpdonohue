@@ -443,7 +443,7 @@ export default function ContactSection() {
                       className={`w-full px-4 py-2 bg-primary-navy/60 border rounded-lg text-white placeholder-slate-400 focus:outline-none ${
                         errors.subject ? 'border-red-500' : 'border-primary-blue/30 focus:border-primary-blue'
                       }`}
-                      placeholder="What&apos;s this about?"
+                      placeholder="What's this about?"
                     />
                     {errors.subject && (
                       <p className="text-red-400 text-sm mt-1">{errors.subject}</p>
@@ -521,10 +521,10 @@ export default function ContactSection() {
           className="mt-16 text-center"
         >
           <div className="max-w-2xl mx-auto bg-gradient-to-r from-primary-blue/10 via-primary-magenta/10 to-primary-sunset-orange/10 p-8 rounded-lg backdrop-blur-sm">
-            <h3 className="text-2xl font-bold text-white mb-4">Let&apos;s Build Something Amazing! 🚀</h3>
+                            <h3 className="text-2xl font-bold text-white mb-4">Let&apos;s Build Something Amazing! 🚀</h3>
             <p className="text-slate-300 mb-6">
               Whether you have a project in mind, want to collaborate, or just want to chat about technology, 
-              I&apos;m always excited to connect with fellow developers and creators.
+                              I&apos;m always excited to connect with fellow developers and creators.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button

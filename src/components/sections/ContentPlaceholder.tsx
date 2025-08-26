@@ -150,7 +150,7 @@ export default function ContentPlaceholder() {
                 <div className="bg-green-500/20 border border-green-500/30 rounded-lg p-4">
                   <p className="text-green-400 font-semibold">✅ You&apos;re all set!</p>
                   <p className="text-slate-300 text-sm mt-1">
-                    You&apos;ll receive updates when new content is published.
+                                          You&apos;ll receive updates when new content is published.
                   </p>
                 </div>
               )}

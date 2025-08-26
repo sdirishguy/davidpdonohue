@@ -9,9 +9,9 @@ interface CardProps extends HTMLMotionProps<'div'> {
   hover?: boolean
 }
 
-interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
-interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {}
-interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
+type CardHeaderProps = React.HTMLAttributes<HTMLDivElement>
+type CardContentProps = React.HTMLAttributes<HTMLDivElement>
+type CardFooterProps = React.HTMLAttributes<HTMLDivElement>
 
 // Main Card component
 const Card = forwardRef<HTMLDivElement, CardProps>(

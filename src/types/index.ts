@@ -33,7 +33,7 @@ export interface Project {
   githubUrl?: string
   featured: boolean
   demoType: 'iframe' | 'interactive' | 'video' | 'playground'
-  demoConfig?: Record<string, any>
+  demoConfig?: Record<string, unknown>
 }
 
 // Professional types
