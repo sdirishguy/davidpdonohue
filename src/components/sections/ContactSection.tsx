@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation'
 import { getTerminalPath, getTypingFontSize, getLineText, getLineColor } from '@/lib/utils'
 import { useTerminalAnimation } from '@/hooks/useTerminalAnimation'
 import { TerminalHeader } from '@/components/ui/TerminalHeader'
+import { openSecureLink } from '@/lib/secure-link-util'
 
 // Typing animation content
 const typingContent = [
@@ -332,7 +333,7 @@ export default function ContactSection() {
                         if (method.type === 'copy') {
                           copyToClipboard(method.value);
                         } else if (method.type === 'link' && method.url) {
-                          window.open(method.url, '_blank');
+                          openSecureLink(method.url);
                         }
                       }}
                     >
@@ -512,13 +513,13 @@ export default function ContactSection() {
               </Button>
               <Button
                 variant="outline"
-                onClick={() => window.open('https://www.linkedin.com/in/davidpatrickdonohue', '_blank')}
+                onClick={() => openSecureLink('https://www.linkedin.com/in/davidpatrickdonohue')}
               >
                 Connect on LinkedIn
               </Button>
               <Button
                 variant="outline"
-                onClick={() => window.open('/DavidPDonohue_Resume2025.pdf', '_blank')}
+                onClick={() => openSecureLink('/DavidPDonohue_Resume2025.pdf')}
                 className="border-primary-yellow/30 text-primary-yellow hover:bg-primary-yellow/10"
               >
                 📄 Download Resume

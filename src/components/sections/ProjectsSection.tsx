@@ -11,6 +11,7 @@ import { usePathname } from 'next/navigation'
 import { getTerminalPath, getTypingFontSize, getLineText, getLineColor } from '@/lib/utils'
 import { useTerminalAnimation } from '@/hooks/useTerminalAnimation'
 import { TerminalHeader } from '@/components/ui/TerminalHeader'
+import { openSecureLink } from '@/lib/secure-link-util'
 
 // Typing animation content
 const typingContent = [
@@ -240,13 +241,16 @@ export default function ProjectsSection() {
               <div className="flex gap-4 pt-4">
                 <Button
                   variant="primary"
-                  onClick={() => window.open(projectsContent.items[0].link, '_blank')}
+                  onClick={() => openSecureLink(projectsContent.items[0].link)}
                 >
                   View on GitHub
                 </Button>
                 <Button
                   variant="outline"
-                  onClick={() => window.open(projectsContent.items[0].extraLinks?.["Docker Guide"], '_blank')}
+                  onClick={() => {
+                    const dockerGuide = projectsContent.items[0].extraLinks?.["Docker Guide"]
+                    if (dockerGuide) openSecureLink(dockerGuide)
+                  }}
                 >
                   Docker Guide
                 </Button>
@@ -305,13 +309,16 @@ export default function ProjectsSection() {
               <div className="flex gap-4 pt-4">
                 <Button
                   variant="primary"
-                  onClick={() => window.open(projectsContent.items[1].link, '_blank')}
+                  onClick={() => openSecureLink(projectsContent.items[1].link)}
                 >
                   View on GitHub
                 </Button>
                 <Button
                   variant="outline"
-                  onClick={() => window.open(projectsContent.items[1].extraLinks?.PyPI, '_blank')}
+                  onClick={() => {
+                    const pypiLink = projectsContent.items[1].extraLinks?.PyPI
+                    if (pypiLink) openSecureLink(pypiLink)
+                  }}
                 >
                   PyPI Package
                 </Button>
@@ -470,7 +477,7 @@ export default function ProjectsSection() {
                       variant="outline"
                       size="sm"
                       className="flex-1"
-                      onClick={() => window.open(project.link, '_blank')}
+                      onClick={() => openSecureLink(project.link)}
                     >
                       View Project
                     </Button>
@@ -479,7 +486,10 @@ export default function ProjectsSection() {
                         variant="ghost"
                         size="sm"
                         className="flex-1"
-                        onClick={() => window.open(Object.entries(project.extraLinks!)[0][1] as string, '_blank')}
+                        onClick={() => {
+                          const [, value] = Object.entries(project.extraLinks!)[0]
+                          if (typeof value === 'string') openSecureLink(value)
+                        }}
                       >
                         {Object.entries(project.extraLinks)[0][0]}
                       </Button>
