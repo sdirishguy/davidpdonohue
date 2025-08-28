@@ -10,6 +10,7 @@ import { usePathname } from 'next/navigation'
 import { getTerminalPath, getTypingFontSize, getLineText, getLineColor } from '@/lib/utils'
 import { useTerminalAnimation } from '@/hooks/useTerminalAnimation'
 import { TerminalHeader } from '@/components/ui/TerminalHeader'
+import { openSecureLink } from '@/lib/secure-link-util'
 
 // Content item interface
 interface ContentItem {
@@ -606,7 +607,7 @@ export default function ContentSection() {
                         <Button
                           variant="outline"
                           size="sm"
-                          onClick={() => window.open(item.url, '_blank')}
+                          onClick={() => openSecureLink(item.url)}
                         >
                           {item.type === 'blog' ? 'Read Article' : 
                            item.type === 'vlog' ? 'Watch Video' : 'View Resource'}
@@ -714,7 +715,7 @@ export default function ContentSection() {
                           <Button 
                             variant="outline" 
                             size="sm"
-                            onClick={() => window.open(post.url, '_blank')}
+                            onClick={() => openSecureLink(post.url)}
                           >
                             Read Article
                           </Button>
@@ -756,7 +757,7 @@ export default function ContentSection() {
                           <Button 
                             variant="primary" 
                             size="sm"
-                            onClick={() => window.open(video.url, '_blank')}
+                            onClick={() => openSecureLink(video.url)}
                           >
                             Watch Tutorial
                           </Button>
@@ -820,7 +821,7 @@ export default function ContentSection() {
                           <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => window.open(item.url, '_blank')}
+                            onClick={() => openSecureLink(item.url)}
                           >
                             {item.type === 'blog' ? 'Read Article' : 'Watch Video'}
                           </Button>
@@ -881,7 +882,7 @@ export default function ContentSection() {
                           <Button 
                             variant="outline" 
                             size="sm"
-                            onClick={() => window.open(resource.url, '_blank')}
+                            onClick={() => openSecureLink(resource.url)}
                           >
                             View Resource
                           </Button>

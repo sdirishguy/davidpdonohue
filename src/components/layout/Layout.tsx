@@ -19,19 +19,39 @@ export default function Layout({
   showFooter = true 
 }: LayoutProps) {
   return (
-    <div className="min-h-screen bg-primary-navy flex flex-col">
-      {showHeader && <Header />}
-      
+    <div className={cn('min-h-screen flex flex-col bg-primary-navy text-slate-100', className)}>
+      {/* Skip link for keyboard users */}
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50
+                   focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded"
+      >
+        Skip to main content
+      </a>
+
+      {showHeader && (
+        <header role="banner">
+          <Header />
+        </header>
+      )}
+
       <motion.main
+        id="main"
+        role="main"
+        tabIndex={-1}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className={cn('flex-1', className)}
+        className="flex-1"
       >
         {children}
       </motion.main>
-      
-      {showFooter && <Footer />}
+
+      {showFooter && (
+        <footer role="contentinfo">
+          <Footer />
+        </footer>
+      )}
     </div>
   )
 }

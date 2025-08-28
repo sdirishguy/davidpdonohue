@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation'
 import { getTerminalPath, getTypingFontSize, getLineText, getLineColor } from '@/lib/utils'
 import { useTerminalAnimation } from '@/hooks/useTerminalAnimation'
 import { TerminalHeader } from '@/components/ui/TerminalHeader'
+import { openSecureLink } from '@/lib/secure-link-util'
 import { 
   SiPython, 
   SiDjango, 
@@ -478,7 +479,7 @@ export default function ProfessionalSection() {
                     transition={{ delay: 1.0, duration: 0.8 }}
                     whileHover={{ scale: 1.05, x: 5 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => window.open('/DavidPDonohue_Resume2025.pdf', '_blank')}
+                    onClick={() => openSecureLink('/DavidPDonohue_Resume2025.pdf')}
                     className="w-full text-left p-4 rounded-lg transition-all bg-primary-navy/50 text-slate-300 hover:bg-primary-navy/70 border border-primary-blue/30 hover:border-primary-blue/50"
                   >
                     <div className="flex items-center justify-between">
