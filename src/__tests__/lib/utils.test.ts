@@ -237,7 +237,7 @@ describe('getLineText', () => {
   })
 
   it('returns empty string when no text fields present', () => {
-    const line = { color: 'blue' }
+    const line: { greeting?: string, intro?: string, body?: string, narrative?: string, text?: string } = {}
     expect(getLineText(line)).toBe('')
   })
 
@@ -254,7 +254,7 @@ describe('getLineColor', () => {
   })
 
   it('returns default color when no color specified', () => {
-    const line = { text: 'Some text' }
+    const line: { color?: string } = {}
     expect(getLineColor(line)).toBe('text-primary-blue')
   })
 
