@@ -1,0 +1,7 @@
+# Jest ignore file
+tests/e2e/
+**/e2e/**
+**/*.e2e.*
+playwright-report/
+test-results/
+coverage/
