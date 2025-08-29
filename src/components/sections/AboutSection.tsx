@@ -49,43 +49,43 @@ const aboutContent: AboutContent = {
       id: "tech-passion",
       icon: "💡",
       title: "Tech Passion",
-      content: "I'm a technologist driven by a passion for transforming ideas into elegant, functional solutions. My portfolio showcases projects that reflect my commitment to innovation and problem-solving.",
-      tags: ["Innovation", "Problem Solving", "Creativity"]
+      content: "I build things that make life easier for real people. When my cousin felt overwhelmed by taking her equestrian center online, I used it as a chance to learn Next.js and TypeScript—building both my personal site and Hearts4Horses from the ground up. That project reminded me why I code: turn fuzzy needs into usable, reliable tools.",
+      tags: ["Hearts4Horses", "Next.js & TypeScript", "Human-Centered", "New, Now, Next"]
     },
     {
       id: "healthcare",
       icon: "🏥",
       title: "Healthcare Connection",
-      content: "My passion for healthcare innovation is deeply personal. As a cancer survivor and COVID-19 long-hauler, and with parents who were both clinicians, I've experienced firsthand the importance of compassionate care.",
-      tags: ["Healthcare", "Patient Experience", "Medical Innovation"]
+      content: "My view of healthcare comes from every angle: a five-year cancer fight, two rounds of COVID and long-haul recovery, and six years shoulder-to-shoulder with clinicians rolling out enterprise EHRs. I've led workflow changes that gave providers more face time and patients a clearer voice—without slowing the clinic down. At Q-Centrix, I worked on a HIPAA-compliant Rails app with Angular/Ember and Postgres (encrypted PHI), built rigorous form validation for NCDR registry metrics, and helped introduce BDD with Cucumber/RSpec to raise coverage on critical paths. Compassion and reliability aren't features to me—they're baselines.",
+      tags: ["EHR Workflows", "HIPAA", "Q-Centrix", "BDD/Testing"]
     },
     {
       id: "coding",
       icon: "💻",
       title: "Code Crafting",
-      content: "I thrive on turning complex concepts into clean, efficient code. When I'm not immersed in Python, JavaScript, or Ruby, I'm exploring the ever-evolving landscape of cybersecurity and Artificial Intelligence.",
-      tags: ["Python", "JavaScript", "Ruby", "Cybersecurity, A.I."]
+      content: "I try to live the Zen of Python: simple, readable, explicit. Security and logging come first (you only forget logging once). I'm self-taught with a bootcamp detour—Ruby/Rails and a taste of React—and I still reach for Python first. JavaScript was my early nemesis; leaning into Node, React, Next.js, and TypeScript has turned it into a growing strength. I like code reviews, small PRs, and CI that tells the truth.",
+      tags: ["Zen of Python", "Secure by Default", "Logging", "Reviews & CI"]
     },
     {
-      id: "outdoor",
+      id: "offline",
       icon: "🌊",
-      title: "Outdoor Adventures",
-      content: "You might find me chasing the thrill of a good thunderstorm, serving up more than just webpages on the tennis court, enjoying a sandy beach, or exploring the underwater world.",
-      tags: ["Tennis", "Beach", "Diving", "Storms"]
+      title: "Away From the Screen",
+      content: "Rain on a screened porch is my reset button, and slipping beneath the water while snorkeling is my favorite kind of quiet. I play tennis and soccer, log pool laps, and chase beach days—lately on Jupiter Island, with past favorites like Coronado, La Jolla, and Sebastian in Fort Lauderdale. Travel, great food and wine, camping, whitewater rafting, horseback riding, a good book, an action flick on the big screen, or zoning out with Apple Music—all of it keeps me balanced.",
+      tags: ["Tennis & Soccer", "Snorkeling", "Rain & Thunder", "Travel & Food"]
     },
     {
       id: "activities",
       icon: "🚣",
       title: "Active Pursuits",
-      content: "I enjoy the rush of whitewater rafting and the tranquility of horseback riding. Travel is another passion, especially when it involves trying new cuisines as a true foodie at heart.",
-      tags: ["Rafting", "Horseback Riding", "Travel", "Food"]
+      content: "I'm a lifelong learner focused on cybersecurity, AI/ML, data, and cloud—while going deeper in Python and JavaScript and exploring Go or Rust. I'm also rebuilding my fitness by getting back on the tennis court after a 25-year break. Progress over perfection is the theme.",
+      tags: ["Cybersecurity", "AI/ML", "Data & Cloud", "Tennis Comeback"]
     },
     {
       id: "quirks",
       icon: "🎃",
       title: "Personal Quirks",
-      content: "While the idea of Halloween is endlessly fascinating, I prefer to admire the spooky creativity from a safe distance. And though I love exploring flavors from around the world, some spicy dishes test my limits!",
-      tags: ["Foodie", "Halloween", "Curious Mind"]
+      content: "I love the idea of Halloween, the costumes, the creativity, the mystery, scary fun, all of it. Doing all of that for myself on the other hand is another story! However, Halloween Horror Nights at Universal Studios, yes please! Haunted Houses, terror maze pumpkin patches, binging horror movies, I'm down for all of the above. I don't get nuclear-level heat when it comes to food. Ghost pepper, Carolina reaper peppers etc...any kind of spice/seasoning that causes your skin to welt up like hives from touching it, why would you put that in your body? Why not just lay in bed covered with Bullet Ants! No Thanks!!",
+      tags: ["Halloween Fan", "Horror Nights", "Flavor over Heat", "Systems & Spontaneity"]
     }
   ],
   favorites: {
