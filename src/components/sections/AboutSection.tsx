@@ -50,7 +50,7 @@ const aboutContent: AboutContent = {
       icon: "💡",
       title: "Tech Passion",
       content: "I build things that make life easier for real people. When my cousin felt overwhelmed by taking her equestrian center online, I used it as a chance to learn Next.js and TypeScript—building both my personal site and Hearts4Horses from the ground up. That project reminded me why I code: turn fuzzy needs into usable, reliable tools.",
-      tags: ["Hearts4Horses", "Next.js & TypeScript", "Human-Centered", "New, Now, Next"]
+      tags: ["Innovation", "Next.js & TypeScript", "Human-Centered", "Creativity"]
     },
     {
       id: "healthcare",
